@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimaryDark">#C2185B</color>
+    <color name="colorPrimary">#E91E63</color>
+    <color name="colorAccent">#CDDC39</color>
+    <color name="colorPrimaryLite">#F8BBD0</color>
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorSecondaryText">#727272</color>
+    <color name="colorTextIcon">#FFFFFF</color>
+    <color name="colorDivider">#B6B6B6</color>
+    <color name="colorBackground">#4F656B</color>
+    <color name="themColor">#4F656B</color>
+
+    /* view pager color*/
+    <color name="selectedItem">#FCFCFC</color>
+    <color name="nonSelectedItem">#cbb790</color>
+
+
+    <color name="white">#fff</color>
+    <color name="black">#000</color>
+
+    <color name="black_overlay">#66000000</color>
+</resources>

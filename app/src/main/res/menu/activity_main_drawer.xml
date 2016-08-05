@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/profile"
+            android:checked="true"
+            android:icon="@drawable/profile"
+            android:title="Profile" />
+        <item
+            android:id="@+id/dashboard"
+            android:icon="@drawable/dashboard"
+            android:title="Dashboard"
+            android:visible="true" />
+        <item
+            android:id="@+id/my_doctors"
+            android:icon="@drawable/doctor"
+            android:title="My Doctors"
+            app:actionLayout="@layout/chat_counter" />
+        <item
+            android:id="@+id/my_appointments"
+            android:icon="@drawable/appointment"
+            android:title="My Appointments" />
+
+        <item
+            android:id="@+id/q_and_a"
+            android:icon="@drawable/qa"
+            android:title="My Q and A" />
+
+        <item
+            android:id="@+id/account_and_settings"
+            android:icon="@drawable/account_setting"
+            android:title="Account and Settings" />
+
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/logout"
+            android:title="Logout" />
+
+    </group>
+</menu>
