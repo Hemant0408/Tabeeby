@@ -27,6 +27,6 @@ private Context mContext;
 
     public void nextStep(View view) {
         startActivity(new Intent(mContext, MainActivity.class));
-        finishAffinity();
+        //finishAffinity();
     }
 }
