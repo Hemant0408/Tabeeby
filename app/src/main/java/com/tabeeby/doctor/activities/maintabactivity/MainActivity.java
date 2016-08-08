@@ -61,8 +61,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         displayFragment(1);
     }
 
-
-
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         return false;

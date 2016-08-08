@@ -3,6 +3,7 @@ package com.tabeeby.doctor.httpclient;
 import com.tabeeby.doctor.utiles.ServerUtils;
 
 import java.util.concurrent.TimeUnit;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.GsonConverterFactory;

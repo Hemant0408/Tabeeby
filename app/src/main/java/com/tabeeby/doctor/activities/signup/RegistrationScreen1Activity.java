@@ -24,29 +24,28 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
     String[] listContentDoctor;
     String[] listContentOrganisation;
     String flag;
-    ImageView mDoctor,mOrganisation;
+    ImageView mDoctor, mOrganisation;
     String title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_screen1);
-        mContext=this;
-        mDoctor=(ImageView) findViewById(R.id.img_doctor_select);
-        mOrganisation=(ImageView) findViewById(R.id.img_clinic_select);
+        mContext = this;
+        mDoctor = (ImageView) findViewById(R.id.img_doctor_select);
+        mOrganisation = (ImageView) findViewById(R.id.img_clinic_select);
     }
 
     public void nextStep(View view) {
-        startActivity(new Intent(mContext,SignUpActivity.class));
+        startActivity(new Intent(mContext, SignUpActivity.class));
     }
-
-
 
     @Override
     protected Dialog onCreateDialog(int id) {
 
         Dialog dialog = null;
 
-        switch(id) {
+        switch (id) {
             case CUSTOM_DIALOG_ID:
                 dialog = new Dialog(this, R.style.myCoolDialog);
                 dialog.setContentView(R.layout.dialog_list_item);
@@ -54,55 +53,54 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
                 dialog.setCancelable(true);
                 dialog.setCanceledOnTouchOutside(true);
 
-                dialog.setOnCancelListener(new DialogInterface.OnCancelListener(){
+                dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
 
                     @Override
                     public void onCancel(DialogInterface dialog) {
 
-                    }});
+                    }
+                });
 
-                dialog.setOnDismissListener(new DialogInterface.OnDismissListener(){
+                dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
 
                     @Override
                     public void onDismiss(DialogInterface dialog) {
 
-                    }});
+                    }
+                });
 
-                dialog_ListView = (ListView)dialog.findViewById(R.id.dialoglist);
-                ArrayAdapter<String> adapter=null;
-                if(flag.equals("D")) {
-                    if(adapter!=null) {
+                dialog_ListView = (ListView) dialog.findViewById(R.id.dialoglist);
+                ArrayAdapter<String> adapter = null;
+                if (flag.equals("D")) {
+                    if (adapter != null) {
                         adapter.clear();
                         dialog_ListView.removeAllViews();
                     }
                     adapter = new ArrayAdapter<String>(this, R.layout.country_list_item, listContentDoctor);
-                }
-                else
-                {
-                    if(adapter!=null) {
+                } else {
+                    if (adapter != null) {
                         adapter.clear();
                         dialog_ListView.removeAllViews();
                     }
                     adapter = new ArrayAdapter<String>(this, R.layout.country_list_item, listContentOrganisation);
                 }
                 dialog_ListView.setAdapter(adapter);
-                dialog_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+                dialog_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view,
                                             int position, long id) {
 
-                       if (flag.equals("D"))
-                       {
-                           mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_doctor_select));
-                           mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_clinic_unselect));
-                       }
-                        else {
-                           mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_doctor_unselect));
-                           mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_clinic_select));
-                       }
+                        if (flag.equals("D")) {
+                            mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_doctor_select));
+                            mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_clinic_unselect));
+                        } else {
+                            mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_doctor_unselect));
+                            mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_clinic_select));
+                        }
                         dismissDialog(CUSTOM_DIALOG_ID);
-                    }});
+                    }
+                });
 
                 break;
         }
@@ -121,10 +119,10 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
     }
 
     public void showDoctorDialog(View view) {
-        title="Select Type";
-        flag="D";
-        listContentDoctor=new String[]{"Public Doctor","Private Doctor"};
-       // showDialog(CUSTOM_DIALOG_ID);
+        title = "Select Type";
+        flag = "D";
+        listContentDoctor = new String[]{"Public Doctor", "Private Doctor"};
+        // showDialog(CUSTOM_DIALOG_ID);
 
         mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_doctor_select));
         mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_clinic_unselect));
@@ -132,10 +130,10 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
     }
 
     public void showOrganisationDialog(View view) {
-        title="Select Health Care Provider";
-        flag="O";
-        listContentOrganisation=new String[]{"Clinics and Hospital","Fitness Center","Pharmacies","Medical Tourism","Labs","Home Healthcare"};
-       // showDialog(CUSTOM_DIALOG_ID);
+        title = "Select Health Care Provider";
+        flag = "O";
+        listContentOrganisation = new String[]{"Clinics and Hospital", "Fitness Center", "Pharmacies", "Medical Tourism", "Labs", "Home Healthcare"};
+        // showDialog(CUSTOM_DIALOG_ID);
 
         mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_doctor_unselect));
         mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_clinic_select));
