@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.viewpager.ViewPagerActivity;
 

@@ -12,12 +12,13 @@ import com.tabeeby.doctor.activities.signup.RegistrationScreen1Activity;
 import com.tabeeby.doctor.activities.signup.SelectLanguageActivity;
 
 public class LoginActivity extends AppCompatActivity {
-private Context mContext;
+    private Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        mContext=this;
+        mContext = this;
     }
 
     public void needAnAccount(View view) {

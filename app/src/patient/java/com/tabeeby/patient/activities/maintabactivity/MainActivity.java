@@ -1,4 +1,4 @@
-package com.tabeeby.doctor.activities.maintabactivity;
+package com.tabeeby.patient.activities.maintabactivity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         displayFragment(1);
     }
+
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {

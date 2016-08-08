@@ -3,79 +3,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/themColor"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/themColor"
     tools:context="com.tabeeby.doctor.activities.signup.OtpPageActivity">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:orientation="vertical"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"
-        android:orientation="vertical"
-        android:layout_marginTop="60dp"
-        >
+        android:paddingTop="@dimen/activity_vertical_margin">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/ic_otp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        style="@style/TextViewHigh"
-        android:textStyle="bold"
-        android:text="@string/enter_the_otp"
-        />
-
-    <include layout="@layout/horizantal_white_line"/>
-
-     <TextView
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         style="@style/TextViewMid"
-         android:textAlignment="center"
-         android:text="@string/verify_mobile_no_text"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_otp" />
 
         <TextView
+            style="@style/TextViewHigh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="@string/enter_the_otp"
+            android:textStyle="bold" />
+
+        <include layout="@layout/horizantal_white_line" />
+
+        <TextView
+            style="@style/TextViewMid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/verify_mobile_no_text"
+            android:textAlignment="center" />
+
+        <TextView
             style="@style/TextViewMin"
-            android:textAlignment="center"
-            android:text="@string/notification_text"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/notification_text"
+            android:textAlignment="center" />
 
-
-            <EditText
-                android:layout_width="150dp"
-                android:layout_height="30dp"
-                android:singleLine="true"
-                android:id="@+id/edtType"
-                android:drawablePadding="7dp"
-                android:background="@color/white"
-                android:hint="@string/enter_the_otp"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center"
-                android:gravity="center"/>
+        <EditText
+            android:id="@+id/edtType"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:drawablePadding="7dp"
+            android:gravity="center"
+            android:hint="@string/enter_the_otp"
+            android:singleLine="true" />
 
     </LinearLayout>
 
     <Button
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_marginBottom="30dp"
         android:onClick="nextStep"
-        android:text="@string/next_step"
-        android:layout_marginBottom="30dp"/>
+        android:text="@string/next_step" />
 </RelativeLayout>

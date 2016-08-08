@@ -19,12 +19,13 @@ android {
     }
 
     productFlavors {
-        TabeebyDoctor {
-            applicationIdSuffix = ".Tabeeby"
+        doctor {
+            applicationId "com.tabeeby.doctor"
         }
-        TabeebyUser
+        patient {
+            applicationId "com.tabeeby.patient"
+        }
     }
-
 }
 
 dependencies {

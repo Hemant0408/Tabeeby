@@ -51,7 +51,7 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pager);
-        mContext=this;
+        mContext = this;
         setReference();
     }
 
@@ -100,9 +100,11 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
                 break;
         }
     }
+
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
     }
+
     @Override
     public void onPageSelected(int position) {
         for (int i = 0; i < dotsCount; i++) {
