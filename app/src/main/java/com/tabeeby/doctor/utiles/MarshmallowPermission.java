@@ -95,7 +95,7 @@ public class MarshmallowPermission {
 
     public void requestPermissionForAccounts() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.GET_ACCOUNTS)) {
-               // ActivityCompat.requestPermissions(activity,new String[]{Manifest.permission.GET_ACCOUNTS},GET_ACCOUNTS_PERMISSION_REQUEST_CODE);
+            // ActivityCompat.requestPermissions(activity,new String[]{Manifest.permission.GET_ACCOUNTS},GET_ACCOUNTS_PERMISSION_REQUEST_CODE);
           /*  showMessageOKCancel("SMS permission needed for OTP", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -111,7 +111,7 @@ public class MarshmallowPermission {
 
     public void requestPermissionForExternalStorage() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-           } else {
+        } else {
             ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, EXTERNAL_STORAGE_PERMISSION_REQUEST_CODE);
         }
     }

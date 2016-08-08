@@ -46,7 +46,6 @@ public class ConnectionDetector {
             return false;
     }
 
-    public  static void showConnectionErrorMessage(Context context)
-    {
+    public static void showConnectionErrorMessage(Context context) {
     }
 }

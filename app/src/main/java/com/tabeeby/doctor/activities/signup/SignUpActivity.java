@@ -12,16 +12,26 @@ import com.tabeeby.doctor.activities.login.LoginActivity;
 import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 
 public class SignUpActivity extends AppCompatActivity {
-private Context mContext;
+    private Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_sign_up);
-        mContext=this;
+        mContext = this;
     }
-    public void nextStep(View view) {startActivity(new Intent(mContext, OtpPageActivity.class));}
-    public void alreadyMember(View view) {startActivity(new Intent(mContext, LoginActivity.class));}
-    public void FaceBookLogin(View view) {startActivity(new Intent(mContext, MainActivity.class));
-    finishAffinity();}
+
+    public void nextStep(View view) {
+        startActivity(new Intent(mContext, OtpPageActivity.class));
+    }
+
+    public void alreadyMember(View view) {
+        startActivity(new Intent(mContext, LoginActivity.class));
+    }
+
+    public void FaceBookLogin(View view) {
+        startActivity(new Intent(mContext, MainActivity.class));
+        finishAffinity();
+    }
 }

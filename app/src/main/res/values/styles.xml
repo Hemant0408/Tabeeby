@@ -1,18 +1,16 @@
 <resources>
 
-
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/white</item>
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">15dp</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
 
     <style name="TextViewMin" parent="AppTheme">
         <item name="android:textColor">@color/white</item>
@@ -21,7 +19,7 @@
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:layout_marginRight">5dp</item>
         <item name="android:padding">5dp</item>
-        <item name="android:textSize">10dp</item>
+        <item name="android:textSize">10sp</item>
     </style>
 
     <style name="TextViewMid" parent="AppTheme">
@@ -31,7 +29,7 @@
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:layout_marginRight">5dp</item>
         <item name="android:padding">5dp</item>
-        <item name="android:textSize">15dp</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
     <style name="TextViewHigh" parent="AppTheme">
@@ -41,9 +39,8 @@
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:layout_marginRight">5dp</item>
         <item name="android:padding">5dp</item>
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">20sp</item>
     </style>
-
 
     <style name="TextViewDialog" parent="TextViewDialog">
         <item name="android:textColor">@color/black</item>
@@ -52,9 +49,8 @@
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:layout_marginRight">5dp</item>
         <item name="android:padding">5dp</item>
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">20sp</item>
     </style>
-
 
     <style name="ButtonMin" parent="AppTheme">
         <item name="android:textColor">@color/white</item>
@@ -63,9 +59,8 @@
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:layout_marginRight">5dp</item>
         <item name="android:padding">5dp</item>
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">20sp</item>
     </style>
-
 
     <style name="ButtonMid" parent="AppTheme">
         <item name="android:textColor">@color/white</item>
@@ -74,7 +69,7 @@
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:layout_marginRight">5dp</item>
         <item name="android:padding">5dp</item>
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
     <style name="ButtonHigh" parent="AppTheme">
@@ -84,9 +79,8 @@
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:layout_marginRight">5dp</item>
         <item name="android:padding">5dp</item>
-        <item name="android:textSize">20dp</item>
+        <item name="android:textSize">20sp</item>
     </style>
-
 
     <style name="Widget.AppCompat.Button.Borderless" parent="Base.Widget.AppCompat.Button.Borderless">
         <item name="android:textColor">@color/white</item>
@@ -98,8 +92,6 @@
         <item name="android:padding">5dp</item>
         <item name="android:inputType">textCapCharacters</item>
     </style>
-
-
 
     <style name="EditTextStyle" parent="EditTextStyle">
         <item name="android:textColor">@color/white</item>
