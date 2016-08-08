@@ -18,13 +18,6 @@ android {
         }
     }
 
-    productFlavors {
-        TabeebyDoctor {
-            applicationIdSuffix = ".Tabeeby"
-        }
-        TabeebyUser
-    }
-
 }
 
 dependencies {
