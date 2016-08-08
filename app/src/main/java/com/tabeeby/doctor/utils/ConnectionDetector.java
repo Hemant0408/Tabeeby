@@ -1,4 +1,4 @@
-package com.tabeeby.doctor.utiles;
+package com.tabeeby.doctor.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

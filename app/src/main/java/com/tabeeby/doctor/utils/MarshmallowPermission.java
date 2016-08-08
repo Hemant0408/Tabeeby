@@ -1,4 +1,4 @@
-package com.tabeeby.doctor.utiles;
+package com.tabeeby.doctor.utils;
 
 import android.Manifest;
 import android.app.Activity;

@@ -27,7 +27,7 @@ import android.widget.TextView;
 
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.fragments.TabFragment;
-import com.tabeeby.doctor.utiles.Utils;
+import com.tabeeby.doctor.utils.Utils;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 

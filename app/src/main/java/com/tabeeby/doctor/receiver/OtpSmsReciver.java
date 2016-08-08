@@ -1,4 +1,4 @@
-package com.tabeeby.doctor.reciver;
+package com.tabeeby.doctor.receiver;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
