@@ -1,6 +1,6 @@
 package com.tabeeby.doctor.httpclient;
 
-import com.tabeeby.doctor.utiles.ServerUtils;
+import com.tabeeby.doctor.utils.ServerUtils;
 
 import java.util.concurrent.TimeUnit;
 

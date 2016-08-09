@@ -5,14 +5,14 @@
 
     <TextView
         android:id="@+id/counterTextView"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/chat_round_circle"
         android:gravity="center"
         android:text="0"
-        android:textSize="10sp"
-        android:background="@drawable/chat_round_circle"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:textSize="10sp" />
 
 </LinearLayout>
 

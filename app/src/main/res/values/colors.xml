@@ -14,7 +14,7 @@
 
     /* view pager color*/
     <color name="selectedItem">#FCFCFC</color>
-    <color name="nonSelectedItem">#cbb790</color>
+    <color name="nonSelectedItem">#728489</color>
 
 
     <color name="white">#fff</color>
