@@ -8,66 +8,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
-
-import com.mikepenz.materialdrawer.AccountHeader;
-import com.mikepenz.materialdrawer.AccountHeaderBuilder;
-import com.mikepenz.materialdrawer.Drawer;
-import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
-import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.tabeeby.doctor.R;
+
 
 /**
  * Created by Lenovo R61 on 8/2/2016.
  */
 public class Utils {
-
-    static Drawer result = null;
-    static AccountHeader headerResult = null;
-
-    public static void NavigationDrawer(final Activity mContext, final Toolbar toolbar, Bundle savedInstanceState) {
-        final IProfile profile = new ProfileDrawerItem().withIcon(R.drawable.profile3);
-        profile.withName("Tabeeby");
-        profile.withIcon(R.drawable.ic_account_circle_36pt_3x);
-
-        headerResult = new AccountHeaderBuilder()
-                .withActivity(mContext)
-                .withHeaderBackground(R.drawable.header)
-                .addProfiles(
-                        profile
-                )
-                .withSavedInstance(savedInstanceState)
-                .build();
-
-        result = new DrawerBuilder()
-                .withActivity(mContext)
-                .withToolbar(toolbar)
-                .withAccountHeader(headerResult)
-                .addDrawerItems(
-                )
-                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                    @Override
-                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-
-
-                        return false;
-                    }
-                })
-                .build();
-
-        result.addItem(new PrimaryDrawerItem().withName("Profile").withIcon(R.mipmap.ic_launcher));
-        result.addItem(new PrimaryDrawerItem().withName("Appointments").withIcon(R.mipmap.ic_launcher));
-        result.addItem(new PrimaryDrawerItem().withName("Patient").withIcon(R.mipmap.ic_launcher));
-        result.addItem(new PrimaryDrawerItem().withName("Organization").withIcon(R.mipmap.ic_launcher));
-        result.addItem(new PrimaryDrawerItem().withName("Patient").withIcon(R.mipmap.ic_launcher));
-        result.addItem(new PrimaryDrawerItem().withName("Q and A").withIcon(R.mipmap.ic_launcher));
-        result.addItem(new PrimaryDrawerItem().withName("Events").withIcon(R.mipmap.ic_launcher));
-        result.addItem(new PrimaryDrawerItem().withName("Account Setting").withIcon(R.mipmap.ic_launcher));
-        result.addItem(new PrimaryDrawerItem().withName("Logout").withIcon(R.mipmap.ic_launcher));
-
-    }
 
     public static void storeSharedPreference(Context ctx, String key, String value) {
         SharedPreferences sharedPref = ctx.getSharedPreferences(ctx.getString(R.string.shared_preference_file_key), Context.MODE_PRIVATE);
