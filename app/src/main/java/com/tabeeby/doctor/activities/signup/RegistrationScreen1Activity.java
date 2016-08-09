@@ -139,7 +139,6 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
         flag = "O";
         //listContentOrganisation = new String[]{"Clinics and Hospital", "Fitness Center", "Pharmacies", "Medical Tourism", "Labs", "Home Healthcare"};
         // showDialog(CUSTOM_DIALOG_ID);
-
         showCustomDialogHealthCare(title);
         mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_doctor_unselect));
         mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_clinic_select));

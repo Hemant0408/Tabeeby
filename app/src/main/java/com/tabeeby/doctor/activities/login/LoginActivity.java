@@ -28,6 +28,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public void nextStep(View view) {
         startActivity(new Intent(mContext, MainActivity.class));
-        //finishAffinity();
+        finishAffinity();
     }
 }

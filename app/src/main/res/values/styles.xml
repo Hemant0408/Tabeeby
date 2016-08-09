@@ -93,7 +93,7 @@
         <item name="android:inputType">textCapCharacters</item>
     </style>
 
-    <style name="EditTextStyle" parent="EditTextStyle">
+    <style name="EditTextStyle" >
         <item name="android:textColor">@color/white</item>
         <item name="android:textColorHint">@color/white</item>
         <item name="android:singleLine">true</item>

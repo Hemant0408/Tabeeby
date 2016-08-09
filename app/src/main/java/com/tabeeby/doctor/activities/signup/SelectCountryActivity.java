@@ -80,8 +80,13 @@ public class SelectCountryActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view,
                                             int position, long id) {
-                        startActivity(new Intent(mContext, RegistrationScreen1Activity.class));
+
                         dismissDialog(CUSTOM_DIALOG_ID);
+                        if(com.tabeeby.doctor.BuildConfig.VERSION) {
+                            startActivity(new Intent(mContext, RegistrationScreen1Activity.class));
+                        }else{
+                            startActivity(new Intent(mContext, SignUpActivity.class));
+                        }
                     }
                 });
 

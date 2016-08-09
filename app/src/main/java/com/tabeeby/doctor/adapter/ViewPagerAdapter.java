@@ -17,7 +17,7 @@ public class ViewPagerAdapter extends PagerAdapter {
     private Context mContext;
     private Integer[] mResources;
 
-    public ViewPagerAdapter(ViewPagerActivity mContext, Integer[] mResources) {
+    public ViewPagerAdapter(Context mContext, Integer[] mResources) {
         this.mContext = mContext;
         this.mResources = mResources;
     }
