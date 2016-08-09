@@ -18,7 +18,7 @@ import com.tabeeby.doctor.activities.login.LoginActivity;
 import com.tabeeby.doctor.activities.signup.RegistrationScreen1Activity;
 import com.tabeeby.doctor.activities.signup.SelectLanguageActivity;
 import com.tabeeby.doctor.adapter.ViewPagerAdapter;
-import com.tabeeby.doctor.utiles.Utils;
+
 
 public class ViewPagerActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
 

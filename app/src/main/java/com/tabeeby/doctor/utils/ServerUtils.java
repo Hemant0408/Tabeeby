@@ -1,4 +1,4 @@
-package com.tabeeby.doctor.utiles;
+package com.tabeeby.doctor.utils;
 
 /**
  * Created by Z510 on 4/26/2016.

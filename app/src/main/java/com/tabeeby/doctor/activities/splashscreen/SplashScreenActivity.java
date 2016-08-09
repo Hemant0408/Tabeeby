@@ -10,7 +10,8 @@ import android.os.Bundle;
 import android.widget.ProgressBar;
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.viewpager.ViewPagerActivity;
-import com.tabeeby.doctor.utiles.Utils;
+import com.tabeeby.doctor.utils.Utils;
+
 
 public class SplashScreenActivity extends AppCompatActivity {
     private Context mContext;

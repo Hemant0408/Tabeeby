@@ -42,7 +42,11 @@
                 android:onClick="nextStep"
                 android:text="@string/select_country" />
 
-            <include layout="@layout/horizantal_white_line" />
+            <include
+                layout="@layout/horizantal_white_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-15dp" />
 
         </LinearLayout>
     </ScrollView>
