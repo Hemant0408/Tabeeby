@@ -15,7 +15,7 @@
     <string name="need_an_account">Need an account?</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
-    <string name="forget_password">Forget Password</string>
+    <string name="forget_password">Forgot Password</string>
     <string name="select_country">Select Country</string>
     <string name="select_language">Select Language</string>
     <string name="english">English</string>
@@ -24,10 +24,15 @@
     <string name="verify_mobile_no_text">Sit Back and Relax While we Verify Your Mobile No</string>
     <string name="dummy_text">Lorem Ipsom is simply dummy text of the printing and typesetting industry</string>
     <string name="manege_patients"><![CDATA[Find Patient & Members]]></string>
-    <string name="manege_appointements">Manege Appointments</string>
+    <string name="manege_appointements">Manage Appointments</string>
     <string name="get_answers">Get Answers</string>
     <string name="notification_text">(Enter the OTP Below in Case if We Fail to Detect the SMS Automatically)</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+
+    <string name="facebook_app_id">1713068595610330</string>
+    <string name="manege_doctors">Find Doctors</string>
+    <string name="book_appointements">Book Appointment</string>
 </resources>

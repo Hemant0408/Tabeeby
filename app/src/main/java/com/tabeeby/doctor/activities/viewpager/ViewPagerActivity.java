@@ -2,9 +2,11 @@ package com.tabeeby.doctor.activities.viewpager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.BuildConfig;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -17,6 +19,7 @@ import com.tabeeby.doctor.activities.signup.RegistrationScreen1Activity;
 import com.tabeeby.doctor.activities.signup.SelectLanguageActivity;
 import com.tabeeby.doctor.adapter.ViewPagerAdapter;
 
+
 public class ViewPagerActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
 
     protected View view;
@@ -28,22 +31,12 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
     private TextView tv_skip;
     private Context mContext;
 
-    public static Integer[] mImageResources = {
-            R.string.manege_patients,
-            R.string.manege_appointements,
-            R.string.get_answers
-    };
 
-    public static Integer[] mImage = {R.string.dummy_text,
-            R.string.dummy_text,
-            R.string.dummy_text
-    };
+    public static Integer[] mImageResources ;
 
-    public static Integer[] mImageText = {
-            R.drawable.pager1,
-            R.drawable.pager2,
-            R.drawable.pager3
-    };
+    public static Integer[] mImage;
+
+    public static Integer[] mImageText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +44,48 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pager);
-        mContext=this;
+        mContext = this;
+
+
+        if(com.tabeeby.doctor.BuildConfig.VERSION) {
+            mImageResources = new Integer[]{
+                    R.string.manege_patients,
+                    R.string.manege_appointements,
+                    R.string.get_answers
+            };
+
+            mImage = new Integer[]{R.string.dummy_text,
+                    R.string.dummy_text,
+                    R.string.dummy_text
+            };
+
+            mImageText = new Integer[]{
+                    R.drawable.pager1,
+                    R.drawable.pager2,
+                    R.drawable.pager3
+            };
+        }
+        else
+        {
+            mImageResources = new Integer[]{
+                    R.string.manege_doctors,
+                    R.string.book_appointements,
+                    R.string.get_answers
+            };
+
+            mImage = new Integer[]{R.string.dummy_text,
+                    R.string.dummy_text,
+                    R.string.dummy_text
+            };
+
+            mImageText = new Integer[]{
+                    R.mipmap.ic_launcher,
+                    R.mipmap.ic_launcher,
+                    R.mipmap.ic_launcher
+            };
+        }
+
+
         setReference();
     }
 
@@ -60,7 +94,7 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
         tv_skip = (TextView) findViewById(R.id.tv_skip);
         pager_indicator = (LinearLayout) findViewById(R.id.viewPagerCountDots);
         tv_skip.setOnClickListener(this);
-        mAdapter = new ViewPagerAdapter(ViewPagerActivity.this, mImageResources);
+        mAdapter = new ViewPagerAdapter(mContext, mImageResources);
         intro_images.setAdapter(mAdapter);
         intro_images.setCurrentItem(0);
         intro_images.setOnPageChangeListener(this);
@@ -100,9 +134,11 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
                 break;
         }
     }
+
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
     }
+
     @Override
     public void onPageSelected(int position) {
         for (int i = 0; i < dotsCount; i++) {

@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "com.tabeeby.doctor"
+       // applicationId "com.tabeeby.doctor"
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
@@ -18,13 +18,19 @@ android {
         }
     }
 
-    productFlavors {
-        TabeebyDoctor {
-            applicationIdSuffix = ".Tabeeby"
-        }
-        TabeebyUser
-    }
 
+    productFlavors {
+        doctor {
+            applicationId "com.tabeeby.doctor"
+            versionName "1.0-Doctor"
+            buildConfigField "boolean", "VERSION", "true"
+        }
+        patient {
+            applicationId "com.tabeeby.patient"
+            versionName "1.0-patient"
+            buildConfigField "boolean", "VERSION", "false"
+        }
+    }
 }
 
 dependencies {

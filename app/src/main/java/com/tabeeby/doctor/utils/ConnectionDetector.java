@@ -1,4 +1,4 @@
-package com.tabeeby.doctor.utiles;
+package com.tabeeby.doctor.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -46,7 +46,6 @@ public class ConnectionDetector {
             return false;
     }
 
-    public  static void showConnectionErrorMessage(Context context)
-    {
+    public static void showConnectionErrorMessage(Context context) {
     }
 }

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.viewpager.ViewPagerActivity;
 
@@ -16,7 +17,7 @@ public class ViewPagerAdapter extends PagerAdapter {
     private Context mContext;
     private Integer[] mResources;
 
-    public ViewPagerAdapter(ViewPagerActivity mContext, Integer[] mResources) {
+    public ViewPagerAdapter(Context mContext, Integer[] mResources) {
         this.mContext = mContext;
         this.mResources = mResources;
     }

@@ -13,33 +13,32 @@
 
         <ImageView
             android:id="@+id/img_icon"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="70dp"
-            />
+            android:layout_marginTop="70dp" />
 
         <TextView
             android:id="@+id/tv_pager_item"
+            style="@style/TextViewMid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/TextViewMid"
             android:clickable="false"
             android:gravity="center"
-            android:textColor="@android:color/white"
-            />
+            android:textColor="@android:color/white" />
 
         <TextView
             android:id="@+id/tv_pager_description"
+            style="@style/TextViewHigh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="false"
-            android:gravity="center"
-            style="@style/TextViewHigh"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:textColor="@android:color/white"/>
+            android:clickable="false"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
 
     </LinearLayout>
 </RelativeLayout>
