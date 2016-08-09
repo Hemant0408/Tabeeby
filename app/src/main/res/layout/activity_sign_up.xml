@@ -89,7 +89,6 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
                 <EditText
                     style="@style/EditTextStyle"
                     android:layout_width="match_parent"
@@ -97,6 +96,19 @@
                     android:drawableLeft="@drawable/ic_stay_current_portrait_white_24dp"
                     android:hint="@string/mobile_no"
                     android:inputType="phone"
+                    android:textColorHint="@color/white" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:drawableLeft="@drawable/ic_vpn_key_white_24dp"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
                     android:textColorHint="@color/white" />
             </android.support.design.widget.TextInputLayout>
 
@@ -134,7 +146,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/fb"
+                android:background="@drawable/fb_login"
                 android:onClick="FaceBookLogin"
                 android:visibility="visible" />
 

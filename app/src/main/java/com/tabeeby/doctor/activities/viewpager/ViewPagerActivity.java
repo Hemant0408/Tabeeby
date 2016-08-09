@@ -79,9 +79,9 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
             };
 
             mImageText = new Integer[]{
-                    R.mipmap.ic_launcher,
-                    R.mipmap.ic_launcher,
-                    R.mipmap.ic_launcher
+                    R.drawable.pager1,
+                    R.drawable.pager2,
+                    R.drawable.pager3
             };
         }
 
