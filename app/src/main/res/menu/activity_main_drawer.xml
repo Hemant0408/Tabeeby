@@ -4,38 +4,45 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/profile"
-            android:checked="true"
-            android:icon="@drawable/profile"
-            android:title="Profile" />
-        <item
             android:id="@+id/dashboard"
-            android:icon="@drawable/dashboard"
+            android:icon="@drawable/ic_nav_dashbord"
             android:title="Dashboard"
             android:visible="true" />
         <item
-            android:id="@+id/my_doctors"
-            android:icon="@drawable/doctor"
+            android:id="@+id/profile"
+            android:checked="true"
+            android:icon="@drawable/ic_nav_docter_profile"
+            android:title="Profile" />
+
+        <item
+            android:id="@+id/my_patient"
+            android:icon="@drawable/ic_nav_user_profile"
             android:title="My Doctors"
             app:actionLayout="@layout/chat_counter" />
         <item
             android:id="@+id/my_appointments"
-            android:icon="@drawable/appointment"
+            android:icon="@drawable/ic_nav_appointments"
             android:title="My Appointments" />
 
         <item
             android:id="@+id/q_and_a"
-            android:icon="@drawable/qa"
+            android:icon="@drawable/ic_nav_q_and_a"
             android:title="My Q and A" />
 
         <item
-            android:id="@+id/account_and_settings"
-            android:icon="@drawable/account_setting"
-            android:title="Account and Settings" />
+            android:id="@+id/account"
+            android:checked="true"
+            android:icon="@drawable/ic_account_balance_white_24dp"
+            android:title="Account" />
+        <item
+            android:id="@+id/settings"
+            android:checked="true"
+            android:icon="@drawable/ic_nav_settings"
+            android:title="Setting" />
 
         <item
             android:id="@+id/logout"
-            android:icon="@drawable/logout"
+            android:icon="@drawable/ic_nav_power"
             android:title="Logout" />
 
     </group>
