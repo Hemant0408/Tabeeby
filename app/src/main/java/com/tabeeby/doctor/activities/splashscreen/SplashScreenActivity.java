@@ -8,7 +8,6 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ProgressBar;
-
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.viewpager.ViewPagerActivity;
 import com.tabeeby.doctor.utiles.Utils;

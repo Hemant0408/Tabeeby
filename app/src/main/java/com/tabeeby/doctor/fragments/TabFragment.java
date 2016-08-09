@@ -48,7 +48,14 @@ public class TabFragment extends Fragment {
     private ViewPagerTabAdapter setUpViewPager() {
         viewPagerAdapter = new ViewPagerTabAdapter(getChildFragmentManager());
         viewPagerAdapter.addFragment(new FeedsFragment(), "Feeds");
-        viewPagerAdapter.addFragment(new DoctorsFragment(), "Doctors");
+
+        if(com.tabeeby.doctor.BuildConfig.VERSION) {
+            viewPagerAdapter.addFragment(new DoctorsFragment(), "Patients");
+        }
+        else
+        {
+            viewPagerAdapter.addFragment(new PatientFragment(), "Doctors");
+        }
         viewPagerAdapter.addFragment(new AppointmentsFragment(), "Appointments");
         viewPagerAdapter.addFragment(new OffersFragment(), "Offers");
 
@@ -63,8 +70,14 @@ public class TabFragment extends Fragment {
         TabLayout.Tab tabCall = tabLayout.getTabAt(0);
         tabCall.setIcon(R.drawable.selector_feed);
 
-        TabLayout.Tab tabCal = tabLayout.getTabAt(1);
-        tabCal.setIcon(R.drawable.selector_doctor);
+        if(com.tabeeby.doctor.BuildConfig.VERSION) {
+            TabLayout.Tab tabCal = tabLayout.getTabAt(1);
+            tabCal.setIcon(R.drawable.selector_doctor);
+        }else
+        {
+            TabLayout.Tab tabCal = tabLayout.getTabAt(1);
+            tabCal.setIcon(R.drawable.selector_doctor);
+        }
 
         TabLayout.Tab tabCall__ = tabLayout.getTabAt(2);
         tabCall__.setIcon(R.drawable.selector_appointment);

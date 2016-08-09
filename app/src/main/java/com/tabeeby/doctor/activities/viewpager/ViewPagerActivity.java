@@ -45,7 +45,7 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pager);
         mContext = this;
-        
+
 
         if(com.tabeeby.doctor.BuildConfig.VERSION) {
             mImageResources = new Integer[]{
@@ -68,8 +68,8 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
         else
         {
             mImageResources = new Integer[]{
-                    R.string.manege_patients,
-                    R.string.manege_appointements,
+                    R.string.manege_doctors,
+                    R.string.book_appointements,
                     R.string.get_answers
             };
 
