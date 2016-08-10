@@ -34,28 +34,32 @@
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:text="@string/enter_the_otp"
-            android:textStyle="bold" />
+            android:textStyle="normal" />
 
-        <include layout="@layout/horizantal_white_line" />
+        <include
+            layout="@layout/horizantal_white_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <TextView
             style="@style/TextViewMid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/verify_mobile_no_text"
-            android:textAlignment="center" />
+            android:gravity="center"
+            android:text="@string/verify_mobile_no_text" />
 
         <TextView
             style="@style/TextViewMin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="@string/notification_text"
-            android:textAlignment="center" />
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/edtType"
-            android:layout_width="150dp"
-            android:layout_height="30dp"
+            android:layout_width="170dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:background="@color/white"
@@ -69,9 +73,13 @@
     <Button
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorPrimary"
+        android:inputType="textCapWords"
         android:onClick="nextStep"
-        android:text="@string/next_step" />
+        android:text="@string/next_step"
+        android:textColor="@color/white" />
+
 </RelativeLayout>

@@ -8,8 +8,10 @@ import android.view.View;
 
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
+import com.tabeeby.doctor.activities.upoladpicture.UploadProfilePicture;
 
 public class OtpPageActivity extends AppCompatActivity {
+
     private Context mContext;
 
     @Override
@@ -20,7 +22,7 @@ public class OtpPageActivity extends AppCompatActivity {
     }
 
     public void nextStep(View view) {
-        startActivity(new Intent(mContext, MainActivity.class));
+        startActivity(new Intent(mContext, UploadProfilePicture.class));
         finishAffinity();
     }
 }

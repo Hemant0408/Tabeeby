@@ -25,7 +25,7 @@
                 android:id="@+id/iv_profile_image"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:src="@drawable/default_profile"
+                android:src="@drawable/default_profile1"
                 app:civ_border_color="@color/white"
                 app:civ_border_width="1dp" />
 
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:paddingRight="@dimen/activity_horizontal_margin"
-                android:text="Test User"
+                android:text="Mr. Doctor"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:paddingRight="@dimen/activity_horizontal_margin"
-                android:text="test@yopmail.com"
+                android:text="doctor@yopmail.com"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/white"
                 android:textSize="14sp" />

@@ -71,6 +71,16 @@
                     android:text="@string/arabic" />
 
             </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_next_step"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="32dp"
+                android:background="@color/colorPrimary"
+                android:text="Next Step"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
     </ScrollView>

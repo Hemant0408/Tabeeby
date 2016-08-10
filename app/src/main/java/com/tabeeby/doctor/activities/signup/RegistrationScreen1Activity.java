@@ -2,7 +2,6 @@ package com.tabeeby.doctor.activities.signup;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,28 +14,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.gson.internal.bind.ArrayTypeAdapter;
-import com.tabeeby.doctor.BuildConfig;
 import com.tabeeby.doctor.R;
-import com.tabeeby.doctor.adapter.DoctorTypeAdapter;
-import com.tabeeby.doctor.adapter.HealthCareAdapter;
-import com.tabeeby.doctor.utils.Utils;
 
 import java.util.ArrayList;
 
 public class RegistrationScreen1Activity extends AppCompatActivity {
 
     private Context mContext;
-    static final int CUSTOM_DIALOG_ID = 0;
     ListView dialog_ListView;
-    String flag;
     ImageView mDoctor, mOrganisation;
     String title;
 
-    private DoctorTypeAdapter doctorTypeAdapter;
-    private HealthCareAdapter healthCareAdapter;
     private ArrayList<String> doctorType = new ArrayList<>();
     private ArrayList<String> healthCare = new ArrayList<>();
 
@@ -59,76 +48,8 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
         startActivity(new Intent(mContext, SignUpActivity.class));
     }
 
-    @Override
-    protected Dialog onCreateDialog(int id) {
-
-        Dialog dialog = null;
-
-        switch (id) {
-            case CUSTOM_DIALOG_ID:
-                dialog = new Dialog(this, R.style.myCoolDialog);
-                dialog.setContentView(R.layout.dialog_list_item);
-                dialog.setTitle(title);
-                dialog.setCancelable(true);
-                dialog.setCanceledOnTouchOutside(true);
-
-                dialog_ListView = (ListView) dialog.findViewById(R.id.dialoglist);
-                ArrayAdapter<String> adapter = null;
-
-                if (flag.equals("D")) {
-                    if (adapter != null) {
-                        adapter.clear();
-                        dialog_ListView.removeAllViews();
-                    }
-                    //adapter = new ArrayAdapter<String>(this, R.layout.country_list_item, listContentDoctor);
-                } else {
-                    if (adapter != null) {
-                        adapter.clear();
-                        dialog_ListView.removeAllViews();
-                    }
-                    //adapter = new ArrayAdapter<String>(this, R.layout.country_list_item, listContentOrganisation);
-                }
-
-                dialog_ListView.setAdapter(adapter);
-                dialog_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view,
-                                            int position, long id) {
-
-                        if (flag.equals("D")) {
-                            mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_doctor_select));
-                            mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_clinic_unselect));
-                        } else {
-                            mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_doctor_unselect));
-                            mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_clinic_select));
-                        }
-                        dismissDialog(CUSTOM_DIALOG_ID);
-                    }
-                });
-
-                break;
-        }
-
-        return dialog;
-    }
-
-    @Override
-    protected void onPrepareDialog(int id, Dialog dialog, Bundle bundle) {
-        super.onPrepareDialog(id, dialog, bundle);
-
-        switch (id) {
-            case CUSTOM_DIALOG_ID:
-                break;
-        }
-    }
-
     public void showDoctorDialog(View view) {
         title = "Select Type";
-        flag = "D";
-        //listContentDoctor = new String[]{"Public Doctor", "Private Doctor"};
-        // showDialog(CUSTOM_DIALOG_ID);
-
         showCustomDialogDoctor(title);
         mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_doctor_select));
         mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_clinic_unselect));
@@ -136,19 +57,17 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
 
     public void showOrganisationDialog(View view) {
         title = "Select Health Care Provider";
-        flag = "O";
-        //listContentOrganisation = new String[]{"Clinics and Hospital", "Fitness Center", "Pharmacies", "Medical Tourism", "Labs", "Home Healthcare"};
-        // showDialog(CUSTOM_DIALOG_ID);
         showCustomDialogHealthCare(title);
         mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_doctor_unselect));
         mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_clinic_select));
     }
 
+    Dialog dialog = null;
+
     private void showCustomDialogDoctor(String title) {
-        Dialog dialog = new Dialog(this, R.style.myCoolDialog);
+        dialog = new Dialog(this, R.style.myCoolDialog);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_list_item);
-        //dialog.setTitle(title);
         dialog.setCancelable(true);
         dialog.setCanceledOnTouchOutside(true);
 
@@ -169,7 +88,7 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
         doctorType.add("Public Doctor");
         doctorType.add("Private Doctor");
 
-        ArrayAdapter<String> adapter
+        final ArrayAdapter<String> adapter
                 = new ArrayAdapter<String>(this, R.layout.country_list_item, doctorType);
         dialog_ListView.setAdapter(adapter);
 
@@ -177,34 +96,27 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
 
         //dialog_ListView.setAdapter(doctorTypeAdapter);
 
-        dialog.show();
-
         dialog_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                tv_doctor.setText(parent.getSelectedItem().toString());
-                tv_health_care.setText("");
-
-                if (flag.equals("D")) {
-                    mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_doctor_select));
-                    mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_clinic_unselect));
-                } else {
-                    mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_doctor_unselect));
-                    mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_clinic_select));
-                }
-                dismissDialog(CUSTOM_DIALOG_ID);
+                selectedValue = adapter.getItem(position);
+                if (dialog != null)
+                    dialog.dismiss();
+                tv_doctor.setText(selectedValue);
+                tv_health_care.setText("Health care provider");
             }
         });
+
+        dialog.show();
     }
 
     private void showCustomDialogHealthCare(String title) {
-        Dialog dialog = new Dialog(this, R.style.myCoolDialog);
+        dialog = new Dialog(this, R.style.myCoolDialog);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_list_item);
-        //dialog.setTitle(title);
         dialog.setCancelable(true);
         dialog.setCanceledOnTouchOutside(true);
 
@@ -233,11 +145,9 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
 
         //dialog_ListView.setAdapter(healthCareAdapter);
 
-        ArrayAdapter<String> adapter
+        final ArrayAdapter<String> adapter
                 = new ArrayAdapter<String>(this, R.layout.country_list_item, healthCare);
         dialog_ListView.setAdapter(adapter);
-
-        dialog.show();
 
         dialog_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -245,18 +155,16 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                tv_health_care.setText(parent.getSelectedItem().toString());
-                tv_doctor.setText("");
-                if (flag.equals("D")) {
-                    mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_doctor_select));
-                    mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_clinic_unselect));
-
-                } else {
-                    mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_doctor_unselect));
-                    mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_clinic_select));
-                }
-                dismissDialog(CUSTOM_DIALOG_ID);
+                selectedValue = adapter.getItem(position);
+                if (dialog != null)
+                    dialog.dismiss();
+                tv_health_care.setText(selectedValue);
+                tv_doctor.setText("Doctor");
             }
         });
+
+        dialog.show();
     }
+
+    String selectedValue = "";
 }

@@ -25,7 +25,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         mContext = this;
         pbHeaderProgress = (ProgressBar) findViewById(R.id.progress_bar);
 
-        pbHeaderProgress.getIndeterminateDrawable().setColorFilter(mContext.getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.MULTIPLY);
+       // pbHeaderProgress.getIndeterminateDrawable().setColorFilter(mContext.getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.MULTIPLY);
 
         new Handler().postDelayed(new Runnable() {
             @Override
