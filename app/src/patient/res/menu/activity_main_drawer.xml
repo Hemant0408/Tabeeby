@@ -15,10 +15,15 @@
             android:title="Profile" />
 
         <item
-            android:id="@+id/my_doctors"
+            android:id="@+id/my_doctor"
             android:icon="@drawable/ic_nav_docter_profile"
             android:title="My Doctors"
             app:actionLayout="@layout/chat_counter" />
+
+        <item
+            android:id="@+id/my_appointments"
+            android:icon="@drawable/ic_nav_appointments"
+            android:title="My Appointments" />
         <item
             android:id="@+id/account"
             android:checked="true"

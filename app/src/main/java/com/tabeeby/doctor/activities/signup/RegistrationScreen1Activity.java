@@ -106,7 +106,7 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
                 if (dialog != null)
                     dialog.dismiss();
                 tv_doctor.setText(selectedValue);
-                tv_health_care.setText("");
+                tv_health_care.setText("Health care provider");
             }
         });
 
@@ -159,7 +159,7 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
                 if (dialog != null)
                     dialog.dismiss();
                 tv_health_care.setText(selectedValue);
-                tv_doctor.setText("");
+                tv_doctor.setText("Doctor");
             }
         });
 

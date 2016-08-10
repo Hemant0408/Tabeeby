@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:clickable="true"
-                android:src="@drawable/ic_account_balance_white_24dp" />
+                android:src="@drawable/ic_qna_white" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:clickable="true"
-                android:src="@drawable/ic_account_balance_white_24dp" />
+                android:src="@drawable/ic_qna_white" />
 
             <TextView
                 android:layout_width="wrap_content"
