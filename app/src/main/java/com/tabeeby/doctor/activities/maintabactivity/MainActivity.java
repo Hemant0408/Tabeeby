@@ -24,6 +24,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.tabeeby.doctor.R;
+import com.tabeeby.doctor.activities.login.LoginActivity;
+import com.tabeeby.doctor.activities.myappointment.MyAppointmentActivity;
+import com.tabeeby.doctor.activities.mypatient.MyPatientActivity;
 import com.tabeeby.doctor.activities.profile.DoctorProfileActivity;
 import com.tabeeby.doctor.activities.profile.PatientProfileActivity;
 import com.tabeeby.doctor.fragments.MyDoctors;
@@ -82,14 +85,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         if (id == R.id.profile) {
-            Intent intent = new Intent(this, DoctorProfileActivity.class);
-            startActivity(intent);
+            if(com.tabeeby.doctor.BuildConfig.VERSION) {
+                Intent intent = new Intent(this, DoctorProfileActivity.class);
+                startActivity(intent);
+            }
+            else {
+                Intent intent = new Intent(this, PatientProfileActivity.class);
+                startActivity(intent);
+            }
         } else if (id == R.id.dashboard) {
             /*Intent intent = new Intent(this, PatientProfileActivity.class);
             startActivity(intent);*/
             displayFragment(1);
         } else if (id == R.id.my_doctor) {
-            displayFragment(2);
+            if(com.tabeeby.doctor.BuildConfig.VERSION) {
+                Intent intent = new Intent(this, MyPatientActivity.class);
+                startActivity(intent);
+            }else
+            {
+                displayFragment(2);
+            }
+        }
+        else if (id == R.id.my_appointments) {
+                Intent intent = new Intent(this, MyAppointmentActivity.class);
+                startActivity(intent);
+        }
+        else if(id==R.id.logout)
+        {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finishAffinity();
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;

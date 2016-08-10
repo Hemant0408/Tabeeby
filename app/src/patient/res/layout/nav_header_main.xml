@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:paddingRight="@dimen/activity_horizontal_margin"
-                android:text="Mr. Doctor"
+                android:text="Mr. Patient"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:paddingRight="@dimen/activity_horizontal_margin"
-                android:text="doctor@yopmail.com"
+                android:text="patient@yopmail.com"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/white"
                 android:textSize="14sp" />

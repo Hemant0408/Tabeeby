@@ -40,7 +40,7 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ListHolder> 
 
     @Override
     public ListHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.patient_card, viewGroup, false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.offer_item, viewGroup, false);
         ListHolder listHolder = new ListHolder(v);
         return listHolder;
     }

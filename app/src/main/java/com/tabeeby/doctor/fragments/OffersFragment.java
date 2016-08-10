@@ -55,11 +55,11 @@ public class OffersFragment extends Fragment {
         arrayList.add("5");
         arrayList.add("6");
 
-        /*findDoctorAdapter = new OfferAdapter(getActivity(),arrayList);
+        findDoctorAdapter = new OfferAdapter(getActivity(),arrayList);
         linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(findDoctorAdapter);*/
+        recyclerView.setAdapter(findDoctorAdapter);
     }
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
