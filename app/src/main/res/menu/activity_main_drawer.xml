@@ -15,7 +15,7 @@
             android:title="Profile" />
 
         <item
-            android:id="@+id/my_patient"
+            android:id="@+id/my_doctor"
             android:icon="@drawable/ic_nav_user_profile"
             android:title="My Doctors"
             app:actionLayout="@layout/chat_counter" />

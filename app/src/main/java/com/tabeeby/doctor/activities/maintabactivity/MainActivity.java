@@ -26,6 +26,7 @@ import android.widget.TextView;
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.profile.DoctorProfileActivity;
 import com.tabeeby.doctor.activities.profile.PatientProfileActivity;
+import com.tabeeby.doctor.fragments.MyDoctors;
 import com.tabeeby.doctor.fragments.TabFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -58,6 +59,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View header = navigationView.getHeaderView(0);
         headerTextView = (TextView) header.findViewById(R.id.headerTextView);
 
+        toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    getSupportActionBar().setTitle("");
+                    // event when click home button
+                    getSupportFragmentManager().popBackStack();
+                    displayFragment(1);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
         displayFragment(1);
     }
 
@@ -70,8 +85,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(this, DoctorProfileActivity.class);
             startActivity(intent);
         } else if (id == R.id.dashboard) {
-            Intent intent = new Intent(this, PatientProfileActivity.class);
-            startActivity(intent);
+            /*Intent intent = new Intent(this, PatientProfileActivity.class);
+            startActivity(intent);*/
+            displayFragment(1);
+        } else if (id == R.id.my_doctor) {
+            displayFragment(2);
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -85,6 +103,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             case 1:
                 fragment = new TabFragment();
+                break;
+
+            case 2:
+                fragment = new MyDoctors();
                 break;
 
             default:
