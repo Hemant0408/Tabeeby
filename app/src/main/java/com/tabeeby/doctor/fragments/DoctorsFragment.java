@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -25,9 +27,10 @@ public class DoctorsFragment extends Fragment {
     ArrayList<String> arrayList;
     FindDoctorAdapter findDoctorAdapter;
     LinearLayoutManager linearLayoutManager;
-   /* @Bind(R.id.lv_doctor_list)
-    protected RecyclerView mRvListView;
-*/
+
+    /* @Bind(R.id.lv_doctor_list)
+     protected RecyclerView mRvListView;
+ */
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -41,7 +44,7 @@ public class DoctorsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.lv_doctor_list);
-        arrayList=new ArrayList<>();
+        arrayList = new ArrayList<>();
 
         //this is for six cards
         arrayList.add("1");
@@ -51,10 +54,26 @@ public class DoctorsFragment extends Fragment {
         arrayList.add("5");
         arrayList.add("6");
 
-        findDoctorAdapter = new FindDoctorAdapter(getActivity(),arrayList);
+        findDoctorAdapter = new FindDoctorAdapter(getActivity(), arrayList);
         linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(findDoctorAdapter);
+
+    }
+
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        MenuItem item = menu.findItem(R.id.search);
+        item.setVisible(true);
+
+        MenuItem item_ = menu.findItem(R.id.sig_out);
+        item_.setVisible(true);
     }
 }

@@ -11,6 +11,7 @@ import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 import com.tabeeby.doctor.activities.upoladpicture.UploadProfilePicture;
 
 public class OtpPageActivity extends AppCompatActivity {
+
     private Context mContext;
 
     @Override

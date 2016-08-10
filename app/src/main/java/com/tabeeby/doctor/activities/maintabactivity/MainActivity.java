@@ -1,23 +1,31 @@
 package com.tabeeby.doctor.activities.maintabactivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.tabeeby.doctor.R;
+import com.tabeeby.doctor.activities.profile.DoctorProfileActivity;
+import com.tabeeby.doctor.activities.profile.PatientProfileActivity;
 import com.tabeeby.doctor.fragments.TabFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -26,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout drawer;
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
+    RelativeLayout notificationCount;
 
     private TextView headerTextView;
 
@@ -54,7 +63,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        return false;
+
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+        if (id == R.id.profile) {
+            Intent intent = new Intent(this, DoctorProfileActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.dashboard) {
+            Intent intent = new Intent(this, PatientProfileActivity.class);
+            startActivity(intent);
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 
     public void displayFragment(int i) {
@@ -110,4 +130,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         getSupportActionBar().setTitle("");
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        // getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.search);
+        try {
+            SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+            if (searchView != null) {
+                //searchView.setOnQueryTextListener(this);
+            }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+
+        MenuItem item1 = menu.findItem(R.id.sig_out);
+        MenuItemCompat.setActionView(item1, R.layout.custom_menu_icon_layout);
+        notificationCount = (RelativeLayout) MenuItemCompat.getActionView(item1);
+        Button button = (Button) notificationCount.findViewById(R.id.notification_bell_menu_button);
+        //button.setOnClickListener(this);
+
+        searchItem.setVisible(true);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
 }

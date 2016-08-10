@@ -1,6 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.tabeeby.doctor.activities.maintabactivity.MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/search_icon"
+        android:title="Search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="collapseActionView|always" />
+
+
+    <item
+        android:id="@+id/sig_out"
+        android:orderInCategory="100"
+        android:title="Notification"
+        app:actionLayout="@layout/custom_menu_icon_layout"
+        app:showAsAction="always" />
 
 </menu>

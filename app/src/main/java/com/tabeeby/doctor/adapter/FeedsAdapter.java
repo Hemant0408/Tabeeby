@@ -27,7 +27,7 @@ public class FeedsAdapter extends RecyclerView.Adapter<FeedsAdapter.ListHolder> 
 
     }
 
-    public FeedsAdapter(Context context, ArrayList<String> arrayList){
+    public FeedsAdapter(Context context, ArrayList<String> arrayList) {
         mContext = context;
         this.items = arrayList;
     }
@@ -39,7 +39,7 @@ public class FeedsAdapter extends RecyclerView.Adapter<FeedsAdapter.ListHolder> 
 
     @Override
     public ListHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.patient_card, viewGroup, false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.feed_layout_row, viewGroup, false);
         ListHolder listHolder = new ListHolder(v);
         return listHolder;
     }

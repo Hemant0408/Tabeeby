@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -33,7 +35,7 @@ public class OffersFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.offers_layout, container, false);
-      //  ButterKnife.bind(getActivity());
+        //  ButterKnife.bind(getActivity());
         return view;
     }
 
@@ -43,7 +45,7 @@ public class OffersFragment extends Fragment {
 
 
         RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.lv_offer_list);
-        arrayList=new ArrayList<>();
+        arrayList = new ArrayList<>();
 
         //this is for six cards
         arrayList.add("1");
@@ -58,5 +60,21 @@ public class OffersFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(findDoctorAdapter);*/
+    }
+
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        MenuItem item = menu.findItem(R.id.search);
+        item.setVisible(true);
+
+        MenuItem item_ = menu.findItem(R.id.sig_out);
+        item_.setVisible(true);
     }
 }

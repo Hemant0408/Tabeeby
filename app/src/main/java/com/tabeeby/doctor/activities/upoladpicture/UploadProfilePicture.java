@@ -11,11 +11,12 @@ import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 
 public class UploadProfilePicture extends AppCompatActivity {
     private Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_profile_picture);
-        mContext=this;
+        mContext = this;
     }
 
     public void nextStep(View view) {
