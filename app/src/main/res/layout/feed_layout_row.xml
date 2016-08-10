@@ -47,7 +47,7 @@
                             android:id="@+id/profile_pic"
                             android:layout_width="75dp"
                             android:layout_height="75dp"
-                            android:src="@drawable/default_profile"
+                            android:src="@drawable/default_profile1"
                             android:transitionName="profile"
                             card_view:civ_border_color="@android:color/white"
                             card_view:civ_border_width="1dp" />
