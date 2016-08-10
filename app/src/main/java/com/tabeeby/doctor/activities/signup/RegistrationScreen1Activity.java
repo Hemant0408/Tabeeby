@@ -2,7 +2,6 @@ package com.tabeeby.doctor.activities.signup;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,14 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.gson.internal.bind.ArrayTypeAdapter;
-import com.tabeeby.doctor.BuildConfig;
 import com.tabeeby.doctor.R;
-import com.tabeeby.doctor.adapter.DoctorTypeAdapter;
-import com.tabeeby.doctor.adapter.HealthCareAdapter;
-import com.tabeeby.doctor.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -33,8 +26,6 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
     ImageView mDoctor, mOrganisation;
     String title;
 
-    private DoctorTypeAdapter doctorTypeAdapter;
-    private HealthCareAdapter healthCareAdapter;
     private ArrayList<String> doctorType = new ArrayList<>();
     private ArrayList<String> healthCare = new ArrayList<>();
 
