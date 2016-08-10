@@ -20,6 +20,7 @@
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -89,6 +90,7 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <EditText
                     style="@style/EditTextStyle"
                     android:layout_width="match_parent"
@@ -102,6 +104,7 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <EditText
                     style="@style/EditTextStyle"
                     android:layout_width="match_parent"
@@ -145,9 +148,8 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/fb_login"
-                android:onClick="FaceBookLogin"
                 android:visibility="visible" />
 
             <TextView
@@ -158,6 +160,6 @@
                 android:onClick="alreadyMember"
                 android:text="Already a member?" />
 
-    </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

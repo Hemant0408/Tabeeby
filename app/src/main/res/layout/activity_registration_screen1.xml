@@ -26,8 +26,8 @@
             android:paddingTop="@dimen/activity_vertical_margin">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/ic_user" />
@@ -155,9 +155,7 @@
 
                 </LinearLayout>
 
-
             </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -178,70 +176,6 @@
             </LinearLayout>
 
         </LinearLayout>
-
-        <!--<LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="30dp"
-            android:visibility="gone"
-            android:weightSum="1">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/ic_doctor_unselect"
-                    android:onClick="showDoctorDialog" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Public Doctor" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/ic_clinic_unselect"
-                    android:onClick="showOrganisationDialog" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Clinic and Hospital" />
-
-            </LinearLayout>
-        </LinearLayout>-->
-
     </LinearLayout>
-
-    <Button
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
-        android:onClick="nextStep"
-        android:text="@string/next_step"
-        android:visibility="gone" />
 
 </RelativeLayout>
