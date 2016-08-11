@@ -67,10 +67,16 @@
             android:name=".activities.maintabactivity.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".activities.upoladpicture.UploadProfilePicture" />
-        <activity android:name=".activities.mypatient.MyPatientActivity" />
-        <activity android:name=".activities.myappointment.MyAppointmentActivity" />
-        <activity android:name=".activities.notification.NotificationActivity"></activity>
+        <activity android:name=".activities.upoladpicture.UploadProfilePicture"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.mypatient.MyPatientActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.myappointment.MyAppointmentActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.notification.NotificationActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activities.quastionandanswer.QuastionAndAnswerList"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
