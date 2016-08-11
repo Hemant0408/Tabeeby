@@ -22,7 +22,7 @@
     <string name="arabic">Arabic</string>
     <string name="enter_the_otp">Enter the otp</string>
     <string name="verify_mobile_no_text">Sit back and relax while we verify your mobile no.</string>
-    <string name="dummy_text">Lorem Ipsom is simply dummy text of the printing and typesetting industry</string>
+    <string name="dummy_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
     <string name="manege_patients"><![CDATA[Find Patient & Members]]></string>
     <string name="manege_appointements">Manage Appointments</string>
     <string name="get_answers">Get Answers</string>

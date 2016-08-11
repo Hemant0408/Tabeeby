@@ -30,7 +30,6 @@ public class QuastionAndAnswerList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quastion_and_answer_list);
 
-
         ButterKnife.bind(this);
 
         setUpActionBar();

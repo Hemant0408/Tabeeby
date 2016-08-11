@@ -14,7 +14,6 @@ import java.util.ArrayList;
  * Created by Lenovo R61 on 8/10/2016.
  */
 
-
 public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.ListHolder> {
 
     private Context mContext;
@@ -29,7 +28,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
 
     }
 
-    public AppointmentAdapter(Context context, ArrayList<String> arrayList){
+    public AppointmentAdapter(Context context, ArrayList<String> arrayList) {
         mContext = context;
         this.items = arrayList;
     }
