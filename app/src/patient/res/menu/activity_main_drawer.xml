@@ -24,6 +24,11 @@
             android:id="@+id/my_appointments"
             android:icon="@drawable/ic_nav_appointments"
             android:title="My Appointments" />
+
+        <item
+            android:id="@+id/q_and_a"
+            android:icon="@drawable/ic_nav_q_and_a"
+            android:title="My Q and A" />
         <item
             android:id="@+id/account"
             android:checked="true"
