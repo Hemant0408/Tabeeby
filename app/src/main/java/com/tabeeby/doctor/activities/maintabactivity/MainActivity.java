@@ -27,8 +27,10 @@ import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.login.LoginActivity;
 import com.tabeeby.doctor.activities.myappointment.MyAppointmentActivity;
 import com.tabeeby.doctor.activities.mypatient.MyPatientActivity;
+import com.tabeeby.doctor.activities.notification.NotificationActivity;
 import com.tabeeby.doctor.activities.profile.DoctorProfileActivity;
 import com.tabeeby.doctor.activities.profile.PatientProfileActivity;
+import com.tabeeby.doctor.activities.quastionandanswer.QuastionAndAnswerList;
 import com.tabeeby.doctor.fragments.MyDoctors;
 import com.tabeeby.doctor.fragments.TabFragment;
 
@@ -109,6 +111,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else if (id == R.id.my_appointments) {
                 Intent intent = new Intent(this, MyAppointmentActivity.class);
                 startActivity(intent);
+        }
+        else if(id==R.id.q_and_a)
+        {
+            Intent intent = new Intent(this, QuastionAndAnswerList.class);
+            startActivity(intent);
         }
         else if(id==R.id.logout)
         {
@@ -198,8 +205,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         MenuItemCompat.setActionView(item1, R.layout.custom_menu_icon_layout);
         notificationCount = (RelativeLayout) MenuItemCompat.getActionView(item1);
         Button button = (Button) notificationCount.findViewById(R.id.notification_bell_menu_button);
-        //button.setOnClickListener(this);
-
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(mContext, NotificationActivity.class));
+            }
+        });
         searchItem.setVisible(true);
 
         return super.onCreateOptionsMenu(menu);

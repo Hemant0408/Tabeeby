@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.tabeeby.doctor.R;
+import com.tabeeby.doctor.activities.events.EventsActivity;
+import com.tabeeby.doctor.activities.news.NewsActivity;
 import com.tabeeby.doctor.activities.quastionandanswer.QuastionAndAnswerList;
 import com.tabeeby.doctor.adapter.ViewPagerTabAdapter;
 
@@ -31,6 +33,12 @@ public class TabFragment extends Fragment {
     ViewPager viewPager;
     @Bind(R.id.bottom_toolbar_qanda)
     protected ImageView mQuaAndAns;
+
+    @Bind(R.id.bottom_toolbar_event)
+    protected ImageView mEvent;
+
+    @Bind(R.id.bottom_toolbar_news)
+    protected ImageView mNews;
 
     @Nullable
     @Override
@@ -96,6 +104,19 @@ public class TabFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), QuastionAndAnswerList.class));
+            }
+        });
+
+        mEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), EventsActivity.class));
+            }
+        });
+        mNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), NewsActivity.class));
             }
         });
     }
