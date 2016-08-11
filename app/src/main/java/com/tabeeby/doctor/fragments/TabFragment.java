@@ -1,5 +1,6 @@
 package com.tabeeby.doctor.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -8,8 +9,10 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.tabeeby.doctor.R;
+import com.tabeeby.doctor.activities.quastionandanswer.QuastionAndAnswerList;
 import com.tabeeby.doctor.adapter.ViewPagerTabAdapter;
 
 import butterknife.Bind;
@@ -26,6 +29,8 @@ public class TabFragment extends Fragment {
     TabLayout tabLayout;
     @Bind(R.id.viewPager)
     ViewPager viewPager;
+    @Bind(R.id.bottom_toolbar_qanda)
+    protected ImageView mQuaAndAns;
 
     @Nullable
     @Override
@@ -84,6 +89,15 @@ public class TabFragment extends Fragment {
 
         TabLayout.Tab tabCall_ = tabLayout.getTabAt(3);
         tabCall_.setIcon(R.drawable.selector_offers);
+
+
+
+        mQuaAndAns.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), QuastionAndAnswerList.class));
+            }
+        });
     }
 
     @Override
@@ -91,4 +105,6 @@ public class TabFragment extends Fragment {
         super.onDestroyView();
         ButterKnife.unbind(this);
     }
+
+
 }
