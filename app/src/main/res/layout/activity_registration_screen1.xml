@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_user" />
+                android:src="@drawable/ic_login_48dp" />
 
             <TextView
                 style="@style/TextViewHigh"
@@ -88,8 +88,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:onClick="showDoctorDialog"
-                                android:src="@drawable/ic_doctor_unselect" />
-
+                                android:src="@drawable/ic_dr_type_grey_48dp" />
 
                         </LinearLayout>
 
@@ -125,7 +124,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:onClick="showOrganisationDialog"
-                            android:src="@drawable/ic_clinic_unselect" />
+                            android:src="@drawable/ic_health_pro_grey_48dp" />
                     </LinearLayout>
 
                     <TextView

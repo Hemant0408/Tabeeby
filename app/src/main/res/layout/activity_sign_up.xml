@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_account" />
+                android:src="@drawable/ic_creating_ac_48dp" />
 
             <TextView
                 style="@style/TextViewHigh"
@@ -51,7 +51,7 @@
                     style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:drawableLeft="@drawable/ic_account_balance_white_24dp"
+                    android:drawableLeft="@drawable/ic_organisation_white_18dp"
                     android:hint="@string/service_name"
                     android:inputType="textCapWords"
                     android:textColorHint="@color/white" />
@@ -66,7 +66,7 @@
                     style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:drawableLeft="@drawable/ic_perm_identity_white_24dp"
+                    android:drawableLeft="@drawable/ic_user_white_18dp"
                     android:hint="@string/name"
                     android:inputType="text"
                     android:textColorHint="@color/white" />
@@ -81,7 +81,7 @@
                     style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:drawableLeft="@drawable/ic_mail_white_24dp"
+                    android:drawableLeft="@drawable/ic_mail_white_18dp"
                     android:hint="@string/email"
                     android:inputType="textEmailAddress"
                     android:textColorHint="@color/white" />
@@ -95,7 +95,7 @@
                     style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:drawableLeft="@drawable/ic_stay_current_portrait_white_24dp"
+                    android:drawableLeft="@drawable/ic_phone_white_18dp"
                     android:hint="@string/mobile_no"
                     android:inputType="phone"
                     android:textColorHint="@color/white" />
@@ -109,7 +109,7 @@
                     style="@style/EditTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:drawableLeft="@drawable/ic_vpn_key_white_24dp"
+                    android:drawableLeft="@drawable/ic_key_white_18dp"
                     android:hint="@string/password"
                     android:inputType="textPassword"
                     android:textColorHint="@color/white" />
@@ -149,7 +149,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/fb_login"
+                android:background="@drawable/fb"
                 android:visibility="visible" />
 
             <TextView
