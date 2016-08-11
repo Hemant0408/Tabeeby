@@ -50,8 +50,8 @@
                         <TextView android:layout_width="match_parent"
                             android:layout_height="wrap_content" android:layout_gravity="center"
                             android:layout_marginBottom="3dp" android:layout_marginTop="3dp"
-                            android:drawableLeft="@drawable/ic_location_on_black_18dp"
-                            android:drawablePadding="3dp" android:gravity="left"
+                            android:drawableLeft="@drawable/ic_location_grey_18dp"
+                            android:drawablePadding="7dp" android:gravity="left"
                             android:padding="2dp" android:text="Mumbai"
                             android:textColor="@color/themColor" />
                     </LinearLayout>

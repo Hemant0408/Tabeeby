@@ -51,15 +51,15 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
     public void showDoctorDialog(View view) {
         title = "Select Type";
         showCustomDialogDoctor(title);
-        mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_doctor_select));
-        mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_clinic_unselect));
+        mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_dr_type_pink_48dp));
+        mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_health_pro_grey_48dp));
     }
 
     public void showOrganisationDialog(View view) {
         title = "Select Health Care Provider";
         showCustomDialogHealthCare(title);
-        mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_doctor_unselect));
-        mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_clinic_select));
+        mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_dr_type_grey_48dp));
+        mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_health_pro_pink_48dp));
     }
 
     Dialog dialog = null;
