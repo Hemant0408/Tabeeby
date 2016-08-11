@@ -9,11 +9,12 @@
         layout="@layout/app_bar_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"/>
+        android:layout_alignParentTop="true" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/lv_my_patient_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="60dp"/>
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="60dp" />
 </RelativeLayout>
