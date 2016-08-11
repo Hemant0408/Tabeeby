@@ -50,7 +50,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     style="@style/TextViewHigh"
@@ -69,6 +70,56 @@
                     android:layout_weight="1"
                     android:onClick="SelectArebic"
                     android:text="@string/arabic" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextViewHigh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableLeft="@drawable/ic_done_white_24dp"
+                        android:drawablePadding="2dp"
+                        android:gravity="center|left"
+                        android:onClick="nextStep"
+                        android:text="English"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/TextViewHigh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center|left"
+                        android:onClick="SelectArebic"
+                        android:text="@string/arabic"
+                        android:textColor="@color/white" />
+                </LinearLayout>
 
             </LinearLayout>
 

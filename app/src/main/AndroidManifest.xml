@@ -32,13 +32,16 @@
         <activity
             android:name=".activities.viewpager.ViewPagerActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".activities.signup.SignUpActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
+
         <activity
             android:name=".activities.signup.RegistrationScreen1Activity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".activities.splashscreen.SplashScreenActivity"
             android:screenOrientation="portrait">
@@ -48,34 +51,50 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activities.profile.DoctorProfileActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".activities.profile.PatientProfileActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".activities.signup.SelectLanguageActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".activities.signup.SelectCountryActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".activities.signup.OtpPageActivity"
             android:screenOrientation="portrait" />
+
         <activity
             android:name=".activities.maintabactivity.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".activities.upoladpicture.UploadProfilePicture"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.mypatient.MyPatientActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.myappointment.MyAppointmentActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.notification.NotificationActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activities.quastionandanswer.QuastionAndAnswerList"
+
+        <activity
+            android:name=".activities.upoladpicture.UploadProfilePicture"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activities.mypatient.MyPatientActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activities.myappointment.MyAppointmentActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activities.notification.NotificationActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activities.quastionandanswer.QuastionAndAnswerList"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".activities.news.NewsActivity"
             android:screenOrientation="portrait"></activity>

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tabeeby.doctor.R;
+import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 import com.tabeeby.doctor.adapter.AppointmentAdapter;
 import com.tabeeby.doctor.adapter.FindDoctorAdapter;
 
@@ -21,7 +22,7 @@ import java.util.ArrayList;
  * Created by Z510 on 8/10/2016.
  */
 public class MyDoctorsFragment extends Fragment {
-    
+
     ArrayList<String> arrayList;
     AppointmentAdapter findDoctorAdapter;
     LinearLayoutManager linearLayoutManager;
@@ -56,6 +57,8 @@ public class MyDoctorsFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(findDoctorAdapter);
+
+       // ((MainActivity) getActivity()).getSupportActionBar().setTitle("My Doctors");
     }
 
     @Override
