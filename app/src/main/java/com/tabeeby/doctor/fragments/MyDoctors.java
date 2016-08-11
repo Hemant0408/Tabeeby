@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tabeeby.doctor.R;
+import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 import com.tabeeby.doctor.adapter.ViewPagerDoctorAdapter;
 import com.tabeeby.doctor.adapter.ViewPagerTabAdapter;
 
@@ -60,6 +61,38 @@ public class MyDoctors extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+
+        if (viewPager.getCurrentItem() == 0) {
+            ((MainActivity) getActivity()).getSupportActionBar().setTitle("My Doctors");
+        }
+
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+                switch (position) {
+                    case 0: {
+                        ((MainActivity) getActivity()).getSupportActionBar().setTitle("My Doctors");
+                    }
+                    break;
+
+                    case 1: {
+                        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Recommended");
+                    }
+                    break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     @Override

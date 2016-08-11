@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tabeeby.doctor.R;
+import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 import com.tabeeby.doctor.adapter.FindDoctorAdapter;
 import com.tabeeby.doctor.adapter.OfferAdapter;
 
@@ -60,6 +61,8 @@ public class OffersFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(findDoctorAdapter);
+
+       // ((MainActivity) getActivity()).getSupportActionBar().setTitle("Offers");
     }
 
     public void onCreate(@Nullable Bundle savedInstanceState) {

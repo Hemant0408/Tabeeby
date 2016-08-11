@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tabeeby.doctor.R;
+import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 import com.tabeeby.doctor.adapter.AppointmentAdapter;
 import com.tabeeby.doctor.adapter.FindDoctorAdapter;
 
@@ -35,7 +36,7 @@ public class AppointmentsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.appointment_layout, container, false);
-       // ButterKnife.bind(getActivity());
+        // ButterKnife.bind(getActivity());
         return view;
     }
 
@@ -44,7 +45,7 @@ public class AppointmentsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.lv_appointment_list);
-        arrayList=new ArrayList<>();
+        arrayList = new ArrayList<>();
 
         //this is for six cards
         arrayList.add("1");
@@ -54,11 +55,13 @@ public class AppointmentsFragment extends Fragment {
         arrayList.add("5");
         arrayList.add("6");
 
-        findDoctorAdapter = new AppointmentAdapter(getActivity(),arrayList);
+        findDoctorAdapter = new AppointmentAdapter(getActivity(), arrayList);
         linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(findDoctorAdapter);
+
+       // ((MainActivity) getActivity()).getSupportActionBar().setTitle("Appointments");
     }
 
     @Override

@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.events.EventsActivity;
 import com.tabeeby.doctor.activities.news.NewsActivity;
+import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 import com.tabeeby.doctor.activities.quastionandanswer.QuastionAndAnswerList;
 import com.tabeeby.doctor.adapter.ViewPagerTabAdapter;
 
@@ -62,11 +63,9 @@ public class TabFragment extends Fragment {
         viewPagerAdapter = new ViewPagerTabAdapter(getChildFragmentManager());
         viewPagerAdapter.addFragment(new FeedsFragment(), "Feeds");
 
-        if(com.tabeeby.doctor.BuildConfig.VERSION) {
+        if (com.tabeeby.doctor.BuildConfig.VERSION) {
             viewPagerAdapter.addFragment(new DoctorsFragment(), "Patients");
-        }
-        else
-        {
+        } else {
             viewPagerAdapter.addFragment(new PatientFragment(), "Doctors");
         }
         viewPagerAdapter.addFragment(new AppointmentsFragment(), "Appointments");
@@ -83,11 +82,10 @@ public class TabFragment extends Fragment {
         TabLayout.Tab tabCall = tabLayout.getTabAt(0);
         tabCall.setIcon(R.drawable.selector_feed);
 
-        if(com.tabeeby.doctor.BuildConfig.VERSION) {
+        if (com.tabeeby.doctor.BuildConfig.VERSION) {
             TabLayout.Tab tabCal = tabLayout.getTabAt(1);
             tabCal.setIcon(R.drawable.selector_doctor);
-        }else
-        {
+        } else {
             TabLayout.Tab tabCal = tabLayout.getTabAt(1);
             tabCal.setIcon(R.drawable.selector_doctor);
         }
@@ -99,6 +97,51 @@ public class TabFragment extends Fragment {
         tabCall_.setIcon(R.drawable.selector_offers);
 
 
+        if (viewPager.getCurrentItem() == 0) {
+            ((MainActivity) getActivity()).getSupportActionBar().setTitle("Feeds");
+        }
+
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+                switch (position) {
+                    case 0: {
+                        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Feeds");
+                    }
+                    break;
+
+                    case 1: {
+                        if (com.tabeeby.doctor.BuildConfig.VERSION) {
+                            ((MainActivity) getActivity()).getSupportActionBar().setTitle("Patient");
+                        } else {
+                            ((MainActivity) getActivity()).getSupportActionBar().setTitle("Doctor");
+                        }
+                    }
+                    break;
+
+                    case 2: {
+                        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Appointments");
+                    }
+                    break;
+
+                    case 3: {
+                        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Offers");
+                    }
+                    break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         mQuaAndAns.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +156,7 @@ public class TabFragment extends Fragment {
                 startActivity(new Intent(getActivity(), EventsActivity.class));
             }
         });
+
         mNews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
