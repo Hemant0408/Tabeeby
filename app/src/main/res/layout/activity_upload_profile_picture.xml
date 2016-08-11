@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_user" />
+                android:src="@drawable/ic_user_white_48dp" />
 
             <TextView
                 style="@style/TextViewHigh"
@@ -53,7 +53,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_doctor_unselect" />
+                android:src="@drawable/ic_camera_white_48dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -68,7 +68,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_doctor_unselect" />
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_gallery_white_48dp" />
 
             <TextView
                 android:layout_width="wrap_content"

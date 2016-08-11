@@ -54,25 +54,22 @@
 
                     </LinearLayout>
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="16dp"
                         android:layout_marginTop="16dp"
-                        android:layout_weight="2"
                         android:orientation="horizontal">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:orientation="vertical">
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:weightSum="1">
+                                android:orientation="vertical">
 
                                 <TextView
                                     android:id="@+id/tv_extend_session"
@@ -93,56 +90,51 @@
                                     android:textSize="14sp"
                                     android:textStyle="normal" />
 
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center|center_vertical"
+                                        android:drawableLeft="@drawable/ic_like_18dp"
+                                        android:drawablePadding="5dp"
+                                        android:gravity="center_vertical|center"
+                                        android:text="12"
+                                        android:textColor="@color/black_overlay"
+                                        android:textSize="14sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center|center_vertical"
+                                        android:layout_marginLeft="6dp"
+                                        android:drawableLeft="@drawable/ic_comment_18dp"
+                                        android:drawablePadding="5dp"
+                                        android:gravity="center_vertical|center"
+                                        android:text="5"
+                                        android:textColor="@color/black_overlay"
+                                        android:textSize="14sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center|center_vertical"
+                                        android:layout_marginLeft="6dp"
+                                        android:drawableLeft="@drawable/ic_share_18dp"
+                                        android:drawablePadding="5dp"
+                                        android:gravity="center_vertical|center"
+                                        android:text="10"
+                                        android:textColor="@color/black_overlay"
+                                        android:textSize="14sp" />
+                                </LinearLayout>
+
                             </LinearLayout>
-
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="right"
-                            android:layout_marginRight="6dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center|center_vertical"
-                                android:drawableLeft="@drawable/ic_account_balance_white_24dp"
-                                android:drawablePadding="2dp"
-                                android:gravity="center_vertical|center"
-                                android:text="12"
-                                android:textColor="@color/black_overlay"
-                                android:textSize="14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center|center_vertical"
-                                android:layout_marginLeft="6dp"
-                                android:drawableLeft="@drawable/ic_account_balance_white_24dp"
-                                android:drawablePadding="2dp"
-                                android:gravity="center_vertical|center"
-                                android:text="5"
-                                android:textColor="@color/black_overlay"
-                                android:textSize="14sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center|center_vertical"
-                                android:layout_marginLeft="6dp"
-                                android:drawableLeft="@drawable/ic_account_balance_white_24dp"
-                                android:drawablePadding="2dp"
-                                android:gravity="center_vertical|center"
-                                android:text="10"
-                                android:textColor="@color/black_overlay"
-                                android:textSize="14sp" />
-                        </LinearLayout>
-
-                    </LinearLayout>
+                    </RelativeLayout>
 
                 </LinearLayout>
 
@@ -235,8 +227,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:drawableLeft="@drawable/ic_account_balance_white_24dp"
-                        android:drawablePadding="2dp"
+                        android:drawableLeft="@drawable/ic_like_18dp"
+                        android:drawablePadding="7dp"
                         android:gravity="center|left"
                         android:text="Like"
                         android:textColor="@color/black_overlay"
@@ -255,8 +247,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:drawableLeft="@drawable/ic_account_balance_white_24dp"
-                        android:drawablePadding="2dp"
+                        android:drawableLeft="@drawable/ic_comment_18dp"
+                        android:drawablePadding="7dp"
                         android:gravity="center|left"
                         android:text="Comment"
                         android:textColor="@color/black_overlay"
@@ -275,8 +267,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:drawableLeft="@drawable/ic_account_balance_white_24dp"
-                        android:drawablePadding="2dp"
+                        android:drawableLeft="@drawable/ic_share_18dp"
+                        android:drawablePadding="7dp"
                         android:gravity="center|left"
                         android:text="Share"
                         android:textColor="@color/black_overlay"

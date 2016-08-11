@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.tabeeby.doctor.R;
 
@@ -14,6 +15,9 @@ public class DoctorProfileActivity extends AppCompatActivity {
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
+
+    @Bind(R.id.linear_appointment_book)
+    LinearLayout linearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,13 @@ public class DoctorProfileActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        if(com.tabeeby.doctor.BuildConfig.VERSION) {
+            linearLayout.setVisibility(View.GONE);
+        }else
+        {
+            linearLayout.setVisibility(View.VISIBLE);
+        }
     }
 
     private void setUpActionBar() {

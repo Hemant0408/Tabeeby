@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:clickable="true"
-                android:src="@drawable/ic_qna_white" />
+                android:src="@drawable/ic_qna_pink_24dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -45,11 +45,12 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/bottom_toolbar_event"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:clickable="true"
-                android:src="@drawable/ic_account_balance_white_24dp" />
+                android:src="@drawable/ic_event_pink_24dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -69,11 +70,12 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/bottom_toolbar_news"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:clickable="true"
-                android:src="@drawable/ic_qna_white" />
+                android:src="@drawable/ic_news_white_24dp" />
 
             <TextView
                 android:layout_width="wrap_content"
