@@ -1,5 +1,6 @@
 package com.tabeeby.doctor.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,11 +9,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.tabeeby.doctor.BuildConfig;
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
+import com.tabeeby.doctor.activities.profile.DoctorProfileActivity;
 import com.tabeeby.doctor.adapter.FindDoctorAdapter;
 import com.tabeeby.doctor.adapter.FindPatientAdapter;
 
@@ -62,7 +66,6 @@ public class PatientFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(findDoctorAdapter);
 
-      //  ((MainActivity) getActivity()).getSupportActionBar().setTitle("Doctors");
     }
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
