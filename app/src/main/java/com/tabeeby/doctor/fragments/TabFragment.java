@@ -43,6 +43,17 @@ public class TabFragment extends Fragment {
     @Bind(R.id.bottom_toolbar_news)
     protected LinearLayout mNews;
 
+
+    @Bind(R.id.img_toolbar_qanda)
+    protected ImageView mImgQuaAndAns;
+
+    @Bind(R.id.img_toolbar_event)
+    protected ImageView mImgEvent;
+
+    @Bind(R.id.img_toolbar_news)
+    protected ImageView mImgNews;
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -147,29 +158,27 @@ public class TabFragment extends Fragment {
 
 
 
-      /*  mQuaAndAns.setOnTouchListener(new View.OnTouchListener() {
+        mImgQuaAndAns.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
+            public void onClick(View view) {
                 startActivity(new Intent(getActivity(), QuastionAndAnswerList.class));
-                return false;
             }
         });
 
-        mEvent.setOnTouchListener(new View.OnTouchListener() {
+        mImgEvent.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
+            public void onClick(View view) {
                 startActivity(new Intent(getActivity(), EventsActivity.class));
-                return false;
             }
         });
 
-        mNews.setOnTouchListener(new View.OnTouchListener() {
+        mImgNews.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
+            public void onClick(View view) {
                 startActivity(new Intent(getActivity(), NewsActivity.class));
-                return false;
             }
-        });*/
+        });
+
 
        mQuaAndAns.setOnClickListener(new View.OnClickListener() {
             @Override
