@@ -60,7 +60,7 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
             };
 
             mImageText = new Integer[]{
-                    R.drawable.ic_dr_intro_48dp,
+                    R.drawable.ic_patient_intro_48dp,
                     R.drawable.ic_appointment_intro_48dp,
                     R.drawable.ic_qna_intro_48dp
             };
@@ -77,7 +77,7 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
             };
 
             mImageText = new Integer[]{
-                    R.drawable.ic_patient_intro_48dp,
+                    R.drawable.ic_dr_intro_48dp,
                     R.drawable.ic_appointment_intro_48dp,
                     R.drawable.ic_qna_intro_48dp
             };
