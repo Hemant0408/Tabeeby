@@ -5,21 +5,20 @@
     android:layout_height="match_parent"
     android:background="@color/themColor"
     tools:context="com.tabeeby.doctor.activities.signup.SelectLanguageActivity">
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="60dp"
             android:orientation="vertical"
             android:paddingBottom="@dimen/activity_vertical_margin"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin">
 
             <ImageView
@@ -27,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_language" />
+                android:src="@drawable/ic_language_48dp" />
 
             <TextView
                 style="@style/TextViewHigh"
@@ -123,16 +122,18 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_next_step"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="32dp"
-                android:background="@color/colorPrimary"
-                android:text="Next Step"
-                android:textColor="@android:color/white" />
         </LinearLayout>
-
     </ScrollView>
+
+        <Button
+            android:id="@+id/btn_next_step"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="70dp"
+            android:paddingBottom="20dp"
+            android:text="Next Step"
+            android:textColor="@android:color/white" />
+</RelativeLayout>
 </LinearLayout>

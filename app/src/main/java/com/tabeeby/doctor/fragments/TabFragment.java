@@ -7,9 +7,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.events.EventsActivity;
@@ -33,13 +35,13 @@ public class TabFragment extends Fragment {
     @Bind(R.id.viewPager)
     ViewPager viewPager;
     @Bind(R.id.bottom_toolbar_qanda)
-    protected ImageView mQuaAndAns;
+    protected LinearLayout mQuaAndAns;
 
     @Bind(R.id.bottom_toolbar_event)
-    protected ImageView mEvent;
+    protected LinearLayout mEvent;
 
     @Bind(R.id.bottom_toolbar_news)
-    protected ImageView mNews;
+    protected LinearLayout mNews;
 
     @Nullable
     @Override
@@ -143,7 +145,33 @@ public class TabFragment extends Fragment {
             }
         });
 
-        mQuaAndAns.setOnClickListener(new View.OnClickListener() {
+
+
+      /*  mQuaAndAns.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                startActivity(new Intent(getActivity(), QuastionAndAnswerList.class));
+                return false;
+            }
+        });
+
+        mEvent.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                startActivity(new Intent(getActivity(), EventsActivity.class));
+                return false;
+            }
+        });
+
+        mNews.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                startActivity(new Intent(getActivity(), NewsActivity.class));
+                return false;
+            }
+        });*/
+
+       mQuaAndAns.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), QuastionAndAnswerList.class));

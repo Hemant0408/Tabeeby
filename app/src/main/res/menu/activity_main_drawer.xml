@@ -5,13 +5,13 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/dashboard"
-            android:icon="@drawable/ic_nav_dashbord"
+            android:icon="@drawable/ic_dashboard_24dp"
             android:title="Dashboard"
             android:visible="true" />
         <item
             android:id="@+id/profile"
             android:checked="true"
-            android:icon="@drawable/ic_nav_docter_profile"
+            android:icon="@drawable/ic_doctor_grey_24dp"
             android:title="Profile" />
 
         <item
@@ -19,30 +19,31 @@
             android:icon="@drawable/ic_nav_user_profile"
             android:title="My Patient"
             app:actionLayout="@layout/chat_counter" />
+
         <item
             android:id="@+id/my_appointments"
-            android:icon="@drawable/ic_nav_appointments"
+            android:icon="@drawable/ic_appointment_grey_24dp"
             android:title="My Appointments" />
 
         <item
             android:id="@+id/q_and_a"
-            android:icon="@drawable/ic_nav_q_and_a"
-            android:title="My Q and A" />
+            android:icon="@drawable/ic_qna_grey_24dp"
+            android:title="@string/my_q_and_a" />
 
         <item
             android:id="@+id/account"
             android:checked="true"
-            android:icon="@drawable/ic_account_balance_white_24dp"
+            android:icon="@drawable/ic_account_bag"
             android:title="Account" />
         <item
             android:id="@+id/settings"
             android:checked="true"
-            android:icon="@drawable/ic_nav_settings"
+            android:icon="@drawable/ic_setting_24dp"
             android:title="Setting" />
 
         <item
             android:id="@+id/logout"
-            android:icon="@drawable/ic_nav_power"
+            android:icon="@drawable/ic_logout_24dp"
             android:title="Logout" />
 
     </group>

@@ -42,9 +42,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <de.hdodenhof.circleimageview.CircleImageView android:id="@+id/profile_pic"
-                    android:layout_width="75dp" android:layout_height="75dp"
-                    android:src="@drawable/default_profile1" android:transitionName="profile"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_pic"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:src="@drawable/default_profile1"
+                    android:transitionName="profile"
                     card_view:civ_border_color="@android:color/white"
                     card_view:civ_border_width="1dp" />
 
@@ -78,7 +81,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
-                        android:drawableLeft="@drawable/ic_location_on_black_18dp"
+                        android:drawableLeft="@drawable/ic_location_grey_18dp"
+                        android:drawablePadding="5dp"
                         android:padding="1dp"
                         android:text="Mumbai"
                         android:textColor="@color/themColor" />

@@ -58,6 +58,8 @@
                         android:id="@+id/qualification_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_location_grey_18dp"
+                        android:drawablePadding="8dp"
                         android:gravity="center"
                         android:paddingTop="12dp"
                         android:text="Algeria"
@@ -102,6 +104,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
+                            android:drawableLeft="@drawable/ic_user_grey_18dp"
                             android:drawablePadding="5dp"
                             android:gravity="center"
                             android:maxWidth="110dp"
@@ -113,6 +116,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
+                            android:drawableLeft="@drawable/ic_birth_18dp"
                             android:drawablePadding="5dp"
                             android:gravity="center"
                             android:maxWidth="110dp"
@@ -126,6 +130,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_centerInParent="true"
                             android:layout_marginLeft="7dp"
+                            android:drawableLeft="@drawable/ic_weight_18dp"
                             android:drawablePadding="5dp"
                             android:gravity="center"
                             android:maxWidth="110dp"
@@ -156,6 +161,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
+                            android:drawableLeft="@drawable/ic_height_18dp"
                             android:drawablePadding="5dp"
                             android:gravity="center"
                             android:maxWidth="110dp"
@@ -167,6 +173,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
+                            android:drawableLeft="@drawable/ic_blood_18dp"
                             android:drawablePadding="5dp"
                             android:gravity="center"
                             android:maxWidth="110dp"
@@ -180,6 +187,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_centerInParent="true"
                             android:layout_marginLeft="7dp"
+                            android:drawableLeft="@drawable/ic_year_18dp"
                             android:drawablePadding="5dp"
                             android:gravity="center"
                             android:maxWidth="110dp"
@@ -352,10 +360,10 @@
             </LinearLayout>
         </ScrollView>
 
-       <!-- <include
-            layout="@layout/bottom_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />-->
+        <!-- <include
+             layout="@layout/bottom_layout"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content" />-->
 
     </RelativeLayout>
 

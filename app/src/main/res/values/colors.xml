@@ -25,4 +25,6 @@
     <color name="gray">#e9e9e9</color>
 
     <color name="black_overlay">#66000000</color>
+
+    <color name="edittext_hint_color">#728489</color>
 </resources>

@@ -32,7 +32,7 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
     private Context mContext;
 
 
-    public static Integer[] mImageResources ;
+    public static Integer[] mImageResources;
 
     public static Integer[] mImage;
 
@@ -47,7 +47,7 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
         mContext = this;
 
 
-        if(com.tabeeby.doctor.BuildConfig.VERSION) {
+        if (com.tabeeby.doctor.BuildConfig.VERSION) {
             mImageResources = new Integer[]{
                     R.string.manege_patients,
                     R.string.manege_appointements,
@@ -60,13 +60,11 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
             };
 
             mImageText = new Integer[]{
-                    R.drawable.pager1,
-                    R.drawable.pager2,
-                    R.drawable.pager3
+                    R.drawable.ic_patient_intro_48dp,
+                    R.drawable.ic_appointment_intro_48dp,
+                    R.drawable.ic_qna_intro_48dp
             };
-        }
-        else
-        {
+        } else {
             mImageResources = new Integer[]{
                     R.string.manege_doctors,
                     R.string.book_appointements,
@@ -79,13 +77,12 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
             };
 
             mImageText = new Integer[]{
-                    R.drawable.pager1,
-                    R.drawable.pager2,
-                    R.drawable.pager3
+                    R.drawable.ic_dr_intro_48dp,
+                    R.drawable.ic_appointment_intro_48dp,
+                    R.drawable.ic_qna_intro_48dp
             };
         }
-
-
+        
         setReference();
     }
 
