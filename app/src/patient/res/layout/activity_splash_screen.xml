@@ -22,10 +22,10 @@
             android:layout_height="wrap_content"
             android:src="@drawable/logo" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <ImageView
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:text="@string/tabeeby"
+            android:src="@drawable/text_logo"
             android:textSize="22sp" />
 
     </LinearLayout>
