@@ -25,5 +25,8 @@
         app:itemIconTint="#777777"
         app:itemTextColor="#777777"
         app:menu="@menu/activity_main_drawer" />
-    
+
+    <!--app:itemBackground="@drawable/activated_background"-->
+
+
 </android.support.v4.widget.DrawerLayout>
