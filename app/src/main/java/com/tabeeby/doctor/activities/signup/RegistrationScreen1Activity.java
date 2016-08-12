@@ -141,9 +141,6 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
         healthCare.add("Labs");
         healthCare.add("Home Healthcare");
 
-        //healthCareAdapter = new HealthCareAdapter(RegistrationScreen1Activity.this, healthCare);
-
-        //dialog_ListView.setAdapter(healthCareAdapter);
 
         final ArrayAdapter<String> adapter
                 = new ArrayAdapter<String>(this, R.layout.country_list_item, healthCare);

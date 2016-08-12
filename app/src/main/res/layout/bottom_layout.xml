@@ -13,19 +13,48 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/bottom_toolbar_qanda"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:clickable="true"
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/bottom_toolbar_qanda"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:clickable="true"
-                android:src="@drawable/ic_qna_pink_24dp" />
+                android:src="@drawable/ic_qna_white_24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/q_and_a"
+               />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom_toolbar_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:orientation="vertical">
+
+            <ImageView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:src="@drawable/ic_event_white_24dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -33,44 +62,21 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="Events"
-                android:visibility="gone" />
+               />
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/bottom_toolbar_news"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:clickable="true"
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/bottom_toolbar_event"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:clickable="true"
-                android:src="@drawable/ic_event_pink_24dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Events"
-                android:visibility="gone" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/bottom_toolbar_news"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -82,26 +88,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Events"
-                android:visibility="gone" />
+                android:text="News"
+               />
 
         </LinearLayout>
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:visibility="gone" />
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:visibility="gone" />
 
     </LinearLayout>
 

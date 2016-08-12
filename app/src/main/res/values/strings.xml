@@ -36,4 +36,6 @@
     <string name="manege_doctors">Find Doctors</string>
     <string name="book_appointements">Book Appointment</string>
     <string name="tabeeby">Tabeeby</string>
+    <string name="q_and_a">Q &amp; A</string>
+    <string name="my_q_and_a">My Q &amp; A</string>
 </resources>
