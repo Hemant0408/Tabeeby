@@ -97,7 +97,7 @@ public class TabFragment extends Fragment {
 
         if (com.tabeeby.doctor.BuildConfig.VERSION) {
             TabLayout.Tab tabCal = tabLayout.getTabAt(1);
-            tabCal.setIcon(R.drawable.selector_doctor);
+            tabCal.setIcon(R.drawable.selector_patient);
         } else {
             TabLayout.Tab tabCal = tabLayout.getTabAt(1);
             tabCal.setIcon(R.drawable.selector_doctor);
