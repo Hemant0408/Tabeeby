@@ -114,7 +114,7 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
                     LinearLayout.LayoutParams.WRAP_CONTENT
             );
 
-            params.setMargins(4, 0, 4, 0);
+            params.setMargins(8, 0, 8, 0);
             pager_indicator.addView(dots[i], params);
         }
 
