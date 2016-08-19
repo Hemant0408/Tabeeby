@@ -65,7 +65,7 @@ public class MyPatientActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setElevation(0.2f);
-        getSupportActionBar().setTitle("My Patients");
+        getSupportActionBar().setTitle(R.string.nav_my_patient);
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
     }
 

@@ -21,11 +21,9 @@
 	<string name="english">English</string>
     <string name="arabic">العربية</string>
 	<string name="select_language">اختر اللغة</string>
-	
-	
+
 	<!--Country selection Activity-->
 	<string name="select_country">حدد الدولة</string>
-
 
     <!--Signup Activity-->
     <string name="creating_an_account">إنشاء حساب</string>
@@ -42,11 +40,9 @@
     <string name="login">تسجيل الدخول</string>
     <string name="forget_password">هل نسيت كلمة المرور؟</string>
 
-
     <!--OTP Activity-->
     <string name="enter_the_otp">أدخل مكتب المدعي العام</string>
     <string name="verify_mobile_no_text">Sit back and relax while we verify your mobile no.</string>
-
 
     <!--Upload Pic Activity-->
     <string name="upload_your_profile_picture">تحميل صورة الملف الشخصي</string>
@@ -67,11 +63,9 @@
     <string name="nav_logout">تسجيل الخروج</string>
     <string name="nav_my_doctors">بلدي الأطباء</string>
 
-
     <!--Bottom Tabs -->
     <string name="events">الأحداث الطبية الصحية</string>
     <string name="news">أخبار</string>
-
 
     <!--Tab Activity-->
     <string name="feeds">يغذي</string>
@@ -81,7 +75,6 @@
     <string name="offers">عروض</string>
     <string name="my_doctors">طبيبي</string>
     <string name="recommended">انصح به</string>
-
 
     <!--Feed layout-->
     <string name="like">مثل</string>
@@ -108,6 +101,14 @@
     <string name="follow">إتبع</string>
     <string name="services">خدمات</string>
     <string name="profile">الملف الشخصي</string>
+
+    <!--Yes I am Activity-->
+    <string name="yes_i_am_a">نعم فعلا ! أنا</string>
+    <string name="doctor">طبيب</string>
+    <string name="health_care_provider">مقدم الخدمة الطبية</string>
+
+    <!--Notification Activity-->
+    <string name="notification">تحذير</string>
 
 
     <string name="action_settings">الاعدادات </string>

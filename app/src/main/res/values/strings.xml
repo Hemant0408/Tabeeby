@@ -24,7 +24,6 @@
 	 <!--Country selection Activity-->
 	 <string name="select_country">Select Country</string>
 
-
     <!--Signup Activity-->
     <string name="creating_an_account">Creating an account</string>
     <string name="service_name">Service Name</string>
@@ -40,7 +39,6 @@
     <string name="login">Login</string>
     <string name="forget_password">Forgot Password?</string>
 
-
     <!--OTP Activity-->
     <string name="enter_the_otp">Enter the otp</string>
     <string name="verify_mobile_no_text">Sit back and relax while we verify your mobile no.</string>
@@ -50,7 +48,6 @@
     <string name="upload_your_profile_picture">Upload Your Profile Picture</string>
     <string name="take_a_photo">Take a Photo</string>
     <string name="upload_from_gallery">Upload from Gallery</string>
-
 
     <!--Navigation Drawer-->
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -66,11 +63,9 @@
     <string name="nav_logout">Logout</string>
     <string name="nav_my_doctors">My Doctors</string>
 
-
     <!--Bottom Tabs -->
     <string name="events">Events</string>
     <string name="news">News</string>
-
 
     <!--Tab Activity-->
     <string name="feeds">Feeds</string>
@@ -80,7 +75,6 @@
     <string name="offers">Offers</string>
     <string name="my_doctors">My Doctors</string>
     <string name="recommended">Recommended</string>
-
 
     <!--Feed layout-->
     <string name="like">Like</string>
@@ -108,15 +102,19 @@
     <string name="services">Services</string>
     <string name="profile">Profile</string>
 
+    <!--Yes I am Activity-->
+    <string name="yes_i_am_a">Yes ! I am a</string>
+    <string name="doctor">Doctor</string>
+    <string name="health_care_provider">Health care provider</string>
+
+    <!--Notification Activity-->
+    <string name="notification">Notification</string>
+
 
     <string name="action_settings">Settings</string>
 
-
     <string name="dummy_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
-
     <string name="manege_appointements">Manage Appointments</string>
     <string name="notification_text">(Enter the OTP below in case if we fail to detect the sms automatically)</string>
-
-
 
 </resources>
