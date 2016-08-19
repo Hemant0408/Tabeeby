@@ -13,7 +13,7 @@
         android:id="@+id/sig_out"
         android:orderInCategory="100"
         android:title="Notification"
-        app:actionLayout="@layout/custom_menu_icon_layout"
+        android:icon="@drawable/notification"
         app:showAsAction="always" />
 
 </menu>

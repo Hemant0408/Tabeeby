@@ -1,0 +1,119 @@
+<resources>
+    <!--do not change-->
+    <string name="shared_preference_file_key">Tabeeby</string>
+
+    <!--App name-->
+    <string name="app_name">طبيبي</string>
+    <string name="tabeeby">طبيبي</string>
+
+	<!--Common String-->
+	<string name="next_step">الخطوة التالية</string>
+	<string name="skip">تخطى</string>
+
+    <!--ViewPager Activity -->
+    <string name="manege_doctors">البحث عن الأطباء</string>
+    <string name="book_appointements">تعيين كتاب</string>
+    <string name="get_answers">الحصول على إجابات</string>
+    <string name="manege_patients">البحث عن المريض و الأعضاء</string>
+
+
+	<!--Language selection Activity-->
+	<string name="english">English</string>
+    <string name="arabic">العربية</string>
+	<string name="select_language">اختر اللغة</string>
+	
+	
+	<!--Country selection Activity-->
+	<string name="select_country">حدد الدولة</string>
+
+
+    <!--Signup Activity-->
+    <string name="creating_an_account">إنشاء حساب</string>
+    <string name="service_name">اسم الخدمة</string>
+    <string name="name">اسم</string>
+    <string name="email">البريد الالكتروني</string>
+    <string name="mobile_no">رقم المحمول</string>
+    <string name="password">كلمة السر</string>
+    <string name="or">أو</string>
+    <string name="already_a_member">لديك حساب ؟ سجل دخولك !</string>
+
+    <!--Login Activity-->
+    <string name="need_an_account">احتاج الى حساب؟</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="forget_password">هل نسيت كلمة المرور؟</string>
+
+
+    <!--OTP Activity-->
+    <string name="enter_the_otp">أدخل مكتب المدعي العام</string>
+    <string name="verify_mobile_no_text">Sit back and relax while we verify your mobile no.</string>
+
+
+    <!--Upload Pic Activity-->
+    <string name="upload_your_profile_picture">تحميل صورة الملف الشخصي</string>
+    <string name="take_a_photo">التقاط صورة</string>
+    <string name="upload_from_gallery">تحميل من معرض</string>
+
+    <!--Navigation Drawer-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_q_and_a">Q &amp; A</string>
+    <string name="nav_my_q_and_a">My Q &amp; A</string>
+    <string name="nav_dashboard">لوحة التحكم</string>
+    <string name="nav_profile">صفحتي الشخصية</string>
+    <string name="nav_my_patient">بلدي المريض</string>
+    <string name="nav_my_appointments">بلدي التعيينات</string>
+    <string name="nav_account">حسابي </string>
+    <string name="nav_setting">الاعدادات </string>
+    <string name="nav_logout">تسجيل الخروج</string>
+    <string name="nav_my_doctors">بلدي الأطباء</string>
+
+
+    <!--Bottom Tabs -->
+    <string name="events">الأحداث الطبية الصحية</string>
+    <string name="news">أخبار</string>
+
+
+    <!--Tab Activity-->
+    <string name="feeds">يغذي</string>
+    <string name="patients">المرضى</string>
+    <string name="doctors">الأطباء</string>
+    <string name="appointments">التعيينات</string>
+    <string name="offers">عروض</string>
+    <string name="my_doctors">طبيبي</string>
+    <string name="recommended">انصح به</string>
+
+
+    <!--Feed layout-->
+    <string name="like">مثل</string>
+    <string name="comment">التعليق</string>
+    <string name="share">شارك</string>
+    <string name="what_s_on_your_mind">في ماذا تفكر؟</string>
+    <string name="unfollow">الغاء المتابعة</string>
+
+    <!--Find Doctors Layout-->
+    <string name="recommend">نوصي</string>
+    <string name="book_appointment">تعيين كتاب</string>
+
+    <!--Appointments Layouts-->
+    <string name="upcoming">القادمة</string>
+    <string name="past">الماضي</string>
+
+    <!--Patient profile-->
+    <string name="favorite_doctor">طبيب المفضل</string>
+    <string name="emergency">حالة طوارئ</string>
+
+    <!--Doctor Profile-->
+    <string name="followers">المتابعون</string>
+    <string name="following">التالي</string>
+    <string name="follow">إتبع</string>
+    <string name="services">خدمات</string>
+    <string name="profile">الملف الشخصي</string>
+
+
+    <string name="action_settings">الاعدادات </string>
+
+    <string name="dummy_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+    <string name="manege_appointements">Manage Appointments</string>
+    <string name="notification_text">(Enter the OTP below in case if we fail to detect the sms automatically)</string>
+
+</resources>

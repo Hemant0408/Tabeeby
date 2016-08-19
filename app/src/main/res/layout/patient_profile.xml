@@ -89,7 +89,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_marginBottom="5dp"
@@ -97,56 +97,66 @@
                         android:focusable="true"
                         android:focusableInTouchMode="true"
                         android:gravity="center_vertical"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:drawableLeft="@drawable/ic_user_grey_18dp"
-                            android:drawablePadding="5dp"
-                            android:gravity="center"
-                            android:maxWidth="110dp"
-                            android:text="Male"
-                            android:textColor="@color/textColorlight"
-                            android:textSize="14sp" />
+                            android:layout_weight="1">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@drawable/ic_user_grey_18dp"
+                                android:drawablePadding="5dp"
+                                android:gravity="center"
+                                android:maxWidth="110dp"
+                                android:text="Male"
+                                android:textColor="@color/textColorlight"
+                                android:textSize="14sp" />
+                        </LinearLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:drawableLeft="@drawable/ic_birth_18dp"
-                            android:drawablePadding="5dp"
-                            android:gravity="center"
-                            android:maxWidth="110dp"
-                            android:text="30 April, 1981"
-                            android:textColor="@color/textColorlight"
-                            android:textSize="14sp" />
+                            android:layout_weight="1">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@drawable/ic_birth_18dp"
+                                android:drawablePadding="5dp"
+                                android:gravity="center"
+                                android:maxWidth="110dp"
+                                android:text="30 April, 1981"
+                                android:textColor="@color/textColorlight"
+                                android:textSize="14sp" />
+                        </LinearLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerInParent="true"
-                            android:layout_marginLeft="7dp"
-                            android:drawableLeft="@drawable/ic_weight_18dp"
-                            android:drawablePadding="5dp"
-                            android:gravity="center"
-                            android:maxWidth="110dp"
-                            android:text="75 kg"
-                            android:textColor="@color/textColorlight"
-                            android:textSize="14sp" />
+                            android:layout_weight="1">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="7dp"
+                                android:drawableLeft="@drawable/ic_weight_18dp"
+                                android:drawablePadding="5dp"
+                                android:gravity="center"
+                                android:maxWidth="110dp"
+                                android:text="75 kg"
+                                android:textColor="@color/textColorlight"
+                                android:textSize="14sp" />
+                        </LinearLayout>
 
-                    </RelativeLayout>
+                    </LinearLayout>
 
                     <include
                         layout="@layout/light_horizontal_line"
-                        android:layout_width="350dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center" />
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_marginBottom="5dp"
@@ -154,48 +164,61 @@
                         android:focusable="true"
                         android:focusableInTouchMode="true"
                         android:gravity="center_vertical"
-                        android:paddingLeft="16dp"
-                        android:paddingRight="16dp">
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp">
 
-                        <TextView
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+                            <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
                             android:drawableLeft="@drawable/ic_height_18dp"
                             android:drawablePadding="5dp"
-                            android:gravity="center"
                             android:maxWidth="110dp"
                             android:text="6.1 Inches"
                             android:textColor="@color/textColorlight"
                             android:textSize="14sp" />
+                        </LinearLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:drawableLeft="@drawable/ic_blood_18dp"
-                            android:drawablePadding="5dp"
-                            android:gravity="center"
-                            android:maxWidth="110dp"
-                            android:text="B+"
-                            android:textColor="@color/textColorlight"
-                            android:textSize="14sp" />
+                            android:layout_weight="1">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:drawableLeft="@drawable/ic_blood_18dp"
+                                android:drawablePadding="5dp"
+                                android:text="B+"
+                                android:textColor="@color/textColorlight"
+                                android:textSize="14sp" />
+                        </LinearLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerInParent="true"
-                            android:layout_marginLeft="7dp"
-                            android:drawableLeft="@drawable/ic_year_18dp"
-                            android:drawablePadding="5dp"
-                            android:gravity="center"
-                            android:maxWidth="110dp"
-                            android:text="35 Years old"
-                            android:textColor="@color/textColorlight"
-                            android:textSize="14sp" />
+                            android:layout_weight="1">
 
-                    </RelativeLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerInParent="true"
+                                android:layout_marginStart="7dp"
+                                android:drawableLeft="@drawable/ic_year_18dp"
+                                android:drawablePadding="5dp"
+                                android:gravity="center"
+                                android:maxWidth="110dp"
+                                android:text="35 Years old"
+                                android:textColor="@color/textColorlight"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                     <include
                         layout="@layout/light_horizontal_line"
@@ -222,7 +245,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.5"
                                 android:gravity="center"
-                                android:text="Favorite Doctor"
+                                android:text="@string/favorite_doctor"
                                 android:textColor="@color/textColorlight"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
@@ -233,7 +256,7 @@
                                 android:layout_marginLeft="7dp"
                                 android:layout_weight="0.5"
                                 android:gravity="center"
-                                android:text="Emergency"
+                                android:text="@string/emergency"
                                 android:textColor="@color/textColorlight"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />

@@ -109,7 +109,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.5"
                                 android:gravity="center"
-                                android:text="Followers"
+                                android:text="@string/followers"
                                 android:textColor="@color/textColorlight"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
@@ -120,7 +120,7 @@
                                 android:layout_marginLeft="7dp"
                                 android:layout_weight="0.5"
                                 android:gravity="center"
-                                android:text="Following"
+                                android:text="@string/following"
                                 android:textColor="@color/textColorlight"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
@@ -179,7 +179,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-                            <RelativeLayout
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="48dp"
                                 android:layout_marginBottom="5dp"
@@ -187,48 +187,62 @@
                                 android:focusable="true"
                                 android:focusableInTouchMode="true"
                                 android:gravity="center_vertical"
-                                android:paddingLeft="16dp"
-                                android:paddingRight="16dp">
+                                android:paddingStart="16dp"
+                                android:paddingEnd="16dp">
 
-                                <TextView
-                                    android:layout_width="wrap_content"
+                                <LinearLayout
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_centerVertical="true"
-                                    android:drawableLeft="@drawable/ic_speciality_18dp"
-                                    android:drawablePadding="5dp"
-                                    android:gravity="center"
-                                    android:maxWidth="110dp"
-                                    android:text="15+ Years"
-                                    android:textColor="@color/textColorlight"
-                                    android:textSize="14sp" />
+                                    android:layout_weight="1">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerVertical="true"
+                                        android:drawableLeft="@drawable/ic_speciality_18dp"
+                                        android:drawablePadding="5dp"
+                                        android:gravity="center"
+                                        android:maxWidth="110dp"
+                                        android:text="15+ Years"
+                                        android:textColor="@color/textColorlight"
+                                        android:textSize="14sp" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_centerInParent="true"
-                                    android:drawableLeft="@drawable/ic_organisation_grey_18dp"
-                                    android:drawablePadding="5dp"
-                                    android:gravity="center"
-                                    android:maxWidth="110dp"
-                                    android:text="Yaman health clinic"
-                                    android:textColor="@color/textColorlight"
-                                    android:textSize="14sp" />
+                                    android:layout_weight="1">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:drawableLeft="@drawable/ic_organisation_grey_18dp"
+                                        android:drawablePadding="5dp"
+                                        android:gravity="center"
+                                        android:maxWidth="110dp"
+                                        android:text="Yaman health clinic"
+                                        android:textColor="@color/textColorlight"
+                                        android:textSize="14sp" />
+                                </LinearLayout>
 
-                                <TextView
-                                    android:layout_width="wrap_content"
+                                <LinearLayout
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_alignParentRight="true"
-                                    android:layout_centerInParent="true"
-                                    android:layout_marginLeft="7dp"
-                                    android:drawableLeft="@drawable/ic_location_grey_18dp"
-                                    android:drawablePadding="5dp"
-                                    android:gravity="center"
-                                    android:maxWidth="110dp"
-                                    android:text="Kuwait"
-                                    android:textColor="@color/textColorlight"
-                                    android:textSize="14sp" />
+                                    android:layout_weight="1">
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:paddingStart="7dp"
+                                        android:drawableLeft="@drawable/ic_location_grey_18dp"
+                                        android:drawablePadding="5dp"
+                                        android:gravity="center"
+                                        android:maxWidth="110dp"
+                                        android:text="Kuwait"
+                                        android:textColor="@color/textColorlight"
+                                        android:textSize="14sp" />
 
-                            </RelativeLayout>
+                                </LinearLayout>
+
+                            </LinearLayout>
 
                             <include
                                 layout="@layout/light_horizontal_line"
@@ -254,7 +268,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:text="Services"
+                                    android:text="@string/services"
                                     android:textColor="@color/textColorlight"
                                     android:textSize="16sp"
                                     android:textStyle="bold" />
@@ -350,7 +364,7 @@
                             android:background="@color/colorAccent"
                             android:gravity="center"
                             android:inputType="textCapSentences"
-                            android:text="Book appointment"
+                            android:text="@string/book_appointements"
                             android:textColor="@color/black_overlay"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -367,7 +381,7 @@
                             android:background="@color/colorAccent"
                             android:gravity="center"
                             android:inputType="textCapSentences"
-                            android:text="Follow"
+                            android:text="@string/follow"
                             android:textColor="@color/black_overlay"
                             android:textStyle="bold" />
                     </LinearLayout>

@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Upload Your Profile Picture"
+                android:text="@string/upload_your_profile_picture"
                 android:textSize="18sp"
                 android:textStyle="normal" />
 
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
-                android:text="Take a Photo"
+                android:text="@string/take_a_photo"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
 
@@ -75,7 +75,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Upload from Gallary"
+                android:text="@string/upload_from_gallery"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
 
