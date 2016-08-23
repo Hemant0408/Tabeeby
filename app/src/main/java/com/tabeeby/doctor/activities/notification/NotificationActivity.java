@@ -64,7 +64,7 @@ public class NotificationActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setElevation(0.2f);
-        getSupportActionBar().setTitle("Notification");
+        getSupportActionBar().setTitle(R.string.notification);
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
     }
 

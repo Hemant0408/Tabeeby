@@ -11,13 +11,19 @@
         android:background="@color/white" android:orientation="vertical">
 
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp" android:layout_marginLeft="16dp"
+            android:layout_marginBottom="10dp" android:paddingStart="16dp"
             android:layout_marginTop="10dp" android:orientation="vertical">
 
+
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:layout_gravity="right" android:layout_marginBottom="3dp"
-                android:layout_marginRight="10dp" android:gravity="right" android:text="Upcoming"
+                android:id="@+id/txt_upcomming"
+                android:layout_marginBottom="3dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingStart="250dp"
+                android:text="@string/upcoming"
                 android:textColor="@color/colorAccent" android:textSize="14dp" />
+
 
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -28,15 +34,17 @@
                     card_view:civ_border_width="1dp" />
 
                 <LinearLayout android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:layout_marginLeft="16dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
                     android:layout_weight="1" android:orientation="vertical">
 
                     <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:layout_marginBottom="3dp"
-                        android:padding="2dp" android:text="Dr. Vyas Mankar"
+                        android:padding="2dp" android:text="Dr. Hami Abdullah"
                         android:textColor="@color/black" android:textSize="16dp" />
 
-                    <TextView android:layout_width="match_parent"
+                    <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:layout_marginBottom="3dp"
                         android:drawablePadding="3dp" android:padding="2dp"
                         android:text="Neurology, 12 Years" android:textColor="@color/themColor" />
@@ -48,7 +56,7 @@
                         android:text="July 3rd 2016 at 09.00 pm"
                         android:textColor="@color/colorPrimary" android:textSize="14dp" />
 
-                    <TextView android:layout_width="match_parent"
+                    <TextView android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:layout_marginTop="3dp"
                         android:drawableLeft="@drawable/ic_location_grey_18dp"
                         android:drawablePadding="7dp" android:padding="1dp" android:text="Mumbai"

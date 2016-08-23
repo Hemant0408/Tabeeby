@@ -24,7 +24,6 @@ public class MyDoctors extends Fragment {
 
     ViewPagerDoctorAdapter viewPagerAdapter;
 
-    //@Bind(R.id.tabLayout)
     TabLayout tabLayout;
     @Bind(R.id.viewPager)
     ViewPager viewPager;
@@ -34,9 +33,7 @@ public class MyDoctors extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab_layout, container, false);
         ButterKnife.bind(this, view);
-
         tabLayout = (TabLayout) view.findViewById(R.id.tabLayout);
-
         return view;
     }
 
@@ -50,9 +47,8 @@ public class MyDoctors extends Fragment {
     private ViewPagerDoctorAdapter setUpViewPager() {
         viewPagerAdapter = new ViewPagerDoctorAdapter(getChildFragmentManager());
 
-        viewPagerAdapter.addFragment(new MyDoctorsFragment(), "MyDoctors");
-
-        viewPagerAdapter.addFragment(new RecommendFragment(), "Recommended");
+        viewPagerAdapter.addFragment(new MyDoctorsFragment(), getActivity().getResources().getString(R.string.my_doctors));
+        viewPagerAdapter.addFragment(new RecommendFragment(), getActivity().getResources().getString(R.string.recommended));
 
         return viewPagerAdapter;
     }
@@ -63,13 +59,12 @@ public class MyDoctors extends Fragment {
         tabLayout.setupWithViewPager(viewPager);
 
         if (viewPager.getCurrentItem() == 0) {
-            ((MainActivity) getActivity()).getSupportActionBar().setTitle("My Doctors");
+            ((MainActivity) getActivity()).getSupportActionBar().setTitle(R.string.my_doctors);
         }
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
@@ -77,12 +72,12 @@ public class MyDoctors extends Fragment {
 
                 switch (position) {
                     case 0: {
-                        ((MainActivity) getActivity()).getSupportActionBar().setTitle("My Doctors");
+                        ((MainActivity) getActivity()).getSupportActionBar().setTitle(R.string.my_doctors);
                     }
                     break;
 
                     case 1: {
-                        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Recommended");
+                        ((MainActivity) getActivity()).getSupportActionBar().setTitle(R.string.recommended);
                     }
                     break;
                 }

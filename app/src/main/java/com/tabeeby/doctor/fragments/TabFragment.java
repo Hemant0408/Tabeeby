@@ -74,15 +74,15 @@ public class TabFragment extends Fragment {
 
     private ViewPagerTabAdapter setUpViewPager() {
         viewPagerAdapter = new ViewPagerTabAdapter(getChildFragmentManager());
-        viewPagerAdapter.addFragment(new FeedsFragment(), "Feeds");
+        viewPagerAdapter.addFragment(new FeedsFragment(), getActivity().getString(R.string.feeds));
 
         if (com.tabeeby.doctor.BuildConfig.VERSION) {
-            viewPagerAdapter.addFragment(new DoctorsFragment(), "Patients");
+            viewPagerAdapter.addFragment(new DoctorsFragment(), getActivity().getString(R.string.patients));
         } else {
-            viewPagerAdapter.addFragment(new PatientFragment(), "Doctors");
+            viewPagerAdapter.addFragment(new PatientFragment(), getActivity().getString(R.string.doctors));
         }
-        viewPagerAdapter.addFragment(new AppointmentsFragment(), "Appointments");
-        viewPagerAdapter.addFragment(new OffersFragment(), "Offers");
+        viewPagerAdapter.addFragment(new AppointmentsFragment(), getActivity().getString(R.string.appointments));
+        viewPagerAdapter.addFragment(new OffersFragment(), getActivity().getString(R.string.offers));
 
         return viewPagerAdapter;
     }
@@ -111,7 +111,7 @@ public class TabFragment extends Fragment {
 
 
         if (viewPager.getCurrentItem() == 0) {
-            ((MainActivity) getActivity()).getSupportActionBar().setTitle("Feeds");
+            ((MainActivity) getActivity()).getSupportActionBar().setTitle(getActivity().getString(R.string.feeds));
         }
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -125,26 +125,26 @@ public class TabFragment extends Fragment {
 
                 switch (position) {
                     case 0: {
-                        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Feeds");
+                        ((MainActivity) getActivity()).getSupportActionBar().setTitle(getActivity().getString(R.string.feeds));
                     }
                     break;
 
                     case 1: {
                         if (com.tabeeby.doctor.BuildConfig.VERSION) {
-                            ((MainActivity) getActivity()).getSupportActionBar().setTitle("Patient");
+                            ((MainActivity) getActivity()).getSupportActionBar().setTitle(getActivity().getString(R.string.patients));
                         } else {
-                            ((MainActivity) getActivity()).getSupportActionBar().setTitle("Doctor");
+                            ((MainActivity) getActivity()).getSupportActionBar().setTitle(getActivity().getString(R.string.doctors));
                         }
                     }
                     break;
 
                     case 2: {
-                        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Appointments");
+                        ((MainActivity) getActivity()).getSupportActionBar().setTitle(getActivity().getString(R.string.appointments));
                     }
                     break;
 
                     case 3: {
-                        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Offers");
+                        ((MainActivity) getActivity()).getSupportActionBar().setTitle(getActivity().getString(R.string.offers));
                     }
                     break;
                 }
