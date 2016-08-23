@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 import com.tabeeby.doctor.adapter.ViewPagerDoctorAdapter;
-import com.tabeeby.doctor.adapter.ViewPagerTabAdapter;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

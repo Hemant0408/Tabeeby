@@ -1,7 +1,7 @@
 package com.tabeeby.doctor.activities.profile;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -35,10 +35,9 @@ public class DoctorProfileActivity extends AppCompatActivity {
             }
         });
 
-        if(com.tabeeby.doctor.BuildConfig.VERSION) {
+        if (com.tabeeby.doctor.BuildConfig.VERSION) {
             linearLayout.setVisibility(View.GONE);
-        }else
-        {
+        } else {
             linearLayout.setVisibility(View.VISIBLE);
         }
     }

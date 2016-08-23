@@ -2,11 +2,9 @@ package com.tabeeby.doctor.activities.signup;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
@@ -21,10 +19,9 @@ import com.tabeeby.doctor.utils.Utils;
 
 public class SelectCountryActivity extends AppCompatActivity {
 
-    private Context mContext;
     static final int CUSTOM_DIALOG_ID = 0;
     ListView dialog_ListView;
-
+    private Context mContext;
     private TextView tv_selected_country;
     private Button btn_next_step;
 

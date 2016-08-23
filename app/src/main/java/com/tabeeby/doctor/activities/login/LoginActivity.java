@@ -2,13 +2,12 @@ package com.tabeeby.doctor.activities.login;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
-import com.tabeeby.doctor.activities.signup.RegistrationScreen1Activity;
 import com.tabeeby.doctor.activities.signup.SelectLanguageActivity;
 
 public class LoginActivity extends AppCompatActivity {

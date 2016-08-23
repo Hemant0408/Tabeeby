@@ -1,6 +1,7 @@
 <resources>
     <!--do not change-->
     <string name="shared_preference_file_key">Tabeeby</string>
+    <string name="app_id">1713068595610330</string>
 
     <!--App name-->
     <string name="app_name">Tabeeby</string>

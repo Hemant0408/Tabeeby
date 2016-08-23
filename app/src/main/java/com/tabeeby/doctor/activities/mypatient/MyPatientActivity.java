@@ -1,14 +1,13 @@
 package com.tabeeby.doctor.activities.mypatient;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.tabeeby.doctor.R;
-import com.tabeeby.doctor.adapter.FeedsAdapter;
 import com.tabeeby.doctor.adapter.FindPatientAdapter;
 
 import java.util.ArrayList;
@@ -24,6 +23,7 @@ public class MyPatientActivity extends AppCompatActivity {
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

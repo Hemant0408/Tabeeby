@@ -2,14 +2,12 @@ package com.tabeeby.doctor.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.tabeeby.doctor.R;
-import com.tabeeby.doctor.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -19,17 +17,8 @@ import java.util.ArrayList;
 
 public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.ListHolder> {
 
-    private Context mContext;
     private static ArrayList<String> items;
-
-    public static class ListHolder extends RecyclerView.ViewHolder {
-
-
-        public ListHolder(View itemView) {
-            super(itemView);
-        }
-
-    }
+    private Context mContext;
 
     public AppointmentAdapter(Context context, ArrayList<String> arrayList) {
         mContext = context;
@@ -57,6 +46,15 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
+    }
+
+    public static class ListHolder extends RecyclerView.ViewHolder {
+
+
+        public ListHolder(View itemView) {
+            super(itemView);
+        }
+
     }
 
 }

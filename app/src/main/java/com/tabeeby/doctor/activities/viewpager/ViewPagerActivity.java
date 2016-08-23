@@ -2,11 +2,9 @@ package com.tabeeby.doctor.activities.viewpager;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.BuildConfig;
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -15,13 +13,15 @@ import android.widget.TextView;
 
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.login.LoginActivity;
-import com.tabeeby.doctor.activities.signup.RegistrationScreen1Activity;
 import com.tabeeby.doctor.activities.signup.SelectLanguageActivity;
 import com.tabeeby.doctor.adapter.ViewPagerAdapter;
 
 
 public class ViewPagerActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
 
+    public static Integer[] mImageResources;
+    public static Integer[] mImage;
+    public static Integer[] mImageText;
     protected View view;
     private ViewPager intro_images;
     private LinearLayout pager_indicator;
@@ -30,13 +30,6 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
     private ViewPagerAdapter mAdapter;
     private TextView tv_skip;
     private Context mContext;
-
-
-    public static Integer[] mImageResources;
-
-    public static Integer[] mImage;
-
-    public static Integer[] mImageText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +75,7 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
                     R.drawable.ic_qna_intro_48dp
             };
         }
-        
+
         setReference();
     }
 

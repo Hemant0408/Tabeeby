@@ -3,10 +3,9 @@ package com.tabeeby.doctor.activities.signup;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,16 +24,13 @@ import butterknife.OnClick;
 
 public class SelectLanguageActivity extends AppCompatActivity {
 
-    private Context mContext;
-
-    @Bind(R.id.btn_next_step)
-    Button btn_next_step;
-
     @Bind(R.id.txt_lang_english)
     protected TextView mTextViewEnglish;
-
     @Bind(R.id.txt_lang_arebic)
     protected TextView mTextViewArebic;
+    @Bind(R.id.btn_next_step)
+    Button btn_next_step;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,15 +39,11 @@ public class SelectLanguageActivity extends AppCompatActivity {
         mContext = this;
         ButterKnife.bind(this);
 
-        if(Utils.retrieveSharedPreference(mContext,"Language")!=null)
-        {
-            if(Utils.retrieveSharedPreference(mContext,"Language").equals("E"))
-            {
-                Log.i("Language","English");
-            }
-            else if(Utils.retrieveSharedPreference(mContext,"Language").equals("A"))
-            {
-                Log.i("Language","Arabic");
+        if (Utils.retrieveSharedPreference(mContext, "Language") != null) {
+            if (Utils.retrieveSharedPreference(mContext, "Language").equals("E")) {
+                Log.i("Language", "English");
+            } else if (Utils.retrieveSharedPreference(mContext, "Language").equals("A")) {
+                Log.i("Language", "Arabic");
             }
         }
     }
@@ -97,7 +89,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
                         Bidi.DIRECTION_DEFAULT_RIGHT_TO_LEFT);
                 bidi.isRightToLeft();
                 application.updateLanguage(mContext, "ar");
-                Utils.storeSharedPreference(mContext,"Language","A");
+                Utils.storeSharedPreference(mContext, "Language", "A");
                 startActivity(new Intent(mContext, SelectCountryActivity.class));
 
                 return null;
@@ -129,7 +121,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
                 bidi.isLeftToRight();
                 application.updateLanguage(mContext, "en");
 
-                Utils.storeSharedPreference(mContext,"Language","E");
+                Utils.storeSharedPreference(mContext, "Language", "E");
                 startActivity(new Intent(mContext, SelectCountryActivity.class));
 
                 return null;

@@ -14,19 +14,13 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.tabeeby.doctor.BuildConfig;
 import com.tabeeby.doctor.R;
-import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 import com.tabeeby.doctor.activities.profile.DoctorProfileActivity;
-import com.tabeeby.doctor.adapter.FindDoctorAdapter;
 import com.tabeeby.doctor.adapter.FindPatientAdapter;
 
 import java.util.ArrayList;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * Created by Lenovo R61 on 8/9/2016.
@@ -87,12 +81,6 @@ public class PatientFragment extends Fragment {
         }));
     }
 
-    public interface ClickListener {
-        void onClick(View view, int position);
-
-        void onLongClick(View view, int position);
-    }
-
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
@@ -106,6 +94,12 @@ public class PatientFragment extends Fragment {
 
         MenuItem item_ = menu.findItem(R.id.sig_out);
         item_.setVisible(true);
+    }
+
+    public interface ClickListener {
+        void onClick(View view, int position);
+
+        void onLongClick(View view, int position);
     }
 
     public static class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {

@@ -17,19 +17,10 @@ import java.util.ArrayList;
 
 public class FindPatientAdapter extends RecyclerView.Adapter<FindPatientAdapter.ListHolder> {
 
-    private Context mContext;
     private static ArrayList<String> items;
+    private Context mContext;
 
-    public static class ListHolder extends RecyclerView.ViewHolder {
-
-
-        public ListHolder(View itemView) {
-            super(itemView);
-        }
-
-    }
-
-    public FindPatientAdapter(Context context, ArrayList<String> arrayList){
+    public FindPatientAdapter(Context context, ArrayList<String> arrayList) {
         mContext = context;
         this.items = arrayList;
     }
@@ -53,6 +44,15 @@ public class FindPatientAdapter extends RecyclerView.Adapter<FindPatientAdapter.
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
+    }
+
+    public static class ListHolder extends RecyclerView.ViewHolder {
+
+
+        public ListHolder(View itemView) {
+            super(itemView);
+        }
+
     }
 
 }

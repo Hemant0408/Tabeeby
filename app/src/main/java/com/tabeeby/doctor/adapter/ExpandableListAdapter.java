@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.tabeeby.doctor.R;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -54,7 +56,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         TextView txtListChild = (TextView) convertView
                 .findViewById(R.id.lblListItem);
 
-       // txtListChild.setText(childText);
+        // txtListChild.setText(childText);
 
         return convertView;
     }
@@ -93,11 +95,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         TextView lblListHeader = (TextView) convertView
                 .findViewById(R.id.lblListHeader);
         lblListHeader.setTypeface(null, Typeface.BOLD);
-      //  lblListHeader.setText(headerTitle);
-        ImageView img =(ImageView) convertView.findViewById(R.id.arrow);
+        //  lblListHeader.setText(headerTitle);
+        ImageView img = (ImageView) convertView.findViewById(R.id.arrow);
 
         if (isExpanded) {
-           img.setImageResource(R.drawable.ic_keyboard_arrow_up_white_24dp);
+            img.setImageResource(R.drawable.ic_keyboard_arrow_up_white_24dp);
         } else {
             img.setImageResource(R.drawable.ic_keyboard_arrow_down_white_24dp);
         }
