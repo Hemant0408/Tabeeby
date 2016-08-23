@@ -23,105 +23,106 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
                 android:orientation="vertical">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_creating_ac_48dp" />
 
-            <TextView
-                style="@style/TextViewHigh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/creating_an_account"
-                android:textSize="18sp" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_creating_ac_48dp" />
 
-            <include
-                layout="@layout/horizantal_white_line"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-15dp" />
+                <TextView
+                    style="@style/TextViewHigh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/creating_an_account"
+                    android:textSize="18sp" />
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/inputtype"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/edittext_hint_color">
-
-                <EditText
-                    android:id="@+id/edtType"
-                    style="@style/EditTextStyle"
+                <include
+                    layout="@layout/horizantal_white_line"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:drawableLeft="@drawable/ic_organisation_white_18dp"
-                    android:hint="@string/service_name"
-                    android:inputType="textCapWords"
-                    android:textColorHint="@color/white" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-15dp" />
 
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/edittext_hint_color">
-
-                <EditText
-                    style="@style/EditTextStyle"
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputtype"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:drawableLeft="@drawable/ic_user_white_18dp"
-                    android:hint="@string/name"
-                    android:inputType="text"
-                    android:textColorHint="@color/white" />
-            </android.support.design.widget.TextInputLayout>
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/edittext_hint_color">
 
+                    <EditText
+                        android:id="@+id/edtType"
+                        style="@style/EditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:drawableLeft="@drawable/ic_organisation_white_18dp"
+                        android:hint="@string/service_name"
+                        android:inputType="textCapWords"
+                        android:textColorHint="@color/white" />
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/edittext_hint_color">
+                </android.support.design.widget.TextInputLayout>
 
-                <EditText
-                    style="@style/EditTextStyle"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:drawableLeft="@drawable/ic_mail_white_18dp"
-                    android:hint="@string/email"
-                    android:inputType="textEmailAddress"
-                    />
-            </android.support.design.widget.TextInputLayout>
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/edittext_hint_color">
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/edittext_hint_color">
+                    <EditText
+                        style="@style/EditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:drawableLeft="@drawable/ic_user_white_18dp"
+                        android:hint="@string/name"
+                        android:inputType="text"
+                        android:textColorHint="@color/white" />
+                </android.support.design.widget.TextInputLayout>
 
-                <EditText
-                    style="@style/EditTextStyle"
+
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:drawableLeft="@drawable/ic_phone_white_18dp"
-                    android:hint="@string/mobile_no"
-                    android:inputType="phone"
-                    android:textColorHint="@color/white" />
-            </android.support.design.widget.TextInputLayout>
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/edittext_hint_color">
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/edittext_hint_color">
+                    <EditText
+                        style="@style/EditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:drawableLeft="@drawable/ic_mail_white_18dp"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress" />
+                </android.support.design.widget.TextInputLayout>
 
-                <EditText
-                    style="@style/EditTextStyle"
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:drawableLeft="@drawable/ic_key_white_18dp"
-                    android:hint="@string/password"
-                    android:inputType="textPassword"
-                    android:textColorHint="@color/white" />
-            </android.support.design.widget.TextInputLayout>
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/edittext_hint_color">
+
+                    <EditText
+                        style="@style/EditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:drawableLeft="@drawable/ic_phone_white_18dp"
+                        android:hint="@string/mobile_no"
+                        android:inputType="phone"
+                        android:textColorHint="@color/white" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/edittext_hint_color">
+
+                    <EditText
+                        style="@style/EditTextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:drawableLeft="@drawable/ic_key_white_18dp"
+                        android:hint="@string/password"
+                        android:inputType="textPassword"
+                        android:textColorHint="@color/white" />
+                </android.support.design.widget.TextInputLayout>
             </LinearLayout>
+
             <Button
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="match_parent"
@@ -134,8 +135,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
                 android:text="@string/or" />
 
 
