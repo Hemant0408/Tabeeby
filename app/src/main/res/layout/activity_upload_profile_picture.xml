@@ -46,12 +46,14 @@
                 android:layout_marginTop="-15dp" />
 
             <ImageView
+                android:id="@+id/img_camera_photo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_camera_white_48dp" />
+                android:src="@drawable/ic_camera_white_48dp"
+                android:onClick="Take_A_Photo"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -67,7 +69,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/ic_gallery_white_48dp" />
+                android:src="@drawable/ic_gallery_white_48dp"
+                android:onClick="Choose_A_Photo"/>
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -78,6 +82,19 @@
                 android:text="@string/upload_from_gallery"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
+
+            <com.theartofdev.edmodo.cropper.CropImageView
+                xmlns:custom="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cropImageView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                custom:cropBorderLineThickness="0dp"
+                custom:cropBorderCornerThickness="0dp"
+                android:fitsSystemWindows="true"
+                custom:cropFixAspectRatio="true"
+                android:scaleType="matrix"
+                />
 
         </LinearLayout>
 

@@ -1,28 +1,28 @@
 <resources>
     <!--do not change-->
     <string name="shared_preference_file_key">Tabeeby</string>
+    <string name="app_id">1713068595610330</string>
 
     <!--App name-->
     <string name="app_name">Tabeeby</string>
-    <string name="tabeeby">Tabeeby</string>
-	
-	<!--Common String-->
-	 <string name="next_step">Next Step</string>
-	 <string name="skip">Skip</string>
+
+    <!--Common String-->
+    <string name="next_step">Next Step</string>
+    <string name="skip">Skip</string>
 
     <!--ViewPager Activity -->
     <string name="manege_doctors">Find Doctors</string>
     <string name="book_appointements">Book Appointment</string>
     <string name="manege_patients">Find Patient &amp; Members</string>
     <string name="get_answers">Get Answers</string>
-	
-	<!--Language selection Activity-->
-	 <string name="english">English</string>
-     <string name="arabic">Arabic</string>
-     <string name="select_language">Select Language</string>
-	 
-	 <!--Country selection Activity-->
-	 <string name="select_country">Select Country</string>
+
+    <!--Language selection Activity-->
+    <string name="english">English</string>
+    <string name="arabic">Arabic</string>
+    <string name="select_language">Select Language</string>
+
+    <!--Country selection Activity-->
+    <string name="select_country">Select Country</string>
 
     <!--Signup Activity-->
     <string name="creating_an_account">Creating an account</string>
@@ -89,7 +89,6 @@
 
     <!--Appointments Layouts-->
     <string name="upcoming">Upcoming</string>
-    <string name="past">Past</string>
 
     <!--Patient profile-->
     <string name="favorite_doctor">Favorite Doctor</string>
@@ -111,10 +110,14 @@
     <string name="notification">Notification</string>
 
 
-    <string name="action_settings">Settings</string>
-
     <string name="dummy_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
     <string name="manege_appointements">Manage Appointments</string>
     <string name="notification_text">(Enter the OTP below in case if we fail to detect the sms automatically)</string>
+
+
+    <string name="enter_your_password">Enter Your Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="done">Done</string>
+    <string name="post">Post</string>
 
 </resources>

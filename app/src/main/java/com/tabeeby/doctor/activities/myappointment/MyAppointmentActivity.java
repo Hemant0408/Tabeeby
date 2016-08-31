@@ -1,7 +1,7 @@
 package com.tabeeby.doctor.activities.myappointment;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -9,7 +9,6 @@ import android.view.View;
 
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.adapter.AppointmentAdapter;
-import com.tabeeby.doctor.adapter.FindPatientAdapter;
 
 import java.util.ArrayList;
 
@@ -23,6 +22,7 @@ public class MyAppointmentActivity extends AppCompatActivity {
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

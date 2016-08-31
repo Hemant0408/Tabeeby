@@ -7,7 +7,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -15,8 +14,8 @@ import android.widget.LinearLayout;
 
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.events.EventsActivity;
-import com.tabeeby.doctor.activities.news.NewsActivity;
 import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
+import com.tabeeby.doctor.activities.news.NewsActivity;
 import com.tabeeby.doctor.activities.quastionandanswer.QuastionAndAnswerList;
 import com.tabeeby.doctor.adapter.ViewPagerTabAdapter;
 
@@ -28,31 +27,23 @@ import butterknife.ButterKnife;
  */
 public class TabFragment extends Fragment {
 
+    @Bind(R.id.bottom_toolbar_qanda)
+    protected LinearLayout mQuaAndAns;
+    @Bind(R.id.bottom_toolbar_event)
+    protected LinearLayout mEvent;
+    @Bind(R.id.bottom_toolbar_news)
+    protected LinearLayout mNews;
+    @Bind(R.id.img_toolbar_qanda)
+    protected ImageView mImgQuaAndAns;
+    @Bind(R.id.img_toolbar_event)
+    protected ImageView mImgEvent;
+    @Bind(R.id.img_toolbar_news)
+    protected ImageView mImgNews;
     ViewPagerTabAdapter viewPagerAdapter;
-
     //@Bind(R.id.tabLayout)
     TabLayout tabLayout;
     @Bind(R.id.viewPager)
     ViewPager viewPager;
-    @Bind(R.id.bottom_toolbar_qanda)
-    protected LinearLayout mQuaAndAns;
-
-    @Bind(R.id.bottom_toolbar_event)
-    protected LinearLayout mEvent;
-
-    @Bind(R.id.bottom_toolbar_news)
-    protected LinearLayout mNews;
-
-
-    @Bind(R.id.img_toolbar_qanda)
-    protected ImageView mImgQuaAndAns;
-
-    @Bind(R.id.img_toolbar_event)
-    protected ImageView mImgEvent;
-
-    @Bind(R.id.img_toolbar_news)
-    protected ImageView mImgNews;
-
 
     @Nullable
     @Override
@@ -157,7 +148,6 @@ public class TabFragment extends Fragment {
         });
 
 
-
         mImgQuaAndAns.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -180,7 +170,7 @@ public class TabFragment extends Fragment {
         });
 
 
-       mQuaAndAns.setOnClickListener(new View.OnClickListener() {
+        mQuaAndAns.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), QuastionAndAnswerList.class));

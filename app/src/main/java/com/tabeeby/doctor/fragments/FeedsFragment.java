@@ -12,27 +12,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tabeeby.doctor.R;
-import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 import com.tabeeby.doctor.adapter.FeedsAdapter;
-import com.tabeeby.doctor.adapter.FindDoctorAdapter;
 
 import java.util.ArrayList;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * Created by Z510 on 8/4/2016.
  */
 public class FeedsFragment extends Fragment {
 
+    protected RecyclerView recyclerView;
     ArrayList<String> arrayList;
     FeedsAdapter findDoctorAdapter;
-    LinearLayoutManager linearLayoutManager;
     /*@Bind(R.id.lv_feeds_list)
     protected RecyclerView mRvListView;*/
-
-    protected RecyclerView recyclerView;
+    LinearLayoutManager linearLayoutManager;
 
     @Nullable
     @Override

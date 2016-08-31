@@ -16,19 +16,10 @@ import java.util.ArrayList;
 
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ListHolder> {
 
-    private Context mContext;
     private static ArrayList<String> items;
+    private Context mContext;
 
-    public static class ListHolder extends RecyclerView.ViewHolder {
-
-
-        public ListHolder(View itemView) {
-            super(itemView);
-        }
-
-    }
-
-    public EventAdapter(Context context, ArrayList<String> arrayList){
+    public EventAdapter(Context context, ArrayList<String> arrayList) {
         mContext = context;
         this.items = arrayList;
     }
@@ -52,6 +43,15 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ListHolder> 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
+    }
+
+    public static class ListHolder extends RecyclerView.ViewHolder {
+
+
+        public ListHolder(View itemView) {
+            super(itemView);
+        }
+
     }
 
 }

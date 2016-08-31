@@ -1,14 +1,13 @@
 package com.tabeeby.doctor.activities.notification;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.tabeeby.doctor.R;
-import com.tabeeby.doctor.adapter.FindPatientAdapter;
 import com.tabeeby.doctor.adapter.NotificationAdapter;
 
 import java.util.ArrayList;

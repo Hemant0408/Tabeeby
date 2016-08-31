@@ -15,16 +15,18 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
+        android:name=".application.application"
         android:allowBackup="true"
         android:icon="@drawable/logo"
-        android:name=".application.application"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <!-- <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/app_id"/> -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/app_id" />
 
         <activity
             android:name=".activities.login.LoginActivity"
@@ -33,16 +35,13 @@
         <activity
             android:name=".activities.viewpager.ViewPagerActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activities.signup.SignUpActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-
         <activity
             android:name=".activities.signup.RegistrationScreen1Activity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activities.splashscreen.SplashScreenActivity"
             android:screenOrientation="portrait">
@@ -52,55 +51,56 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activities.profile.DoctorProfileActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activities.profile.PatientProfileActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activities.signup.SelectLanguageActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activities.signup.SelectCountryActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activities.signup.OtpPageActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activities.maintabactivity.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-
         <activity
             android:name=".activities.upoladpicture.UploadProfilePicture"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activities.mypatient.MyPatientActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activities.myappointment.MyAppointmentActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activities.notification.NotificationActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activities.quastionandanswer.QuastionAndAnswerList"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".activities.news.NewsActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".activities.events.EventsActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.news.NewsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.events.EventsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <activity android:name=".activities.signup.PasswordScreenActivity" />
+        <activity android:name=".activities.addpost.AddPostActivity"></activity>
     </application>
 
 </manifest>

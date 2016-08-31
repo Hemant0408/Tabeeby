@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
@@ -107,20 +106,7 @@
                     android:textColorHint="@color/white" />
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/edittext_hint_color">
 
-                <EditText
-                    style="@style/EditTextStyle"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:drawableLeft="@drawable/ic_key_white_18dp"
-                    android:hint="@string/password"
-                    android:inputType="textPassword"
-                    android:textColorHint="@color/white" />
-            </android.support.design.widget.TextInputLayout>
             </LinearLayout>
             <Button
                 style="@style/Widget.AppCompat.Button.Borderless"
@@ -139,18 +125,18 @@
                 android:text="@string/or" />
 
 
-            <!-- <com.facebook.login.widget.LoginButton
-                 android:id="@+id/login_button"
+             <com.facebook.login.widget.LoginButton
+                 android:id="@+id/usersettings_fragment_login_button"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
                  android:layout_marginTop="10dp"
                  android:layout_marginBottom="10dp"
                  android:layout_marginLeft="50dp"
                  android:layout_marginRight="50dp"
-                 android:visibility="visible" />-->
+                 android:visibility="visible" />
 
 
-            <Button
+           <!-- <Button
                 android:id="@+id/login_button"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -159,7 +145,7 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/fb"
-                android:visibility="visible" />
+                android:visibility="visible" />-->
 
             <TextView
                 android:layout_width="wrap_content"
