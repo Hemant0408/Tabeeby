@@ -60,24 +60,24 @@ public class SelectLanguageActivity extends AppCompatActivity {
     }
 
     public void nextStep(View view) {
-        changeEnglish();
+        changeLanguage("en","L");
     }
 
     public void SelectArebic(View view) {
-        changeArabic();
+        changeLanguage("ar","R");
     }
 
 
     /**
      * Method that Update UI for Arabic locale.
      */
-    public void changeArabic() {
+    public void changeLanguage(final String app_local,final String flag) {
         new AsyncTask<Void, Void, Void>() {
 
             @Override
             protected Void doInBackground(Void... params) {
-                String app_locale = "ar";
-                Locale locale = new Locale(app_locale);
+              // String app_locale = "ar";
+                Locale locale = new Locale(app_local);
                 Locale.setDefault(locale);
 
                 //Configuration to query the current layout direction.
@@ -85,11 +85,21 @@ public class SelectLanguageActivity extends AppCompatActivity {
                 config.locale = locale;
                 getResources().updateConfiguration(config,
                         getResources().getDisplayMetrics());
-                Bidi bidi = new Bidi(app_locale,
-                        Bidi.DIRECTION_DEFAULT_RIGHT_TO_LEFT);
-                bidi.isRightToLeft();
-                application.updateLanguage(mContext, "ar");
-                Utils.storeSharedPreference(mContext, "Language", "A");
+                if(flag.equals("R")) {
+                    Bidi bidi = new Bidi(app_local,
+                            Bidi.DIRECTION_DEFAULT_RIGHT_TO_LEFT);
+                    bidi.isRightToLeft();
+
+                    Utils.storeSharedPreference(mContext, "Language", "A");
+                }
+                else
+                {
+                    Bidi bidi = new Bidi(app_local,
+                            Bidi.DIRECTION_DEFAULT_LEFT_TO_RIGHT);
+                    bidi.isLeftToRight();
+                    application.updateLanguage(mContext, "en");
+                }
+                application.updateLanguage(mContext, app_local);
                 startActivity(new Intent(mContext, SelectCountryActivity.class));
 
                 return null;
@@ -98,35 +108,4 @@ public class SelectLanguageActivity extends AppCompatActivity {
         }.execute();
     }
 
-    /**
-     * Method that Update UI for Default(English) locale.
-     */
-    public void changeEnglish() {
-
-        new AsyncTask<Void, Void, Void>() {
-
-            @Override
-            protected Void doInBackground(Void... params) {
-                String app_locale = "en";
-                Locale locale = new Locale(app_locale);
-                Locale.setDefault(locale);
-
-                //Configuration to query the current layout direction.
-                Configuration config = new Configuration();
-                config.locale = locale;
-                getResources().updateConfiguration(config,
-                        getResources().getDisplayMetrics());
-                Bidi bidi = new Bidi(app_locale,
-                        Bidi.DIRECTION_DEFAULT_LEFT_TO_RIGHT);
-                bidi.isLeftToRight();
-                application.updateLanguage(mContext, "en");
-
-                Utils.storeSharedPreference(mContext, "Language", "E");
-                startActivity(new Intent(mContext, SelectCountryActivity.class));
-
-                return null;
-            }
-
-        }.execute();
-    }
 }

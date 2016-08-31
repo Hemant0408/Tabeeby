@@ -41,9 +41,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Profile profile = Profile.getCurrentProfile();
-
                 Log.i("***Profile_Url", profile.getProfilePictureUri(10, 10).toString());
-
                 Utils.storeSharedPreference(mContext, "user_name", profile.getName());
                 startActivity(new Intent(mContext, MainActivity.class));
                 finishAffinity();

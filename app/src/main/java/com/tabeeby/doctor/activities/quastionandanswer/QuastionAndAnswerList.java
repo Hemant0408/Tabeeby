@@ -84,11 +84,11 @@ public class QuastionAndAnswerList extends AppCompatActivity {
         nowShowing.add("The Wolverine");
 
         List<String> comingSoon = new ArrayList<String>();
-        comingSoon.add("2 Guns");
+        /*comingSoon.add("2 Guns");
         comingSoon.add("The Smurfs 2");
         comingSoon.add("The Spectacular Now");
         comingSoon.add("The Canyons");
-        comingSoon.add("Europa Report");
+        comingSoon.add("Europa Report");*/
 
         listDataChild.put(listDataHeader.get(0), top250); // Header, Child data
         listDataChild.put(listDataHeader.get(1), nowShowing);

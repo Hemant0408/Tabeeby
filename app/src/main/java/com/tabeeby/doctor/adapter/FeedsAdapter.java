@@ -1,12 +1,16 @@
 package com.tabeeby.doctor.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.tabeeby.doctor.R;
+import com.tabeeby.doctor.activities.addpost.AddPostActivity;
 
 import java.util.List;
 
@@ -17,7 +21,7 @@ public class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
-
+    LinearLayout linearLayout;
     List<String> listItems;
     Context context;
 
@@ -41,18 +45,8 @@ public class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        /*if(holder instanceof VHHeader)
-        {
-            VHHeader VHheader = (VHHeader)holder;
-            VHheader.txtTitle.setText(header.getHeader());
-        }
-        else if(holder instanceof VHItem)
-        {
-            ListItem currentItem = getItem(position-1);
-            VHItem VHitem = (VHItem)holder;
-            VHitem.txtName.setText(currentItem.getName());
-            VHitem.iv.setBackgroundResource(currentItem.getId());
-        }*/
+
+
     }
 
     //    need to override this method
@@ -77,7 +71,15 @@ public class FeedsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         //TextView txtTitle;
         public VHHeader(View itemView) {
             super(itemView);
-            //this.txtTitle = (TextView)itemView.findViewById(R.id.txtHeader);
+           linearLayout=(LinearLayout) itemView.findViewById(R.id.  linear_parent_header);
+                   linearLayout.setOnClickListener(new View.OnClickListener() {
+                       @Override
+                       public void onClick(View view) {
+                           Intent intent=new Intent(context, AddPostActivity.class);
+                           context.startActivity(intent);
+                       }
+                   });
+
         }
     }
 

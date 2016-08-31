@@ -43,7 +43,6 @@ public class FindDoctorAdapter extends RecyclerView.Adapter<FindDoctorAdapter.Li
 
     public static class ListHolder extends RecyclerView.ViewHolder {
 
-
         public ListHolder(View itemView) {
             super(itemView);
         }

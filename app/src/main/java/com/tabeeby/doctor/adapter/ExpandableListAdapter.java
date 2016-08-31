@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.tabeeby.doctor.R;
@@ -31,9 +32,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public Object getChild(int groupPosition, int childPosititon) {
+    public Object getChild(int groupPosition, int childPosition) {
         return this._listDataChild.get(this._listDataHeader.get(groupPosition))
-                .get(childPosititon);
+                .get(childPosition);
     }
 
     @Override
@@ -53,10 +54,22 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             convertView = infalInflater.inflate(R.layout.list_item, null);
         }
 
+        LinearLayout linearLayout=(LinearLayout) convertView.findViewById(R.id.linear_comment_footer);
         TextView txtListChild = (TextView) convertView
                 .findViewById(R.id.lblListItem);
 
-        // txtListChild.setText(childText);
+
+        if(this._listDataChild.get(this._listDataHeader.get(groupPosition)).size()-1==childPosition)
+        {
+            linearLayout.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            if(this._listDataChild.get(this._listDataHeader.get(groupPosition)).size()==0)
+            {
+                linearLayout.setVisibility(View.VISIBLE);
+            }
+        }
 
         return convertView;
     }
