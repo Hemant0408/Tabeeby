@@ -30,15 +30,15 @@ import com.tabeeby.doctor.activities.profile.PatientProfileActivity;
 import com.tabeeby.doctor.activities.quastionandanswer.QuastionAndAnswerList;
 import com.tabeeby.doctor.fragments.MyDoctors;
 import com.tabeeby.doctor.fragments.TabFragment;
+import com.tabeeby.doctor.utils.Utils;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Context mContext;
     DrawerLayout drawer;
     NavigationView navigationView;
     ActionBarDrawerToggle toggle;
     RelativeLayout notificationCount;
-
+    private Context mContext;
     private TextView headerTextView;
 
     @Override
@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         View header = navigationView.getHeaderView(0);
         headerTextView = (TextView) header.findViewById(R.id.headerTextView);
+
+        headerTextView.setText("Dr." + Utils.retrieveSharedPreference(mContext, "user_name"));
 
         toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
             @Override
@@ -85,11 +87,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.profile) {
-            if(com.tabeeby.doctor.BuildConfig.VERSION) {
+            if (com.tabeeby.doctor.BuildConfig.VERSION) {
                 Intent intent = new Intent(this, DoctorProfileActivity.class);
                 startActivity(intent);
-            }
-            else {
+            } else {
                 Intent intent = new Intent(this, PatientProfileActivity.class);
                 startActivity(intent);
             }
@@ -98,25 +99,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);*/
             displayFragment(1);
         } else if (id == R.id.my_doctor) {
-            if(com.tabeeby.doctor.BuildConfig.VERSION) {
+            if (com.tabeeby.doctor.BuildConfig.VERSION) {
                 Intent intent = new Intent(this, MyPatientActivity.class);
                 startActivity(intent);
-            }else
-            {
+            } else {
                 displayFragment(2);
             }
-        }
-        else if (id == R.id.my_appointments) {
-                Intent intent = new Intent(this, MyAppointmentActivity.class);
-                startActivity(intent);
-        }
-        else if(id==R.id.q_and_a)
-        {
+        } else if (id == R.id.my_appointments) {
+            Intent intent = new Intent(this, MyAppointmentActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.q_and_a) {
             Intent intent = new Intent(this, QuastionAndAnswerList.class);
             startActivity(intent);
-        }
-        else if(id==R.id.logout)
-        {
+        } else if (id == R.id.logout) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
             finishAffinity();

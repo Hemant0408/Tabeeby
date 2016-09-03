@@ -19,6 +19,9 @@ import com.tabeeby.doctor.adapter.ViewPagerAdapter;
 
 public class ViewPagerActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
 
+    public static Integer[] mImageResources;
+    public static Integer[] mImage;
+    public static Integer[] mImageText;
     protected View view;
     private ViewPager intro_images;
     private LinearLayout pager_indicator;
@@ -27,13 +30,6 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
     private ViewPagerAdapter mAdapter;
     private TextView tv_skip;
     private Context mContext;
-
-
-    public static Integer[] mImageResources;
-
-    public static Integer[] mImage;
-
-    public static Integer[] mImageText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +75,7 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
                     R.drawable.ic_qna_intro_48dp
             };
         }
-        
+
         setReference();
     }
 

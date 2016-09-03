@@ -56,7 +56,7 @@ public class AppointmentsFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(findDoctorAdapter);
 
-       // ((MainActivity) getActivity()).getSupportActionBar().setTitle("Appointments");
+        // ((MainActivity) getActivity()).getSupportActionBar().setTitle("Appointments");
     }
 
     @Override

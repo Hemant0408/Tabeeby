@@ -2,23 +2,27 @@ package com.tabeeby.doctor.application;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.content.res.Configuration;
 import android.text.TextUtils;
+<<<<<<< HEAD
+=======
+import android.util.Base64;
+import android.util.Log;
+>>>>>>> b528eaec3454dcf115dcaec209117caf90f326a4
 
 import com.tabeeby.doctor.utils.LocalSharedManager;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Locale;
 
 /**
  * Created by Lenovo R61 on 8/6/2016.
  */
-public class application extends Application{
-
-    @Override
-    public void onCreate() {
-        updateLanguage(this, null);
-        super.onCreate();
-    }
+public class application extends Application {
 
     public static void updateLanguage(Context ctx, String lang) {
 
@@ -40,5 +44,31 @@ public class application extends Application{
             cfg.locale = new Locale(language);
         }
         ctx.getResources().updateConfiguration(cfg, null);
+    }
+
+    @Override
+    public void onCreate() {
+        updateLanguage(this, null);
+        super.onCreate();
+
+        printHashKey();
+    }
+
+    public void printHashKey() {
+        // Add code to print out the key hash
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    "com.tabeeby.doctor",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+
+        } catch (NoSuchAlgorithmException e) {
+
+        }
     }
 }

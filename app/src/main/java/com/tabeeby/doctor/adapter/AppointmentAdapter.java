@@ -17,17 +17,8 @@ import java.util.ArrayList;
 
 public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.ListHolder> {
 
-    private Context mContext;
     private static ArrayList<String> items;
-
-    public static class ListHolder extends RecyclerView.ViewHolder {
-
-
-        public ListHolder(View itemView) {
-            super(itemView);
-        }
-
-    }
+    private Context mContext;
 
     public AppointmentAdapter(Context context, ArrayList<String> arrayList) {
         mContext = context;
@@ -55,6 +46,15 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
+    }
+
+    public static class ListHolder extends RecyclerView.ViewHolder {
+
+
+        public ListHolder(View itemView) {
+            super(itemView);
+        }
+
     }
 
 }

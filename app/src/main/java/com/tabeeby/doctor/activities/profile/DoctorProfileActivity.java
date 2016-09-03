@@ -35,10 +35,9 @@ public class DoctorProfileActivity extends AppCompatActivity {
             }
         });
 
-        if(com.tabeeby.doctor.BuildConfig.VERSION) {
+        if (com.tabeeby.doctor.BuildConfig.VERSION) {
             linearLayout.setVisibility(View.GONE);
-        }else
-        {
+        } else {
             linearLayout.setVisibility(View.VISIBLE);
         }
     }

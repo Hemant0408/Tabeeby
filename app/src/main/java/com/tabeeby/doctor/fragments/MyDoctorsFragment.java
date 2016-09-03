@@ -63,7 +63,7 @@ public class MyDoctorsFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(findDoctorAdapter);
 
-       // ((MainActivity) getActivity()).getSupportActionBar().setTitle("My Doctors");
+        // ((MainActivity) getActivity()).getSupportActionBar().setTitle("My Doctors");
 
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), recyclerView, new ClickListener() {
             @Override
@@ -95,6 +95,12 @@ public class MyDoctorsFragment extends Fragment {
 
         MenuItem item_ = menu.findItem(R.id.sig_out);
         item_.setVisible(true);
+    }
+
+    public interface ClickListener {
+        void onClick(View view, int position);
+
+        void onLongClick(View view, int position);
     }
 
     public static class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
@@ -136,12 +142,5 @@ public class MyDoctorsFragment extends Fragment {
         @Override
         public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
         }
-    }
-
-
-    public interface ClickListener {
-        void onClick(View view, int position);
-
-        void onLongClick(View view, int position);
     }
 }

@@ -13,8 +13,8 @@ import com.tabeeby.doctor.utils.Utils;
 
 
 public class SplashScreenActivity extends AppCompatActivity {
-    private Context mContext;
     private static int SPLASH_TIME_OUT = 2000;
+    private Context mContext;
     private ProgressBar pbHeaderProgress;
 
     @Override
@@ -24,12 +24,12 @@ public class SplashScreenActivity extends AppCompatActivity {
         mContext = this;
         pbHeaderProgress = (ProgressBar) findViewById(R.id.progress_bar);
 
-       // pbHeaderProgress.getIndeterminateDrawable().setColorFilter(mContext.getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.MULTIPLY);
+        // pbHeaderProgress.getIndeterminateDrawable().setColorFilter(mContext.getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.MULTIPLY);
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Utils.storeSharedPreference(mContext,"Type","D");
+                Utils.storeSharedPreference(mContext, "Type", "D");
                 startActivity(new Intent(mContext, ViewPagerActivity.class));
                 finish();
             }

@@ -19,10 +19,9 @@ import com.tabeeby.doctor.utils.Utils;
 
 public class SelectCountryActivity extends AppCompatActivity {
 
-    private Context mContext;
     static final int CUSTOM_DIALOG_ID = 0;
     ListView dialog_ListView;
-
+    private Context mContext;
     private TextView tv_selected_country;
     private Button btn_next_step;
 

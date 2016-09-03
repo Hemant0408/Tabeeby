@@ -21,15 +21,15 @@ import java.util.ArrayList;
 
 public class RegistrationScreen1Activity extends AppCompatActivity {
 
-    private Context mContext;
     ListView dialog_ListView;
     ImageView mDoctor, mOrganisation;
     String title;
-
+    TextView tv_doctor, tv_health_care;
+    Dialog dialog = null;
+    String selectedValue = "";
+    private Context mContext;
     private ArrayList<String> doctorType = new ArrayList<>();
     private ArrayList<String> healthCare = new ArrayList<>();
-
-    TextView tv_doctor, tv_health_care;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +61,6 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
         mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_dr_type_grey_48dp));
         mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_health_pro_pink_48dp));
     }
-
-    Dialog dialog = null;
 
     private void showCustomDialogDoctor(String title) {
         dialog = new Dialog(this, R.style.myCoolDialog);
@@ -162,6 +160,4 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
 
         dialog.show();
     }
-
-    String selectedValue = "";
 }

@@ -81,12 +81,6 @@ public class PatientFragment extends Fragment {
         }));
     }
 
-    public interface ClickListener {
-        void onClick(View view, int position);
-
-        void onLongClick(View view, int position);
-    }
-
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
@@ -100,6 +94,12 @@ public class PatientFragment extends Fragment {
 
         MenuItem item_ = menu.findItem(R.id.sig_out);
         item_.setVisible(true);
+    }
+
+    public interface ClickListener {
+        void onClick(View view, int position);
+
+        void onLongClick(View view, int position);
     }
 
     public static class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {

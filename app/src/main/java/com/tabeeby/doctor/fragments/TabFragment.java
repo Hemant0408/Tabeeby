@@ -27,31 +27,23 @@ import butterknife.ButterKnife;
  */
 public class TabFragment extends Fragment {
 
+    @Bind(R.id.bottom_toolbar_qanda)
+    protected LinearLayout mQuaAndAns;
+    @Bind(R.id.bottom_toolbar_event)
+    protected LinearLayout mEvent;
+    @Bind(R.id.bottom_toolbar_news)
+    protected LinearLayout mNews;
+    @Bind(R.id.img_toolbar_qanda)
+    protected ImageView mImgQuaAndAns;
+    @Bind(R.id.img_toolbar_event)
+    protected ImageView mImgEvent;
+    @Bind(R.id.img_toolbar_news)
+    protected ImageView mImgNews;
     ViewPagerTabAdapter viewPagerAdapter;
-
     //@Bind(R.id.tabLayout)
     TabLayout tabLayout;
     @Bind(R.id.viewPager)
     ViewPager viewPager;
-    @Bind(R.id.bottom_toolbar_qanda)
-    protected LinearLayout mQuaAndAns;
-
-    @Bind(R.id.bottom_toolbar_event)
-    protected LinearLayout mEvent;
-
-    @Bind(R.id.bottom_toolbar_news)
-    protected LinearLayout mNews;
-
-
-    @Bind(R.id.img_toolbar_qanda)
-    protected ImageView mImgQuaAndAns;
-
-    @Bind(R.id.img_toolbar_event)
-    protected ImageView mImgEvent;
-
-    @Bind(R.id.img_toolbar_news)
-    protected ImageView mImgNews;
-
 
     @Nullable
     @Override
@@ -156,7 +148,6 @@ public class TabFragment extends Fragment {
         });
 
 
-
         mImgQuaAndAns.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -179,7 +170,7 @@ public class TabFragment extends Fragment {
         });
 
 
-       mQuaAndAns.setOnClickListener(new View.OnClickListener() {
+        mQuaAndAns.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), QuastionAndAnswerList.class));

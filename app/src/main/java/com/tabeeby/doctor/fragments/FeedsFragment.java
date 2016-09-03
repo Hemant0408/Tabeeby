@@ -21,13 +21,12 @@ import java.util.ArrayList;
  */
 public class FeedsFragment extends Fragment {
 
+    protected RecyclerView recyclerView;
     ArrayList<String> arrayList;
     FeedsAdapter findDoctorAdapter;
-    LinearLayoutManager linearLayoutManager;
     /*@Bind(R.id.lv_feeds_list)
     protected RecyclerView mRvListView;*/
-
-    protected RecyclerView recyclerView;
+    LinearLayoutManager linearLayoutManager;
 
     @Nullable
     @Override
