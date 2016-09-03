@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.tabeeby.doctor.R;
+
 import java.util.HashMap;
 import java.util.List;
 

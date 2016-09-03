@@ -1,7 +1,7 @@
 package com.tabeeby.doctor.activities.events;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -9,7 +9,6 @@ import android.view.View;
 
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.adapter.EventAdapter;
-import com.tabeeby.doctor.adapter.NewsAdapter;
 
 import java.util.ArrayList;
 

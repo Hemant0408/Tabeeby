@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 
 import com.tabeeby.doctor.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

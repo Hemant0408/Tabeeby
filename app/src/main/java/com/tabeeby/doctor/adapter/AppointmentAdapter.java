@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.tabeeby.doctor.R;
 
@@ -30,7 +31,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
 
     public AppointmentAdapter(Context context, ArrayList<String> arrayList) {
         mContext = context;
-        this.items = arrayList;
+        items = arrayList;
     }
 
     @Override
@@ -42,11 +43,13 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
     public ListHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.appointments_card, viewGroup, false);
         ListHolder listHolder = new ListHolder(v);
+        TextView textView = (TextView) viewGroup.findViewById(R.id.txt_upcomming);
         return listHolder;
     }
 
     @Override
     public void onBindViewHolder(ListHolder ListHolder, final int i) {
+
     }
 
     @Override

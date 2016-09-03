@@ -96,6 +96,14 @@
         <item name="android:inputType">textCapWords</item>
     </style>
 
+    <style name="crop" parent="Base.Widget.AppCompat.Button.Borderless">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:longClickable">false</item>
+        <item name="android:inputType">textCapWords</item>
+    </style>
+
     <style name="EditTextStyle" >
         <item name="android:textColor">@color/white</item>
         <item name="android:textColorHint">@color/white</item>

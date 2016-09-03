@@ -6,45 +6,45 @@
         <item
             android:id="@+id/dashboard"
             android:icon="@drawable/ic_dashboard_24dp"
-            android:title="Dashboard"
+            android:title="@string/nav_dashboard"
             android:visible="true" />
         <item
             android:id="@+id/profile"
             android:checked="true"
             android:icon="@drawable/ic_doctor_grey_24dp"
-            android:title="Profile" />
+            android:title="@string/nav_profile" />
 
         <item
             android:id="@+id/my_doctor"
             android:icon="@drawable/ic_patient_grey_24dp"
-            android:title="My Patient"
+            android:title="@string/nav_my_patient"
             app:actionLayout="@layout/chat_counter" />
 
         <item
             android:id="@+id/my_appointments"
             android:icon="@drawable/ic_appointment_grey_24dp"
-            android:title="My Appointments" />
+            android:title="@string/nav_my_appointments" />
 
         <item
             android:id="@+id/q_and_a"
             android:icon="@drawable/ic_qna_grey_24dp"
-            android:title="@string/my_q_and_a" />
+            android:title="@string/nav_my_q_and_a" />
 
         <item
             android:id="@+id/account"
             android:checked="true"
             android:icon="@drawable/ic_account_bag"
-            android:title="Account" />
+            android:title="@string/nav_account" />
         <item
             android:id="@+id/settings"
             android:checked="true"
             android:icon="@drawable/ic_setting_24dp"
-            android:title="Setting" />
+            android:title="@string/nav_setting" />
 
         <item
             android:id="@+id/logout"
             android:icon="@drawable/ic_logout_24dp"
-            android:title="Logout" />
+            android:title="@string/nav_logout" />
 
     </group>
 </menu>

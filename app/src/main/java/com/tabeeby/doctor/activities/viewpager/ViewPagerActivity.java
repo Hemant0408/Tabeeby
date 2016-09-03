@@ -2,11 +2,9 @@ package com.tabeeby.doctor.activities.viewpager;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.BuildConfig;
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -15,7 +13,6 @@ import android.widget.TextView;
 
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.login.LoginActivity;
-import com.tabeeby.doctor.activities.signup.RegistrationScreen1Activity;
 import com.tabeeby.doctor.activities.signup.SelectLanguageActivity;
 import com.tabeeby.doctor.adapter.ViewPagerAdapter;
 

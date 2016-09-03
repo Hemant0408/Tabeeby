@@ -2,12 +2,11 @@ package com.tabeeby.doctor.activities.signup;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.tabeeby.doctor.R;
-import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 import com.tabeeby.doctor.activities.upoladpicture.UploadProfilePicture;
 
 public class OtpPageActivity extends AppCompatActivity {

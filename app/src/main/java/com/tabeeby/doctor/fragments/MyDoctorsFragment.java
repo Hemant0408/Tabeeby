@@ -17,10 +17,8 @@ import android.view.ViewGroup;
 
 import com.tabeeby.doctor.BuildConfig;
 import com.tabeeby.doctor.R;
-import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 import com.tabeeby.doctor.activities.profile.DoctorProfileActivity;
 import com.tabeeby.doctor.adapter.AppointmentAdapter;
-import com.tabeeby.doctor.adapter.FindDoctorAdapter;
 
 import java.util.ArrayList;
 
@@ -35,6 +33,7 @@ public class MyDoctorsFragment extends Fragment {
 /*    @Bind(R.id.lv_appointment_list)
     protected RecyclerView mRvListView;*/
 
+    @SuppressWarnings("UnnecessaryLocalVariable")
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

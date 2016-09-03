@@ -12,14 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tabeeby.doctor.R;
-import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
-import com.tabeeby.doctor.adapter.FindDoctorAdapter;
 import com.tabeeby.doctor.adapter.OfferAdapter;
 
 import java.util.ArrayList;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * Created by Z510 on 8/4/2016.

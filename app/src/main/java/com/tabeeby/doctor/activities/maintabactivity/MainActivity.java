@@ -2,7 +2,10 @@ package com.tabeeby.doctor.activities.maintabactivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -10,16 +13,10 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -86,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+
         if (id == R.id.profile) {
             if(com.tabeeby.doctor.BuildConfig.VERSION) {
                 Intent intent = new Intent(this, DoctorProfileActivity.class);
@@ -200,20 +198,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
-
-        MenuItem item1 = menu.findItem(R.id.sig_out);
-        MenuItemCompat.setActionView(item1, R.layout.custom_menu_icon_layout);
-        notificationCount = (RelativeLayout) MenuItemCompat.getActionView(item1);
-        Button button = (Button) notificationCount.findViewById(R.id.notification_bell_menu_button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(mContext, NotificationActivity.class));
-            }
-        });
         searchItem.setVisible(true);
 
         return super.onCreateOptionsMenu(menu);
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.sig_out) {
+            startActivity(new Intent(mContext, NotificationActivity.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

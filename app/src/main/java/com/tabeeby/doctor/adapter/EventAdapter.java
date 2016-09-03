@@ -30,7 +30,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ListHolder> 
 
     public EventAdapter(Context context, ArrayList<String> arrayList){
         mContext = context;
-        this.items = arrayList;
+        items = arrayList;
     }
 
     @Override

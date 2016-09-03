@@ -25,7 +25,7 @@ public class FindDoctorAdapter extends RecyclerView.Adapter<FindDoctorAdapter.Li
 
         public FindDoctorAdapter(Context context, ArrayList<String> arrayList){
             mContext = context;
-            this.items = arrayList;
+            items = arrayList;
         }
 
         @Override

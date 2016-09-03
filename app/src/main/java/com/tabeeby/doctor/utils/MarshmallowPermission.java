@@ -47,38 +47,22 @@ public class MarshmallowPermission {
 
     public boolean checkPermissionForCamera() {
         int result = ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA);
-        if (result == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        } else {
-            return false;
-        }
+        return result == PackageManager.PERMISSION_GRANTED;
     }
 
     public boolean checkPermissionForSMS() {
         int result = ContextCompat.checkSelfPermission(activity, Manifest.permission.READ_SMS);
-        if (result == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        } else {
-            return false;
-        }
+        return result == PackageManager.PERMISSION_GRANTED;
     }
 
     public boolean checkPermissionForWakeLock() {
         int result = ContextCompat.checkSelfPermission(activity, Manifest.permission.WAKE_LOCK);
-        if (result == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        } else {
-            return false;
-        }
+        return result == PackageManager.PERMISSION_GRANTED;
     }
 
     public boolean checkPermissionForAccounts() {
         int result = ContextCompat.checkSelfPermission(activity, Manifest.permission.GET_ACCOUNTS);
-        if (result == PackageManager.PERMISSION_GRANTED) {
-            return true;
-        } else {
-            return false;
-        }
+        return result == PackageManager.PERMISSION_GRANTED;
     }
 
 

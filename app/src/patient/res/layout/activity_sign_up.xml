@@ -153,7 +153,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:onClick="alreadyMember"
-                android:text="Already a member?" />
+                android:text="@string/already_a_member" />
 
         </LinearLayout>
     </ScrollView>

@@ -17,7 +17,6 @@ import android.view.ViewGroup;
 
 import com.tabeeby.doctor.BuildConfig;
 import com.tabeeby.doctor.R;
-import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 import com.tabeeby.doctor.activities.profile.DoctorProfileActivity;
 import com.tabeeby.doctor.adapter.FindDoctorAdapter;
 

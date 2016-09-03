@@ -40,7 +40,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
+                        android:paddingStart="10dp"
                         android:layout_marginTop="10dp">
 
                         <de.hdodenhof.circleimageview.CircleImageView
@@ -57,7 +57,7 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
+                        android:paddingStart="16dp"
                         android:layout_marginTop="16dp"
                         android:orientation="horizontal">
 
@@ -228,7 +228,7 @@
                         android:drawableLeft="@drawable/ic_like_18dp"
                         android:drawablePadding="7dp"
                         android:gravity="center|left"
-                        android:text="Like"
+                        android:text="@string/like"
                         android:textColor="@color/black_overlay"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -248,7 +248,7 @@
                         android:drawableLeft="@drawable/ic_comment_18dp"
                         android:drawablePadding="7dp"
                         android:gravity="center|left"
-                        android:text="Comment"
+                        android:text="@string/comment"
                         android:textColor="@color/black_overlay"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -268,7 +268,7 @@
                         android:drawableLeft="@drawable/ic_share_18dp"
                         android:drawablePadding="7dp"
                         android:gravity="center|left"
-                        android:text="Share"
+                        android:text="@string/share"
                         android:textColor="@color/black_overlay"
                         android:textSize="14sp" />
                 </LinearLayout>

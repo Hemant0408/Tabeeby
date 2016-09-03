@@ -39,11 +39,8 @@ public class ConnectionDetector {
     public static boolean checkInternetConnection(Context context) {
         ConnectivityManager conMgr = (ConnectivityManager) context
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (conMgr.getActiveNetworkInfo() != null
-                && conMgr.getActiveNetworkInfo().isAvailable())
-            return true;
-        else
-            return false;
+        return conMgr.getActiveNetworkInfo() != null
+                && conMgr.getActiveNetworkInfo().isAvailable();
     }
 
     public static void showConnectionErrorMessage(Context context) {

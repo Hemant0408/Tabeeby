@@ -30,7 +30,7 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ListHolder> 
 
     public OfferAdapter(Context context, ArrayList<String> arrayList){
         mContext = context;
-        this.items = arrayList;
+        items = arrayList;
     }
 
     @Override
