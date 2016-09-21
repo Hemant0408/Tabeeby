@@ -4,14 +4,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.isseiaoki.simplecropview.CropImageView;
-import com.snsepro.tat.R;
+import com.tabeeby.doctor.R;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -19,27 +18,20 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import common.Common;
-import exception.ExceptionHandler;
-
 /**
  * Created by toshiba on 9/30/2015.
  */
-public class CropActivity extends ActionBarActivity implements View.OnClickListener {
+public class CropActivity extends AppCompatActivity implements View.OnClickListener {
 
     // Bitmap
     public static Bitmap bitmap;
     public static String filePath;
     // CropImageView
     CropImageView cropImageView;
-    // ToolBar
-    private Toolbar toolbar;
     // Button
     private Button crop_button;
     //Bundle
     private Bundle bundle;
-    // Common
-    private Common common;
 
     public static Bitmap getBitmap() {
         return bitmap;
@@ -60,27 +52,9 @@ public class CropActivity extends ActionBarActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Thread.setDefaultUncaughtExceptionHandler(new ExceptionHandler(this));
         setContentView(R.layout.crop);
 
         findById();
-
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Crop Image");
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setElevation(0.2f);
-        toolbar.setNavigationIcon(R.drawable.proceed_left);
-
-        common = new Common(CropActivity.this);
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-                finish();
-            }
-        });
 
         bundle = getIntent().getExtras();
 
@@ -101,9 +75,6 @@ public class CropActivity extends ActionBarActivity implements View.OnClickListe
 
     private void findById() {
 
-        //ToolBar
-        toolbar = (Toolbar) findViewById(R.id.tool_bar);
-
         // Button
         crop_button = (Button) findViewById(R.id.crop_button);
 
@@ -120,7 +91,6 @@ public class CropActivity extends ActionBarActivity implements View.OnClickListe
                 setBitmap(cropImageView.getCroppedBitmap());
                 storeImage(cropImageView.getCroppedBitmap(), "CROP_");
                 setFlag(true);
-                //common.saveFile(CropActivity.this, cropImageView.getCroppedBitmap(), "CROP_");
                 CropActivity.this.finish();
                 break;
         }
@@ -145,7 +115,7 @@ public class CropActivity extends ActionBarActivity implements View.OnClickListe
 
     private void clearData() {
         //get path to external storage (SD card)
-        String iconsStoragePath = Environment.getExternalStorageDirectory() + "/Tat/Images/";
+        String iconsStoragePath = Environment.getExternalStorageDirectory() + "/Tabeeby/Images/";
         File sdIconStorageDir = new File(iconsStoragePath);
 
         //create storage directories, if they don't exist
@@ -164,7 +134,7 @@ public class CropActivity extends ActionBarActivity implements View.OnClickListe
 
     private boolean storeImage(Bitmap imageData, String filename) {
         //get path to external storage (SD card)
-        String iconsStoragePath = Environment.getExternalStorageDirectory() + "/Tat/Images/";
+        String iconsStoragePath = Environment.getExternalStorageDirectory() + "/Tabeeby/Images/";
         File sdIconStorageDir = new File(iconsStoragePath);
 
         //create storage directories, if they don't exist
@@ -208,37 +178,4 @@ public class CropActivity extends ActionBarActivity implements View.OnClickListe
 
         return true;
     }
-
-    /*private File createNewFile(String prefix) {
-        if (prefix == null || "".equalsIgnoreCase(prefix)) {
-            prefix = "IMG_";
-        }
-        File newDirectory = new File(Environment.getExternalStorageDirectory() + "/mypics/");
-        if (!newDirectory.exists()) {
-            if (newDirectory.mkdir()) {
-                Log.d(CropActivity.this.getClass().getName(), newDirectory.getAbsolutePath() + " directory created");
-            }
-        }
-        File file = new File(newDirectory, (prefix + System.currentTimeMillis() + ".jpg"));
-        if (file.exists()) {
-            //this wont be executed
-            file.delete();
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        try {
-            if (newDirectory.exists()) {
-                File noMedia = new File(newDirectory.getAbsolutePath() + "/.nomedia");
-                // noMedia.mkdirs();
-                noMedia.createNewFile();
-            } else {
-            }
-        } catch (Exception e) {
-        }
-        return file;
-    }*/
 }

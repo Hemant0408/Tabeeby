@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
 
 import com.tabeeby.doctor.R;
+import com.tabeeby.doctor.activities.upoladpicture.UploadProfilePicture;
 import com.tabeeby.doctor.activities.viewpager.ViewPagerActivity;
 import com.tabeeby.doctor.utils.Utils;
 

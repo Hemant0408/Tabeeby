@@ -25,19 +25,12 @@ public class FindDoctorAdapter extends RecyclerView.Adapter<FindDoctorAdapter.Li
         return items.size();
     }
 
-<<<<<<< HEAD
-        public FindDoctorAdapter(Context context, ArrayList<String> arrayList){
-            mContext = context;
-            items = arrayList;
-        }
-=======
     @Override
     public ListHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.patient_card, viewGroup, false);
         ListHolder listHolder = new ListHolder(v);
         return listHolder;
     }
->>>>>>> b528eaec3454dcf115dcaec209117caf90f326a4
 
     @Override
     public void onBindViewHolder(ListHolder ListHolder, final int i) {

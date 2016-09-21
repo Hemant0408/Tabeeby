@@ -61,7 +61,6 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.0.0'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.google.firebase:firebase-messaging:9.4.0'
-
-    compile 'com.theartofdev.edmodo:android-image-cropper:2.3.+'
-
+    compile 'com.isseiaoki:simplecropview:1.0.8'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
 }

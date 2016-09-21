@@ -4,10 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-<<<<<<< HEAD
 import android.view.View;
 
-=======
 import android.util.Log;
 import android.view.View;
 
@@ -18,7 +16,6 @@ import com.facebook.FacebookSdk;
 import com.facebook.Profile;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
->>>>>>> b528eaec3454dcf115dcaec209117caf90f326a4
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.login.LoginActivity;
 import com.tabeeby.doctor.activities.maintabactivity.MainActivity;

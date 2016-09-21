@@ -52,10 +52,11 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:src="@drawable/ic_camera_white_48dp"
-                android:onClick="Take_A_Photo"/>
+                android:onClick="captureFromCamera"
+                android:src="@drawable/ic_camera_white_48dp" />
 
             <TextView
+                android:id="@+id/tv_camera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -64,16 +65,28 @@
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
 
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:custom="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cropImageViewCamera"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                custom:cropMode="ratio_1_1"
+                custom:frameColor="@color/colorPrimary"
+                custom:handleColor="@color/colorPrimary"
+                custom:initialFrameScale="0.75" />
+
             <ImageView
+                android:id="@+id/img_gallery_photo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/ic_gallery_white_48dp"
-                android:onClick="Choose_A_Photo"/>
-
+                android:onClick="captureFromGallery"
+                android:src="@drawable/ic_gallery_white_48dp" />
 
             <TextView
+                android:id="@+id/tv_gallery"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -83,21 +96,18 @@
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
 
-            <com.theartofdev.edmodo.cropper.CropImageView
-                xmlns:custom="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/cropImageView"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:custom="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/cropImageViewGallery"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:layout_gravity="center"
-                custom:cropBorderLineThickness="0dp"
-                custom:cropBorderCornerThickness="0dp"
-                android:fitsSystemWindows="true"
-                custom:cropFixAspectRatio="true"
-                android:scaleType="matrix"
-                />
+                android:visibility="gone"
+                custom:cropMode="ratio_1_1"
+                custom:frameColor="@color/colorPrimary"
+                custom:handleColor="@color/colorPrimary"
+                custom:initialFrameScale="0.75" />
 
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -121,9 +131,9 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/rectengular_border"
+                android:inputType="textCapWords"
                 android:onClick="skip"
                 android:text="@string/skip"
-                android:inputType="textCapWords"
                 android:textColor="@color/white" />
         </LinearLayout>
 

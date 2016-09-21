@@ -7,11 +7,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.content.res.Configuration;
 import android.text.TextUtils;
-<<<<<<< HEAD
-=======
 import android.util.Base64;
 import android.util.Log;
->>>>>>> b528eaec3454dcf115dcaec209117caf90f326a4
 
 import com.tabeeby.doctor.utils.LocalSharedManager;
 

@@ -17,13 +17,10 @@ public class AddPostActivity extends AppCompatActivity {
     }
 
     public void selectMultipleImage(View view) {
-       /* Intent intent = new Intent();
-        intent.setType("image*//*");
-        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-        intent.setAction(Intent.Action_mu);
-        startActivityForResult(Intent.createChooser(intent,"Select Picture"), 2);*/
-       /* Intent intent=new Intent(Action.ACTION_MULTIPLE_PICK);
-        startActivityForResult(intent, 200);*/
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 2);
     }
 
 
@@ -31,10 +28,10 @@ public class AddPostActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            if(requestCode == 2){
+            if (requestCode == 2) {
 
                 String[] imagesPath = data.getStringArrayExtra("all_path");
-                Log.i("****SizeOfImages",imagesPath.length+"");
+                Log.i("****SizeOfImages", imagesPath.length + "");
             }
         }
     }

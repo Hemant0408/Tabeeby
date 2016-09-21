@@ -3,16 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-     tools:context="com.tabeeby.doctor.activities.addpost.AddPostActivity">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="3dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_alignParentTop="true"
+    tools:context="com.tabeeby.doctor.activities.addpost.AddPostActivity">
 
+    <LinearLayout
+        android:id="@+id/linear_layout_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
         android:orientation="vertical">
 
         <EditText
@@ -21,10 +21,10 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginTop="10dp"
-            android:hint="@string/what_s_on_your_mind"
-            android:singleLine="false"
             android:background="@null"
+            android:hint="@string/what_s_on_your_mind"
             android:padding="12dp"
+            android:singleLine="false"
             android:textColor="@color/black_overlay"
             android:textColorHint="@color/colorDivider" />
 
@@ -35,29 +35,34 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/ImageList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
     </LinearLayout>
 
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    android:orientation="vertical">
-    <include
-        layout="@layout/light_horizontal_line"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/ImageList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_above="@+id/linearlayoutbottom"
+        android:layout_below="@+id/linear_layout_top" />
+
     <LinearLayout
+        android:id="@+id/linearlayoutbottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/light_horizontal_line"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:gravity="bottom"
             android:orientation="horizontal"
             android:padding="2dp"
@@ -69,8 +74,8 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="7dp"
-                android:padding="2dp"
                 android:layout_weight="1"
+                android:padding="2dp"
                 android:src="@drawable/ic_camera_24dp" />
 
             <ImageView
@@ -79,10 +84,10 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"
-                android:padding="2dp"
                 android:layout_weight="1"
                 android:clickable="true"
                 android:onClick="selectMultipleImage"
+                android:padding="2dp"
                 android:src="@drawable/ic_gallery_24dp" />
 
             <ImageView
@@ -91,8 +96,8 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"
-                android:padding="2dp"
                 android:layout_weight="1"
+                android:padding="2dp"
                 android:src="@drawable/ic_video_24dp" />
 
             <ImageView
@@ -101,20 +106,21 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"
-                android:padding="2dp"
                 android:layout_weight="1"
+                android:padding="2dp"
                 android:src="@drawable/ic_link_24dp" />
 
         </LinearLayout>
-    <Button
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:background="@color/colorPrimary"
-        android:inputType="textCapWords"
-        android:text="@string/post"
-        android:textColor="@color/white" />
-</LinearLayout>
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorPrimary"
+            android:inputType="textCapWords"
+            android:text="@string/post"
+            android:textColor="@color/white" />
+    </LinearLayout>
 </RelativeLayout>
