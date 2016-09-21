@@ -28,7 +28,6 @@ public class MyAppointmentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_appointment);
 
-
         ButterKnife.bind(this);
 
         setUpActionBar();
@@ -39,7 +38,6 @@ public class MyAppointmentActivity extends AppCompatActivity {
                 finish();
             }
         });
-
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.lv_my_patient_list);
         arrayList = new ArrayList<>();

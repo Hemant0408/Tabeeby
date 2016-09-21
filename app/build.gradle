@@ -27,7 +27,7 @@ android {
         }
         patient {
             applicationId "com.tabeeby.patient"
-            versionName "1.0-patient"
+            versionName "1.0-Patient"
             buildConfigField "boolean", "VERSION", "false"
         }
     }
@@ -63,7 +63,9 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.0.0'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.google.firebase:firebase-messaging:9.4.0'
-
     compile 'com.theartofdev.edmodo:android-image-cropper:2.3.+'
+
+    //parse json data
+    compile 'com.google.code.gson:gson:2.3.1'
 
 }

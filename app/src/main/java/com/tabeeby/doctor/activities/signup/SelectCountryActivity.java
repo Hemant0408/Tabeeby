@@ -17,30 +17,42 @@ import android.widget.TextView;
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.utils.Utils;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import okhttp3.internal.Util;
+
 public class SelectCountryActivity extends AppCompatActivity {
 
     static final int CUSTOM_DIALOG_ID = 0;
     ListView dialog_ListView;
     private Context mContext;
-    private TextView tv_selected_country;
-    private Button btn_next_step;
+
+    @Bind(R.id.tv_selected_country)
+    protected TextView tv_selected_country;
+
+    @Bind(R.id.btn_next_step)
+    protected Button btn_next_step;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_country);
+        ButterKnife.bind(this);
         mContext = this;
 
-        tv_selected_country = (TextView) findViewById(R.id.tv_selected_country);
-        btn_next_step = (Button) findViewById(R.id.btn_next_step);
 
         btn_next_step.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (com.tabeeby.doctor.BuildConfig.VERSION) {
-                    startActivity(new Intent(mContext, RegistrationScreen1Activity.class));
-                } else {
-                    startActivity(new Intent(mContext, SignUpActivity.class));
+                if(!tv_selected_country.getText().toString().trim().equals("")) {
+                    if (com.tabeeby.doctor.BuildConfig.VERSION) {
+                        startActivity(new Intent(mContext, RegistrationScreen1Activity.class));
+                    } else {
+                        startActivity(new Intent(mContext, SignUpActivity.class));
+                    }
+                }
+                else {
+                    Utils.createToastShort(getString(R.string.select_country_error_msg),mContext);
                 }
             }
         });
@@ -73,15 +85,15 @@ public class SelectCountryActivity extends AppCompatActivity {
                 //Prepare ListView in dialog
                 dialog_ListView = (ListView) dialog.findViewById(R.id.dialoglist);
                 final ArrayAdapter<String> adapter
-                        = new ArrayAdapter<String>(this, R.layout.country_list_item, Utils.country_list);
+                        = new ArrayAdapter<String>(this, R.layout.country_list_item, Utils.getCountryList(mContext));
                 dialog_ListView.setAdapter(adapter);
                 dialog_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view,
                                             int position, long id) {
 
                         tv_selected_country.setText(adapter.getItem(position));
+                        Utils.storeSharedPreference(mContext,"Country",tv_selected_country.getText().toString().trim());
                         dismissDialog(CUSTOM_DIALOG_ID);
                     }
                 });

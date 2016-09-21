@@ -18,7 +18,6 @@ public class LocalSharedManager {
     }
 
     public SharedPreferences getGcmPreferences() {
-
         return sharedPreferences;
     }
 

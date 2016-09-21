@@ -82,7 +82,7 @@
                 android:padding="2dp"
                 android:layout_weight="1"
                 android:clickable="true"
-                android:onClick="selectMultipleImage"
+                android:onClick="selectMultipalImage"
                 android:src="@drawable/ic_gallery_24dp" />
 
             <ImageView

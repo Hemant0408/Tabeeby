@@ -61,7 +61,7 @@ public class EventsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setElevation(0.2f);
-        getSupportActionBar().setTitle("Events");
+        getSupportActionBar().setTitle(getString(R.string.events));
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
     }
 

@@ -16,6 +16,9 @@ import com.tabeeby.doctor.activities.login.LoginActivity;
 import com.tabeeby.doctor.activities.signup.SelectLanguageActivity;
 import com.tabeeby.doctor.adapter.ViewPagerAdapter;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 
 public class ViewPagerActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
 
@@ -23,12 +26,19 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
     public static Integer[] mImage;
     public static Integer[] mImageText;
     protected View view;
-    private ViewPager intro_images;
-    private LinearLayout pager_indicator;
+
+    @Bind(R.id.pager_introduction)
+    protected ViewPager intro_images;
+
+    @Bind(R.id.viewPagerCountDots)
+    protected LinearLayout pager_indicator;
+
+    @Bind(R.id.tv_skip)
+    protected TextView tv_skip;
+
     private int dotsCount;
     private ImageView[] dots;
     private ViewPagerAdapter mAdapter;
-    private TextView tv_skip;
     private Context mContext;
 
     @Override
@@ -38,7 +48,7 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pager);
         mContext = this;
-
+        ButterKnife.bind(this);
 
         if (com.tabeeby.doctor.BuildConfig.VERSION) {
             mImageResources = new Integer[]{
@@ -80,9 +90,6 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
     }
 
     public void setReference() {
-        intro_images = (ViewPager) findViewById(R.id.pager_introduction);
-        tv_skip = (TextView) findViewById(R.id.tv_skip);
-        pager_indicator = (LinearLayout) findViewById(R.id.viewPagerCountDots);
         tv_skip.setOnClickListener(this);
         mAdapter = new ViewPagerAdapter(mContext, mImageResources);
         intro_images.setAdapter(mAdapter);
@@ -118,9 +125,8 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_skip:
-                Intent i = new Intent(getBaseContext(), LoginActivity.class);
+                Intent i = new Intent(mContext, LoginActivity.class);
                 startActivity(i);
-                finish();
                 break;
         }
     }
@@ -139,7 +145,6 @@ public class ViewPagerActivity extends AppCompatActivity implements ViewPager.On
 
     @Override
     public void onPageScrollStateChanged(int state) {
-
     }
 
     public void nextStep(View view) {

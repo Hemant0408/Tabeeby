@@ -26,10 +26,13 @@ public class SelectLanguageActivity extends AppCompatActivity {
 
     @Bind(R.id.txt_lang_english)
     protected TextView mTextViewEnglish;
+
     @Bind(R.id.txt_lang_arebic)
     protected TextView mTextViewArebic;
+
     @Bind(R.id.btn_next_step)
     Button btn_next_step;
+
     private Context mContext;
 
     @Override
@@ -40,10 +43,8 @@ public class SelectLanguageActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         if (Utils.retrieveSharedPreference(mContext, "Language") != null) {
-            if (Utils.retrieveSharedPreference(mContext, "Language").equals("E")) {
-                Log.i("Language", "English");
-            } else if (Utils.retrieveSharedPreference(mContext, "Language").equals("A")) {
-                Log.i("Language", "Arabic");
+            if (Utils.retrieveSharedPreference(mContext, "Language").equals("en")) {
+            } else if (Utils.retrieveSharedPreference(mContext, "Language").equals("ar")) {
             }
         }
     }
@@ -90,14 +91,15 @@ public class SelectLanguageActivity extends AppCompatActivity {
                             Bidi.DIRECTION_DEFAULT_RIGHT_TO_LEFT);
                     bidi.isRightToLeft();
 
-                    Utils.storeSharedPreference(mContext, "Language", "A");
+                    Utils.storeSharedPreference(mContext, "Language", "ar");
                 }
                 else
                 {
                     Bidi bidi = new Bidi(app_local,
                             Bidi.DIRECTION_DEFAULT_LEFT_TO_RIGHT);
                     bidi.isLeftToRight();
-                    application.updateLanguage(mContext, "en");
+                    Utils.storeSharedPreference(mContext, "Language", "en");
+                    // application.updateLanguage(mContext, "en");
                 }
                 application.updateLanguage(mContext, app_local);
                 startActivity(new Intent(mContext, SelectCountryActivity.class));

@@ -10,8 +10,8 @@ import android.view.View;
 
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
+//import com.theartofdev.edmodo.cropper.CropImage;
+//import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.File;
 
@@ -60,7 +60,7 @@ public class UploadProfilePicture extends AppCompatActivity {
     }
 
 
-    @Override
+   /* @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
@@ -94,7 +94,6 @@ public class UploadProfilePicture extends AppCompatActivity {
                 }
             }
         }
-    }
-
+    }*/
 
 }

@@ -4,20 +4,50 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
+import com.facebook.FacebookSdk;
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
+import com.tabeeby.doctor.activities.signup.OtpPageActivity;
 import com.tabeeby.doctor.activities.signup.SelectLanguageActivity;
+import com.tabeeby.doctor.application.application;
+import com.tabeeby.doctor.httpclient.API;
+import com.tabeeby.doctor.utils.ServerUtils;
+import com.tabeeby.doctor.utils.Utils;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
     private Context mContext;
+    API api;
+
+    @Bind(R.id.edtUserName)
+    protected EditText edtUserName;
+
+    @Bind(R.id.edtPassword)
+    protected EditText edtPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
+        ButterKnife.bind(this);
         mContext = this;
+        api = application.getInstance().getHttpService();
     }
 
     public void needAnAccount(View view) {
@@ -26,7 +56,40 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void nextStep(View view) {
-        startActivity(new Intent(mContext, MainActivity.class));
-        finishAffinity();
+       /* startActivity(new Intent(mContext, MainActivity.class));
+        finishAffinity();*/
+        makeHTTPcall();
     }
+
+    private void makeHTTPcall() {
+        Call<ResponseBody> responseBodyCall = api.loginApi(edtUserName.getText().toString().trim(), edtPassword.getText().toString().trim());
+        responseBodyCall.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                String responseBody = Utils.convertTypedBodyToString(response.body());
+                Log.i("**ReponseBody",responseBody);
+                Log.i("**ResponceCode",response.code()+"");
+                if (response.code() == ServerUtils.STATUS_OK) {
+                    try {
+                        JSONObject jsonObject=new JSONObject(responseBody);
+                        String data=jsonObject.getString("data");
+                        JSONObject DataJsonObject=new JSONObject(data);
+                        String access_token=DataJsonObject.getString("access_token");
+                        Utils.storeSharedPreference(mContext,"access_token",access_token);
+                        Utils.createToastLong("Welcome to Tabeeby",mContext);
+                        startActivity(new Intent(mContext, MainActivity.class));
+                        }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    t.printStackTrace();
+            }
+        });
+    }
+
 }

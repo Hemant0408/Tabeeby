@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.tabeeby.doctor.R;
+import com.tabeeby.doctor.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -49,14 +50,14 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
     }
 
     public void showDoctorDialog(View view) {
-        title = "Select Type";
+        title = getString(R.string.select_type);
         showCustomDialogDoctor(title);
         mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_dr_type_pink_48dp));
         mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_health_pro_grey_48dp));
     }
 
     public void showOrganisationDialog(View view) {
-        title = "Select Health Care Provider";
+        title = getString(R.string.select_health_care_provider);
         showCustomDialogHealthCare(title);
         mDoctor.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_dr_type_grey_48dp));
         mOrganisation.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_health_pro_pink_48dp));
@@ -83,8 +84,11 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
         window.setLayout(screenWidth, LinearLayout.LayoutParams.WRAP_CONTENT);
 
         doctorType.clear();
-        doctorType.add("Public Doctor");
-        doctorType.add("Private Doctor");
+        doctorType.add(getString(R.string.consultant));
+        doctorType.add(getString(R.string.specialist));
+        doctorType.add(getString(R.string.registrar));
+        doctorType.add(getString(R.string.general_practitioner));
+        doctorType.add(getString(R.string.other));
 
         final ArrayAdapter<String> adapter
                 = new ArrayAdapter<String>(this, R.layout.country_list_item, doctorType);
@@ -104,7 +108,8 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
                 if (dialog != null)
                     dialog.dismiss();
                 tv_doctor.setText(selectedValue);
-                tv_health_care.setText("Health care provider");
+                tv_health_care.setText(getString(R.string.health_care_provider));
+                Utils.storeSharedPreference(mContext,"doctor_type",selectedValue);
             }
         });
 
@@ -132,12 +137,12 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
         window.setLayout(screenWidth, LinearLayout.LayoutParams.WRAP_CONTENT);
 
         healthCare.clear();
-        healthCare.add("Clinics and Hospital");
-        healthCare.add("Fitness Center");
-        healthCare.add("Pharmacies");
-        healthCare.add("Medical Tourism");
-        healthCare.add("Labs");
-        healthCare.add("Home Healthcare");
+        healthCare.add(getString(R.string.clinics_and_hospital));
+        healthCare.add(getString(R.string.fitness_center));
+        healthCare.add(getString(R.string.pharmacies));
+        healthCare.add(getString(R.string.medical_tourism));
+        healthCare.add(getString(R.string.labs));
+        healthCare.add(getString(R.string.home_healthcare));
 
 
         final ArrayAdapter<String> adapter
@@ -155,6 +160,7 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
                     dialog.dismiss();
                 tv_health_care.setText(selectedValue);
                 tv_doctor.setText("Doctor");
+                Utils.storeSharedPreference(mContext,"doctor_type",selectedValue);
             }
         });
 
