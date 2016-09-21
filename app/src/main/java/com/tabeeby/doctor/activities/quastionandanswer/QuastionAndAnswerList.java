@@ -1,36 +1,64 @@
 package com.tabeeby.doctor.activities.quastionandanswer;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.tabeeby.doctor.R;
+import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 import com.tabeeby.doctor.adapter.ExpandableListAdapter;
+import com.tabeeby.doctor.adapter.NotificationAdapter;
+import com.tabeeby.doctor.adapter.QuestionAnswerAdapter;
+import com.tabeeby.doctor.application.application;
+import com.tabeeby.doctor.httpclient.API;
+import com.tabeeby.doctor.model.QuestionsModel;
+import com.tabeeby.doctor.utils.ServerUtils;
+import com.tabeeby.doctor.utils.Utils;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class QuastionAndAnswerList extends AppCompatActivity {
-    ExpandableListAdapter listAdapter;
-    ExpandableListView expListView;
-    List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
+    private ArrayList<QuestionsModel> mArraylistQuestionlist;
+    QuestionAnswerAdapter questionAnswerAdapter;
+    LinearLayoutManager linearLayoutManager;
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
+
+    API api;
+    private Context mContext;
+
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quastion_and_answer_list);
-
+        mContext=this;
         ButterKnife.bind(this);
+        api = application.getInstance().getHttpService();
 
         setUpActionBar();
 
@@ -41,58 +69,10 @@ public class QuastionAndAnswerList extends AppCompatActivity {
             }
         });
 
-        // get the listview
-        expListView = (ExpandableListView) findViewById(R.id.lvExp);
+        recyclerView = (RecyclerView) findViewById(R.id.lv_question_and_answer_list);
 
-        // preparing list data
-        prepareListData();
+        makeHTTPcall();
 
-        listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
-
-        // setting list adapter
-        expListView.setAdapter(listAdapter);
-    }
-
-    /*
-    * Preparing the list data
-    */
-    private void prepareListData() {
-        listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<String>>();
-
-        // Adding child data
-        listDataHeader.add("Top 250");
-        listDataHeader.add("Now Showing");
-        listDataHeader.add("Coming Soon..");
-
-        // Adding child data
-        List<String> top250 = new ArrayList<String>();
-        top250.add("The Shawshank Redemption");
-        top250.add("The Godfather");
-        top250.add("The Godfather: Part II");
-        top250.add("Pulp Fiction");
-        top250.add("The Good, the Bad and the Ugly");
-        top250.add("The Dark Knight");
-        top250.add("12 Angry Men");
-
-        List<String> nowShowing = new ArrayList<String>();
-        nowShowing.add("The Conjuring");
-        nowShowing.add("Despicable Me 2");
-        nowShowing.add("Turbo");
-        nowShowing.add("Grown Ups 2");
-        nowShowing.add("Red 2");
-        nowShowing.add("The Wolverine");
-
-        List<String> comingSoon = new ArrayList<String>();
-        /*comingSoon.add("2 Guns");
-        comingSoon.add("The Smurfs 2");
-        comingSoon.add("The Spectacular Now");
-        comingSoon.add("The Canyons");
-        comingSoon.add("Europa Report");*/
-
-        listDataChild.put(listDataHeader.get(0), top250); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), nowShowing);
-        listDataChild.put(listDataHeader.get(2), comingSoon);
     }
 
 
@@ -103,5 +83,53 @@ public class QuastionAndAnswerList extends AppCompatActivity {
         getSupportActionBar().setElevation(0.2f);
         getSupportActionBar().setTitle("Q and A List");
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+    }
+
+
+
+    private void makeHTTPcall() {
+        Call<ResponseBody> responseBodyCall = api.QuestionListApi();
+        responseBodyCall.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                String responseBody = Utils.convertTypedBodyToString(response.body());
+                Log.i("**ReponseBody",responseBody);
+                Log.i("**ResponceCode",response.code()+"");
+                if (response.code() == ServerUtils.STATUS_OK) {
+                    try {
+
+                        Gson gson = new Gson();
+                        Type type = new TypeToken<List<QuestionsModel>>() {
+                        }.getType();
+
+
+                        JSONObject jsonObject=new JSONObject(responseBody);
+                        String data=jsonObject.getString("data");
+                        JSONObject DataJsonObject=new JSONObject(data);
+                        JSONArray jsonArray = DataJsonObject.getJSONArray("questions");
+                        mArraylistQuestionlist = new ArrayList<>();
+                        mArraylistQuestionlist = gson.fromJson(jsonArray.toString(), type);
+
+                        if(mArraylistQuestionlist.size()!=0)
+                        {
+                            questionAnswerAdapter = new QuestionAnswerAdapter(mContext, mArraylistQuestionlist);
+                            linearLayoutManager = new LinearLayoutManager(mContext);
+                            recyclerView.setLayoutManager(linearLayoutManager);
+                            recyclerView.setHasFixedSize(true);
+                            recyclerView.setAdapter(questionAnswerAdapter);
+                        }
+
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
     }
 }

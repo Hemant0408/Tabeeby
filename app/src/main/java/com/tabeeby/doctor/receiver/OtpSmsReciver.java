@@ -27,7 +27,6 @@ public class OtpSmsReciver extends BroadcastReceiver {
                     }
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }

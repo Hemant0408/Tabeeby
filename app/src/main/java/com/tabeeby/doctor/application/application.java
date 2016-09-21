@@ -10,6 +10,9 @@ import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 
+import com.tabeeby.doctor.BuildConfig;
+import com.tabeeby.doctor.httpclient.API;
+import com.tabeeby.doctor.httpclient.ServiceGenerator;
 import com.tabeeby.doctor.utils.LocalSharedManager;
 
 import java.security.MessageDigest;
@@ -20,6 +23,9 @@ import java.util.Locale;
  * Created by Lenovo R61 on 8/6/2016.
  */
 public class application extends Application {
+
+    private static application mInstance;
+    private API api;
 
     public static void updateLanguage(Context ctx, String lang) {
 
@@ -47,7 +53,7 @@ public class application extends Application {
     public void onCreate() {
         updateLanguage(this, null);
         super.onCreate();
-
+        mInstance = this;
         printHashKey();
     }
 
@@ -68,4 +74,23 @@ public class application extends Application {
 
         }
     }
+
+    public static synchronized application getInstance() {
+        return mInstance;
+    }
+
+    public API getHttpService() {
+        if (api == null) {
+            try {
+                boolean isDebug=BuildConfig.DEBUG;
+                api = ServiceGenerator.createService(API.class,isDebug, this);
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+        return api;
+    }
+
 }

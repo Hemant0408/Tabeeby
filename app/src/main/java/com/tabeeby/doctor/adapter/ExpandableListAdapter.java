@@ -58,19 +58,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         TextView txtListChild = (TextView) convertView
                 .findViewById(R.id.lblListItem);
 
-
-        if(this._listDataChild.get(this._listDataHeader.get(groupPosition)).size()-1==childPosition)
-        {
-            linearLayout.setVisibility(View.VISIBLE);
-        }
-        else
-        {
-            if(this._listDataChild.get(this._listDataHeader.get(groupPosition)).size()==0)
-            {
-                linearLayout.setVisibility(View.VISIBLE);
-            }
-        }
-
         return convertView;
     }
 
@@ -105,9 +92,9 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             convertView = infalInflater.inflate(R.layout.list_group, null);
         }
 
-        TextView lblListHeader = (TextView) convertView
+       /* TextView lblListHeader = (TextView) convertView
                 .findViewById(R.id.lblListHeader);
-        lblListHeader.setTypeface(null, Typeface.BOLD);
+      // lblListHeader.setTypeface(null, Typeface.BOLD);*/
         //  lblListHeader.setText(headerTitle);
         ImageView img = (ImageView) convertView.findViewById(R.id.arrow);
 

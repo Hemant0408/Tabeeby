@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.tabeeby.doctor.BuildConfig;
 import com.tabeeby.doctor.R;
 
 public class AddPostActivity extends AppCompatActivity {
@@ -14,6 +15,7 @@ public class AddPostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_post);
+
     }
 
     public void selectMultipleImage(View view) {

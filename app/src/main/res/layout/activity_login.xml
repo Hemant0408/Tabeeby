@@ -47,7 +47,7 @@
                 android:layout_marginTop="30dp">
 
                 <EditText
-                    android:id="@+id/edtType"
+                    android:id="@+id/edtUserName"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:drawableLeft="@drawable/ic_mail_white_18dp"
@@ -63,6 +63,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/edtPassword"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:drawableLeft="@drawable/ic_key_white_18dp"
@@ -96,17 +97,19 @@
                 android:layout_marginBottom="5dp"
                 android:text="@string/or" />
 
-            <!-- <com.facebook.login.widget.LoginButton
+             <com.facebook.login.widget.LoginButton
                  android:id="@+id/login_button"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
                  android:layout_marginTop="10dp"
                  android:layout_marginBottom="10dp"
+                 android:paddingTop="14dp"
+                 android:paddingBottom="14dp"
                  android:layout_marginLeft="50dp"
                  android:layout_marginRight="50dp"
-                 android:visibility="visible" />-->
+                 android:visibility="visible" />
 
-            <Button
+           <!-- <Button
                 android:id="@+id/login_button"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -115,7 +118,7 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/fb"
-                android:visibility="visible" />
+                android:visibility="visible" />-->
 
             <TextView
                 android:layout_width="wrap_content"

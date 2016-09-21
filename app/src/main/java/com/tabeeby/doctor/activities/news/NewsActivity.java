@@ -62,7 +62,7 @@ public class NewsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setElevation(0.2f);
-        getSupportActionBar().setTitle("News");
+        getSupportActionBar().setTitle(getString(R.string.news));
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
     }
 

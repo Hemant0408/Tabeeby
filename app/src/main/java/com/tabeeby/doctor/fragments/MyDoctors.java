@@ -45,10 +45,8 @@ public class MyDoctors extends Fragment {
 
     private ViewPagerDoctorAdapter setUpViewPager() {
         viewPagerAdapter = new ViewPagerDoctorAdapter(getChildFragmentManager());
-
         viewPagerAdapter.addFragment(new MyDoctorsFragment(), getActivity().getResources().getString(R.string.my_doctors));
         viewPagerAdapter.addFragment(new RecommendFragment(), getActivity().getResources().getString(R.string.recommended));
-
         return viewPagerAdapter;
     }
 

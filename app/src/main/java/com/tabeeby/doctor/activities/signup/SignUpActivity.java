@@ -3,11 +3,15 @@ package com.tabeeby.doctor.activities.signup;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -19,21 +23,60 @@ import com.facebook.login.widget.LoginButton;
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.login.LoginActivity;
 import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
+import com.tabeeby.doctor.application.application;
+import com.tabeeby.doctor.httpclient.API;
+import com.tabeeby.doctor.utils.ServerUtils;
 import com.tabeeby.doctor.utils.Utils;
+
+import org.json.JSONObject;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SignUpActivity extends AppCompatActivity {
     CallbackManager callbackManager;
     private Context mContext;
+
+    @Bind(R.id.edtFirstName)
+    protected EditText mFirstName;
+
+    @Bind(R.id.edtLastName)
+    protected EditText mLastName;
+
+    @Bind(R.id.edtUserEmail)
+    protected EditText mUserEmail;
+
+    @Bind(R.id.edtMobileNumber)
+    protected EditText mMobileNumber;
+
+    @Bind(R.id.textInputFirstName)
+    protected TextInputLayout mTextInputFirstName;
+
+    @Bind(R.id.textInputLastName)
+    protected TextInputLayout mTextInputLastName;
+
+    @Bind(R.id.textInputUserEmail)
+    protected TextInputLayout  mTextInputUserEmail;
+
+    @Bind(R.id.textInputMobileNumber)
+    protected TextInputLayout mTextInputMobileNumber;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         mContext = this;
+        ButterKnife.bind(this);
 
-
+        //Call facebook api
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
+
         LoginButton loginButton = (LoginButton) findViewById(R.id.usersettings_fragment_login_button);
         loginButton.setReadPermissions("user_friends");
 
@@ -60,10 +103,108 @@ public class SignUpActivity extends AppCompatActivity {
                 // App code
             }
         });
+
+
+        //Remove error text from field
+        mFirstName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+             mTextInputFirstName.setError(null);
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        mLastName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            mTextInputLastName.setError(null);
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
+        mUserEmail.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            mTextInputUserEmail.setError(null);
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
+        mMobileNumber.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            mTextInputMobileNumber.setError(null);
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
     }
 
     public void nextStep(View view) {
-        startActivity(new Intent(mContext, OtpPageActivity.class));
+        if(validate()) {
+            Intent i = new Intent(mContext, PasswordScreenActivity.class);
+            i.putExtra("UserEmail", mUserEmail.getText().toString().trim());
+            i.putExtra("FirstName", mFirstName.getText().toString().trim());
+            i.putExtra("LastName", mLastName.getText().toString().trim());
+            i.putExtra("MobileNumber", mMobileNumber.getText().toString().trim());
+            startActivity(i);
+        }
+    }
+
+    //check validation of form
+    public boolean validate()
+    {
+        if(mFirstName.getText().toString().trim().equals(""))
+        {
+            mTextInputFirstName.setError(getString(R.string.signup_first_name_error_msg));
+            return false;
+        }
+        if(mLastName.getText().toString().trim().equals(""))
+        {
+            mTextInputLastName.setError(getString(R.string.signup_last_name_error_msg));
+            return  false;
+        }
+        if(mUserEmail.getText().toString().trim().equals(""))
+        {
+            mTextInputUserEmail.setError(getString(R.string.signup_email_address_error_msg));
+            return false;
+        }
+        if(!android.util.Patterns.EMAIL_ADDRESS.matcher(mUserEmail.getText().toString().trim()).matches())
+        {
+            mTextInputUserEmail.setError(getString(R.string.signup_valid_email_address_msg));
+            return false;
+        }
+        if(mMobileNumber.getText().toString().trim().equals(""))
+        {
+            mTextInputMobileNumber.setError(getString(R.string.signup_mobile_number_error_msg));
+            return false;
+        }
+
+        if(mMobileNumber.getText().toString().trim().length()<10 || mMobileNumber.getText().toString().trim().length()>10)
+        {
+            mTextInputMobileNumber.setError(getString(R.string.signup_valid_mobile_number_error_msg));
+            return false;
+        }
+
+        return true;
     }
 
     public void alreadyMember(View view) {
@@ -76,108 +217,5 @@ public class SignUpActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-  /*  private UiLifecycleHelper uiHelper;
-    private View otherView;
-    private static final String TAG = "MainActivity";
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        // Set View that should be visible after log-in invisible initially
-        otherView = (View) findViewById(R.id.other_views);
-        otherView.setVisibility(View.GONE);
-        // To maintain FB Login session
-        uiHelper = new UiLifecycleHelper(this, callback);
-        uiHelper.onCreate(savedInstanceState);
-    }
-
-    // Called when session changes
-    private Session.StatusCallback callback = new Session.StatusCallback() {
-        @Override
-        public void call(Session session, SessionState state,
-                         Exception exception) {
-            onSessionStateChange(session, state, exception);
-        }
-    };
-
-    // When session is changed, this method is called from callback method
-    private void onSessionStateChange(Session session, SessionState state,
-                                      Exception exception) {
-        final TextView name = (TextView) findViewById(R.id.name);
-        final TextView gender = (TextView) findViewById(R.id.gender);
-        final TextView location = (TextView) findViewById(R.id.location);
-        // When Session is successfully opened (User logged-in)
-        if (state.isOpened()) {
-            Log.i(TAG, "Logged in...");
-            // make request to the /me API to get Graph user
-            Request.newMeRequest(session, new Request.GraphUserCallback() {
-
-                // callback after Graph API response with user
-                // object
-                @Override
-                public void onCompleted(GraphUser user, Response response) {
-                    if (user != null) {
-                        // Set view visibility to true
-                        otherView.setVisibility(View.VISIBLE);
-                        // Set User name
-                        name.setText("Hello " + user.getName());
-                        // Set Gender
-                        gender.setText("Your Gender: "
-                                + user.getProperty("gender").toString());
-                        location.setText("Your Current Location: "
-                                + user.getLocation().getProperty("name")
-                                .toString());
-                    }
-                }
-            }).executeAsync();
-        } else if (state.isClosed()) {
-            Log.i(TAG, "Logged out...");
-            otherView.setVisibility(View.GONE);
-        }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        uiHelper.onActivityResult(requestCode, resultCode, data);
-        Log.i(TAG, "OnActivityResult...");
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        uiHelper.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        uiHelper.onPause();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        uiHelper.onDestroy();
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        uiHelper.onSaveInstanceState(outState);
-    }
-}*/

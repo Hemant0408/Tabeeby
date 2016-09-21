@@ -133,7 +133,7 @@ public class UploadProfilePicture extends AppCompatActivity {
         startActivity(i);
     }
 
-    @Override
+   /* @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
@@ -191,5 +191,9 @@ public class UploadProfilePicture extends AppCompatActivity {
             }
             CropActivity.setFlag(false);
         }
+<<<<<<< HEAD
     }
+=======
+    }*/
+
 }

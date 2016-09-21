@@ -2,9 +2,11 @@ package com.tabeeby.doctor.activities.splashscreen;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ProgressBar;
 
 import com.tabeeby.doctor.R;
@@ -24,6 +26,8 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         mContext = this;
         pbHeaderProgress = (ProgressBar) findViewById(R.id.progress_bar);
+
+        Log.i("***String",ApplicationInfo.FLAG_DEBUGGABLE+"");
 
         // pbHeaderProgress.getIndeterminateDrawable().setColorFilter(mContext.getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.MULTIPLY);
 
