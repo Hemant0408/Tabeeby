@@ -8,25 +8,24 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.tabeeby.doctor.activities.quastionandanswer.ViewQuestionAndAnswer"
     tools:showIn="@layout/activity_view_question_and_answer">
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/lv_answer_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/linear_comment_footer">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_above="@+id/linear_comment_footer"></android.support.v7.widget.RecyclerView>
 
 
     <LinearLayout
         android:id="@+id/linear_comment_footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/rectangle_shape"
-        android:orientation="vertical"
-        android:layout_alignParentBottom="true"
-        >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,25 +39,24 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="10dp"
-                android:hint="@string/type_your_comment"
-                android:singleLine="false"
-                android:background="@null"
-                android:padding="12dp"
-                android:textColor="@color/black_overlay"
-                android:textColorHint="@color/colorDivider"
                 android:layout_weight="1"
-                />
+                android:background="@null"
+                android:hint="@string/type_your_comment"
+                android:padding="12dp"
+                android:singleLine="false"
+                android:textColor="@color/black_overlay"
+                android:textColorHint="@color/colorDivider" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"
-                android:padding="2dp"
                 android:layout_weight="0"
-                android:layout_gravity="center"
                 android:clickable="true"
                 android:onClick="putAnswer"
+                android:padding="2dp"
                 android:src="@drawable/ic_sent_24dp" />
 
         </LinearLayout>

@@ -54,31 +54,32 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
     private AnswerListAdapter findDoctorAdapter;
     private LinearLayoutManager linearLayoutManager;
     private RecyclerView recyclerView;
-    private String mUserid,mQuestionId;
+    private String mUserid, mQuestionId;
     private ArrayList<AnswerModel> mArraylistQuestionlist;
     private ArrayList<AnswerModel> mArrayListAnswerList;
     private AnswerModel mAnswermodel;
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_question_and_answer);
-        mContext=this;
+        mContext = this;
         ButterKnife.bind(this);
         setUpActionBar();
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {finish();}
+            public void onClick(View v) {
+                finish();
+            }
         });
         api = MyApplication.getInstance().getHttpService();
-        mArrayListAnswerList=new ArrayList<>();
-        mAnswermodel=new AnswerModel();
+        mArrayListAnswerList = new ArrayList<>();
+        mAnswermodel = new AnswerModel();
 
         recyclerView = (RecyclerView) findViewById(R.id.lv_answer_list);
 
-        if(getIntent().getExtras()!=null) {
+        if (getIntent().getExtras() != null) {
 
             if (getIntent().getExtras().getString("category").trim() != null) {
                 mAnswermodel.setQuestion_category(getIntent().getExtras().getString("category"));
@@ -92,24 +93,24 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
                 mAnswermodel.setQuestion_text(getIntent().getExtras().getString("qua_desc").trim());
             }
 
-            if(getIntent().getExtras().getString("view_count").trim()!=null) {
-                mAnswermodel.setQuestion_view_count( getIntent().getExtras().getString("view_count").trim());
+            if (getIntent().getExtras().getString("view_count").trim() != null) {
+                mAnswermodel.setQuestion_view_count(getIntent().getExtras().getString("view_count").trim());
             }
 
-            if(getIntent().getExtras().getString("answer_count").trim()!=null) {
+            if (getIntent().getExtras().getString("answer_count").trim() != null) {
                 mAnswermodel.setQuastion_answer_count(getIntent().getExtras().getString("answer_count").trim());
             }
 
-            if(getIntent().getExtras().getString("ask_by").trim()!=null) {
+            if (getIntent().getExtras().getString("ask_by").trim() != null) {
                 mAnswermodel.setQuastion_ask_by(getIntent().getExtras().getString("ask_by").trim());
             }
 
-            if(getIntent().getExtras().getString("user_id").trim()!=null) {
+            if (getIntent().getExtras().getString("user_id").trim() != null) {
                 mUserid = getIntent().getExtras().getString("user_id").trim();
                 mAnswermodel.setUser_id(getIntent().getExtras().getString("user_id").trim());
             }
 
-            if(getIntent().getExtras().getString("question_id").trim()!=null) {
+            if (getIntent().getExtras().getString("question_id").trim() != null) {
                 mQuestionId = getIntent().getExtras().getString("question_id");
                 mAnswermodel.setQuestion_id(getIntent().getExtras().getString("question_id"));
             }
@@ -124,17 +125,15 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
     }
 
 
-    public void getAnswers()
-    {
-        if(mQuestionId!=null)
-        {
+    public void getAnswers() {
+        if (mQuestionId != null) {
             Call<ResponseBody> responseBodyCall = api.AnswerListApi(mQuestionId);
             responseBodyCall.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     String responseBody = Utils.convertTypedBodyToString(response.body());
-                    Log.i("**ReponseBody",responseBody);
-                    Log.i("**ResponceCode",response.code()+"");
+                    Log.i("**ReponseBody", responseBody);
+                    Log.i("**ResponceCode", response.code() + "");
                     if (response.code() == ServerUtils.STATUS_OK) {
                         try {
 
@@ -142,37 +141,33 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
                             Type type = new TypeToken<List<AnswerModel>>() {
                             }.getType();
 
-                            JSONObject jsonObject=new JSONObject(responseBody);
-                            String data=jsonObject.getString("data");
-                            JSONObject DataJsonObject=new JSONObject(data);
+                            JSONObject jsonObject = new JSONObject(responseBody);
+                            String data = jsonObject.getString("data");
+                            JSONObject DataJsonObject = new JSONObject(data);
                             JSONArray jsonArray = DataJsonObject.getJSONArray("answers");
                             mArraylistQuestionlist = new ArrayList<>();
                             mArraylistQuestionlist = gson.fromJson(jsonArray.toString(), type);
 
-                            if(mArraylistQuestionlist!=null)
-                            {
-                                for(int i=0;i<mArraylistQuestionlist.size();i++)
-                                {
+                            if (mArraylistQuestionlist != null) {
+                                for (int i = 0; i < mArraylistQuestionlist.size(); i++) {
                                     mArrayListAnswerList.add(mArraylistQuestionlist.get(i));
                                 }
                             }
 
-                            if(mArrayListAnswerList.size()!=0)
-                            {
-                                findDoctorAdapter = new AnswerListAdapter(mContext,mArrayListAnswerList);
+                            if (mArrayListAnswerList.size() != 0) {
+                                findDoctorAdapter = new AnswerListAdapter(mContext, mArrayListAnswerList);
                                 linearLayoutManager = new LinearLayoutManager(mContext);
                                 recyclerView.setLayoutManager(linearLayoutManager);
                                 recyclerView.setHasFixedSize(true);
                                 recyclerView.setAdapter(findDoctorAdapter);
                             }
 
-                        }
-                        catch (Exception e)
-                        {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
                 }
+
                 @Override
                 public void onFailure(Call<ResponseBody> call, Throwable t) {
                     t.printStackTrace();
@@ -180,6 +175,7 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
             });
         }
     }
+
     private void setUpActionBar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
@@ -219,8 +215,7 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
         }
     }
 
-    public void ViewCount()
-    {
+    public void ViewCount() {
         String header = "Bearer " + Utils.retrieveSharedPreference(mContext, getString(R.string.pref_access_token));
         Call<ResponseBody> responseBodyCall = api.addViewCountApi(header, mQuestionId, mUserid);
         responseBodyCall.enqueue(new Callback<ResponseBody>() {

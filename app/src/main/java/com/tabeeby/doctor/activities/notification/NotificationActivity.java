@@ -28,7 +28,6 @@ public class NotificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
 
-
         ButterKnife.bind(this);
         setUpActionBar();
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -37,7 +36,6 @@ public class NotificationActivity extends AppCompatActivity {
                 finish();
             }
         });
-
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.lv_notification_list);
         arrayList = new ArrayList<>();

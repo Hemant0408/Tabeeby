@@ -79,7 +79,6 @@ public class SignUpActivity extends AppCompatActivity {
                 Utils.storeSharedPreference(mContext, "user_name", profile.getName());
                 startActivity(new Intent(mContext, MainActivity.class));
                 finishAffinity();
-
             }
 
             @Override

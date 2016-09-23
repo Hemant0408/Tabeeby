@@ -40,7 +40,6 @@ public class MyPatientActivity extends AppCompatActivity {
             }
         });
 
-
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.lv_my_patient_list);
         arrayList = new ArrayList<>();
 
@@ -57,7 +56,6 @@ public class MyPatientActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(findDoctorAdapter);
-
     }
 
     private void setUpActionBar() {
