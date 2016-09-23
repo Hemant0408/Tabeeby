@@ -11,6 +11,7 @@ import android.widget.ProgressBar;
 
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.upoladpicture.UploadProfilePicture;
+import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 import com.tabeeby.doctor.activities.viewpager.ViewPagerActivity;
 import com.tabeeby.doctor.utils.Utils;
 
@@ -27,16 +28,18 @@ public class SplashScreenActivity extends AppCompatActivity {
         mContext = this;
         pbHeaderProgress = (ProgressBar) findViewById(R.id.progress_bar);
 
-        Log.i("***String",ApplicationInfo.FLAG_DEBUGGABLE+"");
-
-        // pbHeaderProgress.getIndeterminateDrawable().setColorFilter(mContext.getResources().getColor(R.color.colorPrimary), PorterDuff.Mode.MULTIPLY);
-
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Utils.storeSharedPreference(mContext, "Type", "D");
-                startActivity(new Intent(mContext, ViewPagerActivity.class));
-                finish();
+               if(!Utils.retrieveSharedPreference(mContext,getString(R.string.pref_access_token)).equals("false")) {
+                   startActivity(new Intent(mContext, MainActivity.class));
+                   finish();
+               }
+                else
+               {
+                   startActivity(new Intent(mContext, ViewPagerActivity.class));
+                   finish();
+               }
             }
         }, SPLASH_TIME_OUT);
     }

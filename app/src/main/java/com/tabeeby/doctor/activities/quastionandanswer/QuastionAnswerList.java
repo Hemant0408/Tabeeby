@@ -1,7 +1,10 @@
 package com.tabeeby.doctor.activities.quastionandanswer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -33,7 +36,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class QuastionAndAnswerList extends AppCompatActivity {
+public class QuastionAnswerList extends AppCompatActivity {
+
     private ArrayList<QuestionsModel> mArraylistQuestionlist;
     QuestionAnswerAdapter questionAnswerAdapter;
     LinearLayoutManager linearLayoutManager;
@@ -49,8 +53,8 @@ public class QuastionAndAnswerList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quastion_and_answer_list);
-        mContext = this;
+        setContentView(R.layout.activity_quastion_answer_list);
+        mContext=this;
         ButterKnife.bind(this);
         api = MyApplication.getInstance().getHttpService();
 
@@ -66,6 +70,14 @@ public class QuastionAndAnswerList extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.lv_question_and_answer_list);
 
         makeHTTPcall();
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(mContext,AddQuestionActivity.class));
+            }
+        });
     }
 
     private void setUpActionBar() {
@@ -75,6 +87,12 @@ public class QuastionAndAnswerList extends AppCompatActivity {
         getSupportActionBar().setElevation(0.2f);
         getSupportActionBar().setTitle("Q and A List");
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        makeHTTPcall();
     }
 
     private void makeHTTPcall() {
@@ -98,6 +116,8 @@ public class QuastionAndAnswerList extends AppCompatActivity {
                         JSONObject DataJsonObject = new JSONObject(data);
                         JSONArray jsonArray = DataJsonObject.getJSONArray("questions");
                         mArraylistQuestionlist = new ArrayList<>();
+                        mArraylistQuestionlist.clear();
+                        recyclerView.removeAllViews();
                         mArraylistQuestionlist = gson.fromJson(jsonArray.toString(), type);
 
                         if (mArraylistQuestionlist.size() != 0) {
@@ -120,4 +140,5 @@ public class QuastionAndAnswerList extends AppCompatActivity {
             }
         });
     }
+
 }

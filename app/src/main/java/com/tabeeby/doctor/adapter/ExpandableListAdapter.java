@@ -55,8 +55,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         }
 
         LinearLayout linearLayout=(LinearLayout) convertView.findViewById(R.id.linear_comment_footer);
-        TextView txtListChild = (TextView) convertView
-                .findViewById(R.id.lblListItem);
+        /*TextView txtListChild = (TextView) convertView
+                .findViewById(R.id.lblListItem);*/
 
         return convertView;
     }

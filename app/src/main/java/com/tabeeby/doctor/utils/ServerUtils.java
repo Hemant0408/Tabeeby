@@ -14,7 +14,12 @@ public final class ServerUtils {
     //Api
     public static final String SIGN_UP = "auth/sign-up";
     public static final String LOGIN = "auth/login";
+
     public static final String QUESTIONLIST = "question/get-questions";
+    public static final String ADDQUESTION ="question/ask-question";
+    public static final String ANSWERLIST="question/get-answers";
+    public static final String ADDANSWER="question/post-answer";
+    public static final String VIEWCOUNT="question/register-view";
 
     public static final String VERIFY_OTP = "verifyotp";
     public static final String RESEND_OTP = "resendotp";

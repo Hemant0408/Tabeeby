@@ -1,9 +1,11 @@
 package com.tabeeby.doctor.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.text.TextUtils;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
@@ -86,7 +88,6 @@ public class Utils {
                 out.append(line);
             }
             return out.toString();
-            // Log.i("raw response", "" + out.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -95,5 +96,13 @@ public class Utils {
 
     public static boolean isValidEmail(String email) {
         return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    public static void removePreference(Context mContext) {
+        Utils.removeSharedPreference(mContext, mContext.getString(R.string.pref_access_token));
+        Utils.removeSharedPreference(mContext, mContext.getString(R.string.pref_email));
+        Utils.removeSharedPreference(mContext, mContext.getString(R.string.pref_picture));
+        Utils.removeSharedPreference(mContext, mContext.getString(R.string.pref_user_type));
+        Utils.removeSharedPreference(mContext, mContext.getString(R.string.pref_user_id));
     }
 }

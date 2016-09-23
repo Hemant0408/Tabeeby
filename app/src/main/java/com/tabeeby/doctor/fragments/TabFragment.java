@@ -16,7 +16,7 @@ import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.events.EventsActivity;
 import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 import com.tabeeby.doctor.activities.news.NewsActivity;
-import com.tabeeby.doctor.activities.quastionandanswer.QuastionAndAnswerList;
+import com.tabeeby.doctor.activities.quastionandanswer.QuastionAnswerList;
 import com.tabeeby.doctor.adapter.ViewPagerTabAdapter;
 
 import butterknife.Bind;
@@ -151,7 +151,7 @@ public class TabFragment extends Fragment {
         mImgQuaAndAns.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), QuastionAndAnswerList.class));
+                startActivity(new Intent(getActivity(), QuastionAnswerList.class));
             }
         });
 
@@ -173,7 +173,7 @@ public class TabFragment extends Fragment {
         mQuaAndAns.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), QuastionAndAnswerList.class));
+                startActivity(new Intent(getActivity(), QuastionAnswerList.class));
             }
         });
 
