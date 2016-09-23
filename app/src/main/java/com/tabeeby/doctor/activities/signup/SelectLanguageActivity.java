@@ -1,9 +1,11 @@
 package com.tabeeby.doctor.activities.signup;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -44,7 +46,13 @@ public class SelectLanguageActivity extends AppCompatActivity {
 
         if (Utils.retrieveSharedPreference(mContext, "Language") != null) {
             if (Utils.retrieveSharedPreference(mContext, "Language").equals("en")) {
-            } else if (Utils.retrieveSharedPreference(mContext, "Language").equals("ar")) {
+                mTextViewEnglish.setCompoundDrawables(getResources().getDrawable(R.drawable.ic_gallery_white_48dp),null,null,null);
+                mTextViewArebic.setCompoundDrawables(null,null,null,null);
+            } else {
+                if (Utils.retrieveSharedPreference(mContext, "Language").equals("ar")) {
+                    mTextViewArebic.setCompoundDrawables(getResources().getDrawable(R.drawable.ic_gallery_white_48dp), null, null, null);
+                    mTextViewEnglish.setCompoundDrawables(null, null, null, null);
+                }
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.tabeeby.doctor.activities.quastionandanswer;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -22,6 +23,7 @@ import com.tabeeby.doctor.application.application;
 import com.tabeeby.doctor.httpclient.API;
 import com.tabeeby.doctor.model.AnswerModel;
 import com.tabeeby.doctor.model.QuestionsModel;
+import com.tabeeby.doctor.utils.ConnectionDetector;
 import com.tabeeby.doctor.utils.ServerUtils;
 import com.tabeeby.doctor.utils.Utils;
 
@@ -58,8 +60,7 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
     private ArrayList<AnswerModel> mArraylistQuestionlist;
     private ArrayList<AnswerModel> mArrayListAnswerList;
     private AnswerModel mAnswermodel;
-
-
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,7 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
         mContext=this;
         ButterKnife.bind(this);
         setUpActionBar();
+        bundle=savedInstanceState;
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {finish();}
@@ -118,10 +120,16 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
 
         mArrayListAnswerList.add(mAnswermodel);
 
+        if(ConnectionDetector.checkInternetConnection(mContext))
+        {
         getAnswers();
-
         ViewCount();
-    }
+        }
+        else
+        {
+            Utils.ErrorMessage((Activity) mContext,bundle,getString(R.string.no_internetconnection));
+        }
+        }
 
 
     public void getAnswers()
@@ -132,40 +140,35 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
             responseBodyCall.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    String responseBody = Utils.convertTypedBodyToString(response.body());
-                    Log.i("**ReponseBody",responseBody);
-                    Log.i("**ResponceCode",response.code()+"");
                     if (response.code() == ServerUtils.STATUS_OK) {
                         try {
+                             if(response!=null) {
+                                 String responseBody = Utils.convertTypedBodyToString(response.body());
+                                 Gson gson = new Gson();
+                                 Type type = new TypeToken<List<AnswerModel>>() {
+                                 }.getType();
 
-                            Gson gson = new Gson();
-                            Type type = new TypeToken<List<AnswerModel>>() {
-                            }.getType();
+                                 JSONObject jsonObject = new JSONObject(responseBody);
+                                 String data = jsonObject.getString("data");
+                                 JSONObject DataJsonObject = new JSONObject(data);
+                                 JSONArray jsonArray = DataJsonObject.getJSONArray("answers");
+                                 mArraylistQuestionlist = new ArrayList<>();
+                                 mArraylistQuestionlist = gson.fromJson(jsonArray.toString(), type);
 
-                            JSONObject jsonObject=new JSONObject(responseBody);
-                            String data=jsonObject.getString("data");
-                            JSONObject DataJsonObject=new JSONObject(data);
-                            JSONArray jsonArray = DataJsonObject.getJSONArray("answers");
-                            mArraylistQuestionlist = new ArrayList<>();
-                            mArraylistQuestionlist = gson.fromJson(jsonArray.toString(), type);
+                                 if (mArraylistQuestionlist != null) {
+                                     for (int i = 0; i < mArraylistQuestionlist.size(); i++) {
+                                         mArrayListAnswerList.add(mArraylistQuestionlist.get(i));
+                                     }
+                                 }
 
-                            if(mArraylistQuestionlist!=null)
-                            {
-                                for(int i=0;i<mArraylistQuestionlist.size();i++)
-                                {
-                                    mArrayListAnswerList.add(mArraylistQuestionlist.get(i));
-                                }
-                            }
-
-                            if(mArrayListAnswerList.size()!=0)
-                            {
-                                findDoctorAdapter = new AnswerListAdapter(mContext,mArrayListAnswerList);
-                                linearLayoutManager = new LinearLayoutManager(mContext);
-                                recyclerView.setLayoutManager(linearLayoutManager);
-                                recyclerView.setHasFixedSize(true);
-                                recyclerView.setAdapter(findDoctorAdapter);
-                            }
-
+                                 if (mArrayListAnswerList.size() != 0) {
+                                     findDoctorAdapter = new AnswerListAdapter(mContext, mArrayListAnswerList);
+                                     linearLayoutManager = new LinearLayoutManager(mContext);
+                                     recyclerView.setLayoutManager(linearLayoutManager);
+                                     recyclerView.setHasFixedSize(true);
+                                     recyclerView.setAdapter(findDoctorAdapter);
+                                 }
+                             }
                         }
                         catch (Exception e)
                         {
@@ -191,31 +194,39 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
 
     public void putAnswer(View v) {
         if (mEditTextAnswer.getText().toString().trim() != null) {
-            String header = "Bearer " + Utils.retrieveSharedPreference(mContext, getString(R.string.pref_access_token));
-            Call<ResponseBody> responseBodyCall = api.addAnswerApi(header, mQuestionId, mUserid, "1", mEditTextAnswer.getText().toString().trim());
-            responseBodyCall.enqueue(new Callback<ResponseBody>() {
-                @Override
-                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                    String responseBody = Utils.convertTypedBodyToString(response.body());
-                    if (response.code() == ServerUtils.STATUS_OK) {
-                        try {
-                            mEditTextAnswer.setText("");
-                            recyclerView.removeAllViews();
-                            mArrayListAnswerList.clear();
-                            mArraylistQuestionlist.clear();
-                            mArrayListAnswerList.add(mAnswermodel);
-                            getAnswers();
-                        } catch (Exception e) {
-                            e.printStackTrace();
+            if(ConnectionDetector.checkInternetConnection(mContext)) {
+                String header = "Bearer " + Utils.retrieveSharedPreference(mContext, getString(R.string.pref_access_token));
+                Call<ResponseBody> responseBodyCall = api.addAnswerApi(header, mQuestionId, mUserid, "1", mEditTextAnswer.getText().toString().trim());
+                responseBodyCall.enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        if (response.code() == ServerUtils.STATUS_OK) {
+                            try {
+                                if (response != null) {
+                                    String responseBody = Utils.convertTypedBodyToString(response.body());
+                                    mEditTextAnswer.setText("");
+                                    recyclerView.removeAllViews();
+                                    mArrayListAnswerList.clear();
+                                    mArraylistQuestionlist.clear();
+                                    mArrayListAnswerList.add(mAnswermodel);
+                                    getAnswers();
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
-                }
 
-                @Override
-                public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    t.printStackTrace();
-                }
-            });
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                        t.printStackTrace();
+                    }
+                });
+            }
+            else
+            {
+                Utils.ErrorMessage((Activity) mContext,bundle,getString(R.string.no_internetconnection));
+            }
         }
     }
 
@@ -226,10 +237,11 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                String responseBody = Utils.convertTypedBodyToString(response.body());
                 if (response.code() == ServerUtils.STATUS_OK) {
                     try {
-
+                        if(response!=null) {
+                            String responseBody = Utils.convertTypedBodyToString(response.body());
+                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

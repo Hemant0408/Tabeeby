@@ -156,8 +156,6 @@ public class QuestionsModel {
     }
 
     public void setQuestion_created (String question_created)
-    {
-        this.question_created = question_created;
-    }
+    {this.question_created = question_created;}
 
 }

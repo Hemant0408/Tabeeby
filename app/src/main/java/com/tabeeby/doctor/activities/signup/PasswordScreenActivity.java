@@ -133,7 +133,7 @@ public class PasswordScreenActivity extends AppCompatActivity {
 
 
     private void makeHTTPcall() {
-        Call<ResponseBody> responseBodyCall = api.signupApi(mEmail,mUserPassword.getText().toString(),mConfirmUserPassword.getText().toString().trim(),mFirstName,mLastName,null,"doctor",mLoginType,mTerms,mMobileNumber,null,"consultant","ar");
+        Call<ResponseBody> responseBodyCall = api.signupApi(mEmail,mUserPassword.getText().toString(),mConfirmUserPassword.getText().toString().trim(),mFirstName,mLastName,null,Utils.retrieveSharedPreference(mContext,"doctor_type").trim(),mLoginType,mTerms,mMobileNumber,"india",Utils.retrieveSharedPreference(mContext,"doctor_sub_type").toLowerCase(),Utils.retrieveSharedPreference(mContext,"Language"));
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

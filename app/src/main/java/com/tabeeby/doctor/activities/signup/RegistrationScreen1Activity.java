@@ -94,9 +94,6 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
                 = new ArrayAdapter<String>(this, R.layout.country_list_item, doctorType);
         dialog_ListView.setAdapter(adapter);
 
-        //doctorTypeAdapter = new DoctorTypeAdapter(RegistrationScreen1Activity.this, doctorType);
-
-        //dialog_ListView.setAdapter(doctorTypeAdapter);
 
         dialog_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -109,7 +106,8 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
                     dialog.dismiss();
                 tv_doctor.setText(selectedValue);
                 tv_health_care.setText(getString(R.string.health_care_provider));
-                Utils.storeSharedPreference(mContext,"doctor_type",selectedValue);
+                Utils.storeSharedPreference(mContext,"doctor_type","health care provider");
+                Utils.storeSharedPreference(mContext,"doctor_sub_type",selectedValue);
             }
         });
 
@@ -160,7 +158,8 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
                     dialog.dismiss();
                 tv_health_care.setText(selectedValue);
                 tv_doctor.setText("Doctor");
-                Utils.storeSharedPreference(mContext,"doctor_type",selectedValue);
+                Utils.storeSharedPreference(mContext,"doctor_type","doctor");
+                Utils.storeSharedPreference(mContext,"doctor_sub_type",selectedValue);
             }
         });
 

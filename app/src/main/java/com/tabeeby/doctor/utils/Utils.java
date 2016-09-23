@@ -2,10 +2,13 @@ package com.tabeeby.doctor.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tabeeby.doctor.R;
@@ -14,6 +17,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import android.support.v7.widget.Toolbar;
 
 import okhttp3.ResponseBody;
 
@@ -105,4 +109,21 @@ public class Utils {
 
     }
 
+
+    public static void ErrorMessage(final Activity mContext,final Bundle bundle,String Msg) {
+        mContext.setContentView(R.layout.error_page);
+        Toolbar toolbar = (Toolbar) mContext.findViewById(R.id.toolbar);
+        toolbar.setTitle(mContext.getResources().getString(R.string.app_name));
+        TextView textView=(TextView) mContext.findViewById(R.id.mTextError);
+        Button ButtonTryAgain=(Button) mContext.findViewById(R.id.btn_try_again);
+        textView.setText(Msg);
+
+        ButtonTryAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mContext.finish();
+                mContext.startActivity(new Intent(mContext,mContext.getClass()));
+            }
+        });
+    }
 }

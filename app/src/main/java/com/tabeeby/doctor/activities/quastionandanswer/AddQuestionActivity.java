@@ -1,5 +1,6 @@
 package com.tabeeby.doctor.activities.quastionandanswer;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.signup.OtpPageActivity;
 import com.tabeeby.doctor.application.application;
 import com.tabeeby.doctor.httpclient.API;
+import com.tabeeby.doctor.utils.ConnectionDetector;
 import com.tabeeby.doctor.utils.ServerUtils;
 import com.tabeeby.doctor.utils.Utils;
 
@@ -60,11 +62,14 @@ public class AddQuestionActivity extends AppCompatActivity {
 
     private Context mContext;
 
+    private Bundle bundle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_question);
+        bundle=savedInstanceState;
         mContext=this;
         ButterKnife.bind(this);
         setUpActionBar();
@@ -118,34 +123,46 @@ public class AddQuestionActivity extends AppCompatActivity {
         mButtonSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(validate())
+                if(ConnectionDetector.checkInternetConnection(mContext)) {
+                    addQuestion();
+                }else
                 {
-                    String header="Bearer "+Utils.retrieveSharedPreference(mContext,getString(R.string.pref_access_token));
-                    Call<ResponseBody> responseBodyCall = api.addQuestionApi(header,mEditTextTitle.getText().toString().trim(),mEditTextCategory.getText().toString().trim(),mEditTextQuestionDesciption.getText().toString().trim(),"1",Utils.retrieveSharedPreference(mContext,getString(R.string.pref_user_id)).trim());
-                    responseBodyCall.enqueue(new Callback<ResponseBody>() {
-                        @Override
-                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                            String responseBody = Utils.convertTypedBodyToString(response.body());
-                            if (response.code() == ServerUtils.STATUS_OK) {
-                                try {
-                                    JSONObject jsonObject=new JSONObject(responseBody);
-                                    finishAffinity();
-                                }
-                                catch (Exception e)
-                                {
-                                    e.printStackTrace();
-                                }
-                            }
-                        }
-                        @Override
-                        public void onFailure(Call<ResponseBody> call, Throwable t) {
-                            t.printStackTrace();
-                        }
-                    });
+                    Utils.ErrorMessage((Activity) mContext,bundle,getString(R.string.no_internetconnection));
                 }
             }
         });
 
+    }
+
+    private void addQuestion()
+    {
+        if(validate())
+        {
+            String header="Bearer "+Utils.retrieveSharedPreference(mContext,getString(R.string.pref_access_token));
+            Call<ResponseBody> responseBodyCall = api.addQuestionApi(header,mEditTextTitle.getText().toString().trim(),mEditTextCategory.getText().toString().trim(),mEditTextQuestionDesciption.getText().toString().trim(),"1",Utils.retrieveSharedPreference(mContext,getString(R.string.pref_user_id)).trim());
+            responseBodyCall.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    if (response.code() == ServerUtils.STATUS_OK) {
+                        try {
+                            if(response!=null) {
+                                String responseBody = Utils.convertTypedBodyToString(response.body());
+                                JSONObject jsonObject = new JSONObject(responseBody);
+                                finish();
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    t.printStackTrace();
+                }
+            });
+        }
     }
 
     private void setUpActionBar() {
