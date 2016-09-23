@@ -3,20 +3,18 @@ package com.tabeeby.doctor.activities.quastionandanswer;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.ExpandableListView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.tabeeby.doctor.R;
-import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
-import com.tabeeby.doctor.adapter.ExpandableListAdapter;
-import com.tabeeby.doctor.adapter.NotificationAdapter;
 import com.tabeeby.doctor.adapter.QuestionAnswerAdapter;
 import com.tabeeby.doctor.application.application;
 import com.tabeeby.doctor.httpclient.API;
@@ -29,7 +27,6 @@ import org.json.JSONObject;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import butterknife.Bind;
@@ -39,7 +36,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class QuastionAndAnswerList extends AppCompatActivity {
+public class QuastionAnswerList extends AppCompatActivity {
+
     private ArrayList<QuestionsModel> mArraylistQuestionlist;
     QuestionAnswerAdapter questionAnswerAdapter;
     LinearLayoutManager linearLayoutManager;
@@ -55,7 +53,7 @@ public class QuastionAndAnswerList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quastion_and_answer_list);
+        setContentView(R.layout.activity_quastion_answer_list);
         mContext=this;
         ButterKnife.bind(this);
         api = application.getInstance().getHttpService();
@@ -73,6 +71,13 @@ public class QuastionAndAnswerList extends AppCompatActivity {
 
         makeHTTPcall();
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(mContext,AddQuestionActivity.class));
+            }
+        });
     }
 
 
@@ -86,6 +91,11 @@ public class QuastionAndAnswerList extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        makeHTTPcall();
+    }
 
     private void makeHTTPcall() {
         Call<ResponseBody> responseBodyCall = api.QuestionListApi();
@@ -93,8 +103,6 @@ public class QuastionAndAnswerList extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 String responseBody = Utils.convertTypedBodyToString(response.body());
-                Log.i("**ReponseBody",responseBody);
-                Log.i("**ResponceCode",response.code()+"");
                 if (response.code() == ServerUtils.STATUS_OK) {
                     try {
 
@@ -108,6 +116,8 @@ public class QuastionAndAnswerList extends AppCompatActivity {
                         JSONObject DataJsonObject=new JSONObject(data);
                         JSONArray jsonArray = DataJsonObject.getJSONArray("questions");
                         mArraylistQuestionlist = new ArrayList<>();
+                        mArraylistQuestionlist.clear();
+                        recyclerView.removeAllViews();
                         mArraylistQuestionlist = gson.fromJson(jsonArray.toString(), type);
 
                         if(mArraylistQuestionlist.size()!=0)
@@ -132,4 +142,5 @@ public class QuastionAndAnswerList extends AppCompatActivity {
             }
         });
     }
+
 }

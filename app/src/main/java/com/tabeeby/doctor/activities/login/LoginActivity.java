@@ -73,11 +73,23 @@ public class LoginActivity extends AppCompatActivity {
                     try {
                         JSONObject jsonObject=new JSONObject(responseBody);
                         String data=jsonObject.getString("data");
-                        JSONObject DataJsonObject=new JSONObject(data);
-                        String access_token=DataJsonObject.getString("access_token");
-                        Utils.storeSharedPreference(mContext,"access_token",access_token);
-                        Utils.createToastLong("Welcome to Tabeeby",mContext);
-                        startActivity(new Intent(mContext, MainActivity.class));
+                        if(data!=null) {
+                            JSONObject DataJsonObject = new JSONObject(data);
+                            if(DataJsonObject.getString("status").equals("10")) {
+                                Utils.storeSharedPreference(mContext, getString(R.string.pref_access_token), DataJsonObject.getString(getString(R.string.pref_access_token)).trim());
+                                Utils.storeSharedPreference(mContext, getString(R.string.pref_email), DataJsonObject.getString(getString(R.string.pref_email)).trim());
+                                Utils.storeSharedPreference(mContext, getString(R.string.pref_picture), DataJsonObject.getString(getString(R.string.pref_picture)).trim());
+                                Utils.storeSharedPreference(mContext, getString(R.string.pref_user_type), DataJsonObject.getString(getString(R.string.pref_user_type)).trim());
+                                Utils.storeSharedPreference(mContext, getString(R.string.pref_login_type), DataJsonObject.getString(getString(R.string.pref_login_type)).trim());
+                                Utils.storeSharedPreference(mContext, getString(R.string.pref_user_id), DataJsonObject.getString(getString(R.string.pref_user_id)).trim());
+                                Utils.createToastLong("Welcome to Tabeeby", mContext);
+                                startActivity(new Intent(mContext, MainActivity.class));
+                            }
+                            else
+                            {
+                                Utils.createToastShort("User Not Verified",mContext);
+                            }
+                        }
                         }
                     catch (Exception e)
                     {

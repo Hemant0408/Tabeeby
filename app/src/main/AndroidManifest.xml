@@ -83,9 +83,6 @@
             android:name=".activities.notification.NotificationActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activities.quastionandanswer.QuastionAndAnswerList"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".activities.news.NewsActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -100,7 +97,19 @@
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
         <activity android:name=".activities.signup.PasswordScreenActivity" />
-        <activity android:name=".activities.addpost.AddPostActivity"></activity>
+        <activity android:name=".activities.addpost.AddPostActivity" />
+        <activity
+            android:name=".activities.quastionandanswer.QuastionAnswerList"
+            android:label="@string/title_activity_quastion_answer_list"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.quastionandanswer.AddQuestionActivity"
+            android:label="@string/title_activity_add_question"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.quastionandanswer.ViewQuestionAndAnswer"
+            android:label="@string/title_activity_view_question_and_answer"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

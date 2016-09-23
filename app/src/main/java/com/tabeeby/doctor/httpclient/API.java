@@ -1,5 +1,6 @@
 package com.tabeeby.doctor.httpclient;
 
+import com.google.android.gms.common.server.converter.StringToIntConverter;
 import com.tabeeby.doctor.utils.ServerUtils;
 
 import okhttp3.ResponseBody;
@@ -7,8 +8,10 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface API {
 
@@ -36,7 +39,37 @@ public interface API {
     Call<ResponseBody> loginApi(  @Field("username") String email_phone
                                 , @Field("password") String password);
 
+
+    @FormUrlEncoded
+    @POST(ServerUtils.ADDQUESTION)
+    Call<ResponseBody> addQuestionApi( @Header("Authorization") String Authorization
+                                     , @Field("title") String title
+                                     , @Field("cat_id") String categorydesc
+                                     , @Field("question_text") String question_text
+                                     , @Field("status") String status
+                                     , @Field("user_id") String user_id);
+
+
+    @FormUrlEncoded
+    @POST(ServerUtils.ADDANSWER)
+    Call<ResponseBody> addAnswerApi(  @Header("Authorization") String Authorization
+                                    , @Field("question_id") String question_id
+                                    , @Field("user_id") String user_id
+                                    , @Field("status") String status
+                                    , @Field("answer_text") String answer_text
+                                    );
+
+    @FormUrlEncoded
+    @POST(ServerUtils.VIEWCOUNT)
+    Call<ResponseBody> addViewCountApi(   @Header("Authorization") String Authorization
+                                        , @Field("question_id") String question_id
+                                        , @Field("user_id") String user_id);
+
+
     @GET(ServerUtils.QUESTIONLIST)
     Call<ResponseBody> QuestionListApi();
+
+    @GET(ServerUtils.ANSWERLIST)
+    Call<ResponseBody> AnswerListApi(@Query("question_id") String question_id);
 
 }

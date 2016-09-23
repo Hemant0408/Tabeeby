@@ -27,7 +27,7 @@ import com.tabeeby.doctor.activities.mypatient.MyPatientActivity;
 import com.tabeeby.doctor.activities.notification.NotificationActivity;
 import com.tabeeby.doctor.activities.profile.DoctorProfileActivity;
 import com.tabeeby.doctor.activities.profile.PatientProfileActivity;
-import com.tabeeby.doctor.activities.quastionandanswer.QuastionAndAnswerList;
+import com.tabeeby.doctor.activities.quastionandanswer.QuastionAnswerList;
 import com.tabeeby.doctor.fragments.MyDoctors;
 import com.tabeeby.doctor.fragments.TabFragment;
 import com.tabeeby.doctor.utils.Utils;
@@ -95,8 +95,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
             }
         } else if (id == R.id.dashboard) {
-            /*Intent intent = new Intent(this, PatientProfileActivity.class);
-            startActivity(intent);*/
             displayFragment(1);
         } else if (id == R.id.my_doctor) {
             if (com.tabeeby.doctor.BuildConfig.VERSION) {
@@ -109,9 +107,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(this, MyAppointmentActivity.class);
             startActivity(intent);
         } else if (id == R.id.q_and_a) {
-            Intent intent = new Intent(this, QuastionAndAnswerList.class);
+            Intent intent = new Intent(this, QuastionAnswerList.class);
             startActivity(intent);
         } else if (id == R.id.logout) {
+            Utils.removePreference(mContext);
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
             finishAffinity();
