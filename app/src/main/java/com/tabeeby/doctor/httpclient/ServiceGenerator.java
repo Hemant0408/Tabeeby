@@ -20,14 +20,15 @@ public class ServiceGenerator {
     private static OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)).connectTimeout(5, TimeUnit.MINUTES).readTimeout(5, TimeUnit.MINUTES).build();
     private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
-
-    public static <S> S createService(Class<S> serviceClass,boolean isDebug ,Context context){
+    public static <S> S createService(Class<S> serviceClass, boolean isDebug, Context context) {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         String API_BASE_URL;
 
-        if(isDebug) {API_BASE_URL = ServerUtils.PROD_BASE_URL;}
-        else
-        {API_BASE_URL = ServerUtils.TEST_BASE_URL;}
+        if (isDebug) {
+            API_BASE_URL = ServerUtils.PROD_BASE_URL;
+        } else {
+            API_BASE_URL = ServerUtils.TEST_BASE_URL;
+        }
 
         Retrofit.Builder builder =
                 new Retrofit.Builder()
@@ -37,5 +38,4 @@ public class ServiceGenerator {
         Retrofit retrofit = builder.client(client).build();
         return retrofit.create(serviceClass);
     }
-
 }

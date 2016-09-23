@@ -6,13 +6,12 @@ import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.tabeeby.doctor.R;
-import com.tabeeby.doctor.application.application;
+import com.tabeeby.doctor.application.MyApplication;
 import com.tabeeby.doctor.utils.Utils;
 
 import java.text.Bidi;
@@ -61,23 +60,23 @@ public class SelectLanguageActivity extends AppCompatActivity {
     }
 
     public void nextStep(View view) {
-        changeLanguage("en","L");
+        changeLanguage("en", "L");
     }
 
     public void SelectArebic(View view) {
-        changeLanguage("ar","R");
+        changeLanguage("ar", "R");
     }
 
 
     /**
      * Method that Update UI for Arabic locale.
      */
-    public void changeLanguage(final String app_local,final String flag) {
+    public void changeLanguage(final String app_local, final String flag) {
         new AsyncTask<Void, Void, Void>() {
 
             @Override
             protected Void doInBackground(Void... params) {
-              // String app_locale = "ar";
+                // String app_locale = "ar";
                 Locale locale = new Locale(app_local);
                 Locale.setDefault(locale);
 
@@ -86,22 +85,20 @@ public class SelectLanguageActivity extends AppCompatActivity {
                 config.locale = locale;
                 getResources().updateConfiguration(config,
                         getResources().getDisplayMetrics());
-                if(flag.equals("R")) {
+                if (flag.equals("R")) {
                     Bidi bidi = new Bidi(app_local,
                             Bidi.DIRECTION_DEFAULT_RIGHT_TO_LEFT);
                     bidi.isRightToLeft();
 
                     Utils.storeSharedPreference(mContext, "Language", "ar");
-                }
-                else
-                {
+                } else {
                     Bidi bidi = new Bidi(app_local,
                             Bidi.DIRECTION_DEFAULT_LEFT_TO_RIGHT);
                     bidi.isLeftToRight();
                     Utils.storeSharedPreference(mContext, "Language", "en");
-                    // application.updateLanguage(mContext, "en");
+                    // MyApplication.updateLanguage(mContext, "en");
                 }
-                application.updateLanguage(mContext, app_local);
+                MyApplication.updateLanguage(mContext, app_local);
                 startActivity(new Intent(mContext, SelectCountryActivity.class));
 
                 return null;

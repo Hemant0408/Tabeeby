@@ -109,7 +109,7 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
                     dialog.dismiss();
                 tv_doctor.setText(selectedValue);
                 tv_health_care.setText(getString(R.string.health_care_provider));
-                Utils.storeSharedPreference(mContext,"doctor_type",selectedValue);
+                Utils.storeSharedPreference(mContext, "doctor_type", selectedValue);
             }
         });
 
@@ -160,7 +160,7 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
                     dialog.dismiss();
                 tv_health_care.setText(selectedValue);
                 tv_doctor.setText("Doctor");
-                Utils.storeSharedPreference(mContext,"doctor_type",selectedValue);
+                Utils.storeSharedPreference(mContext, "doctor_type", selectedValue);
             }
         });
 

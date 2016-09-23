@@ -3,6 +3,7 @@ package com.tabeeby.doctor.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
@@ -22,7 +23,7 @@ import okhttp3.ResponseBody;
 public class Utils {
 
     public static String[] getCountryList(Context ctx) {
-         final String[] country_list = {ctx.getString(R.string.Afghanistan), ctx.getString(R.string.Albania), ctx.getString(R.string.Algeria), ctx.getString(R.string.Andorra), ctx.getString(R.string.Angola), ctx.getString(R.string.Antigua_and_Barbuda), ctx.getString(R.string.Argentina), ctx.getString(R.string.Armenia), ctx.getString(R.string.Australia), ctx.getString(R.string.Austria), ctx.getString(R.string.Azerbaijan),
+        final String[] country_list = {ctx.getString(R.string.Afghanistan), ctx.getString(R.string.Albania), ctx.getString(R.string.Algeria), ctx.getString(R.string.Andorra), ctx.getString(R.string.Angola), ctx.getString(R.string.Antigua_and_Barbuda), ctx.getString(R.string.Argentina), ctx.getString(R.string.Armenia), ctx.getString(R.string.Australia), ctx.getString(R.string.Austria), ctx.getString(R.string.Azerbaijan),
                 ctx.getString(R.string.Bahamas), ctx.getString(R.string.Bahrain), ctx.getString(R.string.Bangladesh), ctx.getString(R.string.Barbados), ctx.getString(R.string.Belarus), ctx.getString(R.string.Belgium), ctx.getString(R.string.Belize), ctx.getString(R.string.Benin), ctx.getString(R.string.Bhutan), ctx.getString(R.string.Bolivia), ctx.getString(R.string.Bosnia_and_Herzegovina), ctx.getString(R.string.Botswana),
                 ctx.getString(R.string.Brazil), ctx.getString(R.string.Brunei), ctx.getString(R.string.Bulgaria), ctx.getString(R.string.Burkina_Faso), ctx.getString(R.string.Burundi),
                 ctx.getString(R.string.Cabo_Verde), ctx.getString(R.string.Cambodia), ctx.getString(R.string.Cameroon), ctx.getString(R.string.Canada), ctx.getString(R.string.Central_African_Republic_CAR), ctx.getString(R.string.Chad), ctx.getString(R.string.Chile), ctx.getString(R.string.China), ctx.getString(R.string.Colombia), ctx.getString(R.string.Comoros),
@@ -36,7 +37,7 @@ public class Utils {
                 ctx.getString(R.string.South_Sudan), ctx.getString(R.string.Spain), ctx.getString(R.string.Sri_Lanka), ctx.getString(R.string.Sudan), ctx.getString(R.string.Suriname), ctx.getString(R.string.Swaziland), ctx.getString(R.string.Sweden), ctx.getString(R.string.Switzerland), ctx.getString(R.string.Syria), ctx.getString(R.string.Taiwan), ctx.getString(R.string.Tajikistan), ctx.getString(R.string.Tanzania), ctx.getString(R.string.Thailand), ctx.getString(R.string.Timor_Leste), ctx.getString(R.string.Togo), ctx.getString(R.string.Tonga), ctx.getString(R.string.Trinidad_and_Tobago), ctx.getString(R.string.Tunisia), ctx.getString(R.string.Turkey), ctx.getString(R.string.Turkmenistan), ctx.getString(R.string.Tuvalu), ctx.getString(R.string.Uganda), ctx.getString(R.string.Ukraine), ctx.getString(R.string.United_Arab_Emirates_UAE), ctx.getString(R.string.United_Kingdom_UK), ctx.getString(R.string.United_States_of_America_USA), ctx.getString(R.string.Uruguay), ctx.getString(R.string.Uzbekistan), ctx.getString(R.string.Vanuatu), ctx.getString(R.string.Vatican_City_Holy_See), ctx.getString(R.string.Venezuela), ctx.getString(R.string.Vietnam), ctx.getString(R.string.Yemen), ctx.getString(R.string.Zambia), ctx.getString(R.string.Zimbabwe)
         };
 
-       return country_list;
+        return country_list;
     }
 
     public static void storeSharedPreference(Context ctx, String key, String value) {
@@ -72,7 +73,6 @@ public class Utils {
         return config.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
     }
 
-
     public static String convertTypedBodyToString(ResponseBody responseBody) {
         InputStream is;
         is = responseBody.byteStream();
@@ -93,4 +93,7 @@ public class Utils {
         return null;
     }
 
+    public static boolean isValidEmail(String email) {
+        return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
 }

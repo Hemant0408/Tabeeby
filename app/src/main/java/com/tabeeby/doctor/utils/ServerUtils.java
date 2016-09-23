@@ -14,13 +14,12 @@ public final class ServerUtils {
     //Api
     public static final String SIGN_UP = "auth/sign-up";
     public static final String LOGIN = "auth/login";
-    public static final String QUESTIONLIST="question/get-questions";
+    public static final String QUESTIONLIST = "question/get-questions";
 
     public static final String VERIFY_OTP = "verifyotp";
     public static final String RESEND_OTP = "resendotp";
-    public static final String FORGOT_PASSWORD = "requestreset";
+    public static final String FORGOT_PASSWORD = "auth/request-password-reset";
     public static final String UPDATE_PATIENT = "updatepetient";
-
 
     //status code
     public static final int STATUS_OK = 200;

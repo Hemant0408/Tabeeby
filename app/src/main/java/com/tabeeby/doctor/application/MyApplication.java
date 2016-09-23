@@ -22,9 +22,9 @@ import java.util.Locale;
 /**
  * Created by Lenovo R61 on 8/6/2016.
  */
-public class application extends Application {
+public class MyApplication extends Application {
 
-    private static application mInstance;
+    private static MyApplication mInstance;
     private API api;
 
     public static void updateLanguage(Context ctx, String lang) {
@@ -75,18 +75,16 @@ public class application extends Application {
         }
     }
 
-    public static synchronized application getInstance() {
+    public static synchronized MyApplication getInstance() {
         return mInstance;
     }
 
     public API getHttpService() {
         if (api == null) {
             try {
-                boolean isDebug=BuildConfig.DEBUG;
-                api = ServiceGenerator.createService(API.class,isDebug, this);
-            }
-            catch (Exception e)
-            {
+                boolean isDebug = BuildConfig.DEBUG;
+                api = ServiceGenerator.createService(API.class, isDebug, this);
+            } catch (Exception e) {
 
             }
         }

@@ -47,6 +47,13 @@
     <string name="verify_mobile_no_text">Sit back and relax while we verify your mobile no.</string>
 
 
+    <!--Forgot Password Activity -->
+    <string name="forgot_yout_password">Forgot your password</string>
+    <string name="enter_your_email_id_to_reset">Enter your email below to reset your password</string>
+    <string name="error_enter_email_id">Enter email id</string>
+    <string name="error_enter_valid_email_id">Enter valid email id</string>
+    <string name="please_wait">Please wait.</string>
+
     <!--Upload Pic Activity-->
     <string name="upload_your_profile_picture">Upload Your Profile Picture</string>
     <string name="take_a_photo">Take a Photo</string>

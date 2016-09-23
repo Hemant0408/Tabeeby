@@ -6,14 +6,11 @@ package com.tabeeby.doctor.model;
 public class DataModel {
     private QuestionsModel[] questions;
 
-    public QuestionsModel[] getQuestions ()
-    {
+    public QuestionsModel[] getQuestions() {
         return questions;
     }
 
-    public void setQuestions (QuestionsModel[] questions)
-    {
+    public void setQuestions(QuestionsModel[] questions) {
         this.questions = questions;
     }
-
 }
