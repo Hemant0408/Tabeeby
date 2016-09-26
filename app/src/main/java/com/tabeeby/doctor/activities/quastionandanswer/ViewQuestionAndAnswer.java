@@ -193,8 +193,8 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
     }
 
     public void putAnswer(View v) {
+        if(ConnectionDetector.checkInternetConnection(mContext)) {
         if (mEditTextAnswer.getText().toString().trim() != null) {
-            if(ConnectionDetector.checkInternetConnection(mContext)) {
                 String header = "Bearer " + Utils.retrieveSharedPreference(mContext, getString(R.string.pref_access_token));
                 Call<ResponseBody> responseBodyCall = api.addAnswerApi(header, mQuestionId, mUserid, "1", mEditTextAnswer.getText().toString().trim());
                 responseBodyCall.enqueue(new Callback<ResponseBody>() {
@@ -223,10 +223,10 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
                     }
                 });
             }
-            else
-            {
-                Utils.ErrorMessage((Activity) mContext,bundle,getString(R.string.no_internetconnection));
-            }
+        }
+        else
+        {
+            Utils.ErrorMessage((Activity) mContext,bundle,getString(R.string.no_internetconnection));
         }
     }
 

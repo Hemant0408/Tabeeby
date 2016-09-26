@@ -369,6 +369,7 @@
     <string name="add_question">Add Question</string>
     <string name="type_your_comment">Type your answer</string>
     <string name="no_internetconnection">No Internet Connection</string>
+    <string name="title_activity_event_detail">EventDetailActivity</string>
 
 
 </resources>

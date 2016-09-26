@@ -1,6 +1,7 @@
 package com.tabeeby.doctor.activities.quastionandanswer;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -67,6 +68,7 @@ public class QuastionAnswerList extends AppCompatActivity {
         bundle=savedInstanceState;
         setUpActionBar();
 
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,11 +114,12 @@ public class QuastionAnswerList extends AppCompatActivity {
         }
         else
         {
-           // Utils.ErrorMessage((Activity) mContext,bundle,mContext.getString(R.string.no_internetconnection));
+            Utils.ErrorMessage((Activity) mContext,bundle,mContext.getString(R.string.no_internetconnection));
         }
     }
 
     private void makeHTTPcall() {
+      //  Utils.ShowProgressDialog(mContext);
         Call<ResponseBody> responseBodyCall = api.QuestionListApi();
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -129,7 +132,7 @@ public class QuastionAnswerList extends AppCompatActivity {
                             Type type = new TypeToken<List<QuestionsModel>>() {
                             }.getType();
 
-
+                       // Utils.DismissProgressDialog();
                             JSONObject jsonObject = new JSONObject(responseBody);
                             String data = jsonObject.getString("data");
                             JSONObject DataJsonObject = new JSONObject(data);
@@ -159,6 +162,7 @@ public class QuastionAnswerList extends AppCompatActivity {
                 t.printStackTrace();
             }
         });
+
     }
 
 }
