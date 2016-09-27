@@ -1,6 +1,7 @@
 package com.tabeeby.doctor.activities.quastionandanswer;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -61,6 +62,7 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
     private ArrayList<AnswerModel> mArrayListAnswerList;
     private AnswerModel mAnswermodel;
     private Bundle bundle;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,6 +138,7 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
     {
         if(mQuestionId!=null)
         {
+            showLoader();
             Call<ResponseBody> responseBodyCall = api.AnswerListApi(mQuestionId);
             responseBodyCall.enqueue(new Callback<ResponseBody>() {
                 @Override
@@ -143,6 +146,7 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
                     if (response.code() == ServerUtils.STATUS_OK) {
                         try {
                              if(response!=null) {
+                                 dismissLoader();
                                  String responseBody = Utils.convertTypedBodyToString(response.body());
                                  Gson gson = new Gson();
                                  Type type = new TypeToken<List<AnswerModel>>() {
@@ -253,5 +257,20 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
                 t.printStackTrace();
             }
         });
+    }
+
+
+    public void showLoader()
+    {
+        progressDialog=new ProgressDialog(mContext,R.style.MyTheme);
+        progressDialog.setIndeterminateDrawable(mContext.getResources().getDrawable(R.drawable.rotate));
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
+        progressDialog.show();
+    }
+
+    public void dismissLoader()
+    {
+        progressDialog.dismiss();
     }
 }

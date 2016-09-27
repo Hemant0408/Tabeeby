@@ -58,6 +58,8 @@ public class QuastionAnswerList extends AppCompatActivity {
 
     Bundle bundle;
 
+    private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,7 +121,7 @@ public class QuastionAnswerList extends AppCompatActivity {
     }
 
     private void makeHTTPcall() {
-      //  Utils.ShowProgressDialog(mContext);
+        showLoader();
         Call<ResponseBody> responseBodyCall = api.QuestionListApi();
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -128,11 +130,13 @@ public class QuastionAnswerList extends AppCompatActivity {
                     try {
                         if(response!=null) {
                             String responseBody = Utils.convertTypedBodyToString(response.body());
+
                             Gson gson = new Gson();
                             Type type = new TypeToken<List<QuestionsModel>>() {
                             }.getType();
 
-                       // Utils.DismissProgressDialog();
+                            dismissLoader();
+
                             JSONObject jsonObject = new JSONObject(responseBody);
                             String data = jsonObject.getString("data");
                             JSONObject DataJsonObject = new JSONObject(data);
@@ -163,6 +167,20 @@ public class QuastionAnswerList extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void showLoader()
+    {
+        progressDialog=new ProgressDialog(mContext,R.style.MyTheme);
+        progressDialog.setIndeterminateDrawable(mContext.getResources().getDrawable(R.drawable.rotate));
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
+        progressDialog.show();
+    }
+
+    public void dismissLoader()
+    {
+        progressDialog.dismiss();
     }
 
 }

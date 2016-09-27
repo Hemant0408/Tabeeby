@@ -110,7 +110,6 @@ public class SelectLanguageActivity extends AppCompatActivity {
                     // application.updateLanguage(mContext, "en");
                 }
                 application.updateLanguage(mContext, app_local);
-                startActivity(new Intent(mContext, SelectCountryActivity.class));
 
                 return null;
             }
