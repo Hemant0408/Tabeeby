@@ -138,7 +138,7 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
     {
         if(mQuestionId!=null)
         {
-            showLoader();
+            Utils.ShowProgressDialog(mContext);
             Call<ResponseBody> responseBodyCall = api.AnswerListApi(mQuestionId);
             responseBodyCall.enqueue(new Callback<ResponseBody>() {
                 @Override
@@ -146,7 +146,7 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
                     if (response.code() == ServerUtils.STATUS_OK) {
                         try {
                              if(response!=null) {
-                                 dismissLoader();
+                                 Utils.DismissProgressDialog();
                                  String responseBody = Utils.convertTypedBodyToString(response.body());
                                  Gson gson = new Gson();
                                  Type type = new TypeToken<List<AnswerModel>>() {

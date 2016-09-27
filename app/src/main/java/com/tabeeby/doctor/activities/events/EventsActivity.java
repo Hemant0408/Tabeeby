@@ -40,19 +40,16 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EventsActivity extends AppCompatActivity {
-    EventAdapter findDoctorAdapter;
-    LinearLayoutManager linearLayoutManager;
-
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
-
-    API api;
-
-    ArrayList<Events> mArraylistEventslist;
-    RecyclerView recyclerView;
+    private EventAdapter findDoctorAdapter;
+    private LinearLayoutManager linearLayoutManager;
+    private API api;
+    private ArrayList<Events> mArraylistEventslist;
+    private RecyclerView recyclerView;
     private Context mContext;
     private Bundle bundle;
 
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +59,6 @@ public class EventsActivity extends AppCompatActivity {
         setUpActionBar();
         mContext=this;
         bundle=savedInstanceState;
-
         api = application.getInstance().getHttpService();
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -87,12 +83,14 @@ public class EventsActivity extends AppCompatActivity {
 
     private void getDisplayList()
     {
+        Utils.ShowProgressDialog(mContext);
         Call<ResponseBody> responseBodyCall = api.EventListApi();
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.code() == ServerUtils.STATUS_OK) {
                     try {
+                        Utils.DismissProgressDialog();
                         if(response!=null) {
                             String responseBody = Utils.convertTypedBodyToString(response.body());
                             Gson gson = new Gson();
@@ -146,6 +144,5 @@ public class EventsActivity extends AppCompatActivity {
         super.onDestroy();
         ButterKnife.unbind(this);
     }
-
 
 }

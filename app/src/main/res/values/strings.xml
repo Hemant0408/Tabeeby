@@ -370,6 +370,7 @@
     <string name="type_your_comment">Type your answer</string>
     <string name="no_internetconnection">No Internet Connection</string>
     <string name="title_activity_event_detail">EventDetailActivity</string>
+    <string name="title_activity_add_event">AddEventActivity</string>
 
 
 </resources>

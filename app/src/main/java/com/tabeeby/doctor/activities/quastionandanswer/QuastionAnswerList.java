@@ -58,7 +58,6 @@ public class QuastionAnswerList extends AppCompatActivity {
 
     Bundle bundle;
 
-    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +111,7 @@ public class QuastionAnswerList extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         if(ConnectionDetector.checkInternetConnection(mContext)) {
-            makeHTTPcall();
+          //  makeHTTPcall();
         }
         else
         {
@@ -121,12 +120,19 @@ public class QuastionAnswerList extends AppCompatActivity {
     }
 
     private void makeHTTPcall() {
-        showLoader();
+        final ProgressDialog progressDialog=new ProgressDialog(mContext,R.style.MyTheme);
+        progressDialog.setIndeterminateDrawable(mContext.getResources().getDrawable(R.drawable.rotate));
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
+        progressDialog.show();
+
         Call<ResponseBody> responseBodyCall = api.QuestionListApi();
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.code() == ServerUtils.STATUS_OK) {
+
+                    progressDialog.dismiss();
                     try {
                         if(response!=null) {
                             String responseBody = Utils.convertTypedBodyToString(response.body());
@@ -135,7 +141,6 @@ public class QuastionAnswerList extends AppCompatActivity {
                             Type type = new TypeToken<List<QuestionsModel>>() {
                             }.getType();
 
-                            dismissLoader();
 
                             JSONObject jsonObject = new JSONObject(responseBody);
                             String data = jsonObject.getString("data");
@@ -169,18 +174,5 @@ public class QuastionAnswerList extends AppCompatActivity {
 
     }
 
-    public void showLoader()
-    {
-        progressDialog=new ProgressDialog(mContext,R.style.MyTheme);
-        progressDialog.setIndeterminateDrawable(mContext.getResources().getDrawable(R.drawable.rotate));
-        progressDialog.setCancelable(false);
-        progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
-        progressDialog.show();
-    }
-
-    public void dismissLoader()
-    {
-        progressDialog.dismiss();
-    }
 
 }

@@ -138,6 +138,7 @@ public class AddQuestionActivity extends AppCompatActivity {
     {
         if(validate())
         {
+            Utils.ShowProgressDialog(mContext);
             String header="Bearer "+Utils.retrieveSharedPreference(mContext,getString(R.string.pref_access_token));
             Call<ResponseBody> responseBodyCall = api.addQuestionApi(header,mEditTextTitle.getText().toString().trim(),mEditTextCategory.getText().toString().trim(),mEditTextQuestionDesciption.getText().toString().trim(),"1",Utils.retrieveSharedPreference(mContext,getString(R.string.pref_user_id)).trim());
             responseBodyCall.enqueue(new Callback<ResponseBody>() {
@@ -145,6 +146,7 @@ public class AddQuestionActivity extends AppCompatActivity {
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     if (response.code() == ServerUtils.STATUS_OK) {
                         try {
+                            Utils.DismissProgressDialog();
                             if(response!=null) {
                                 String responseBody = Utils.convertTypedBodyToString(response.body());
                                 JSONObject jsonObject = new JSONObject(responseBody);
