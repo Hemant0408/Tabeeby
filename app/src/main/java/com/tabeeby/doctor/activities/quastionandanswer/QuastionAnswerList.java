@@ -1,5 +1,7 @@
 package com.tabeeby.doctor.activities.quastionandanswer;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ import com.tabeeby.doctor.adapter.QuestionAnswerAdapter;
 import com.tabeeby.doctor.application.MyApplication;
 import com.tabeeby.doctor.httpclient.API;
 import com.tabeeby.doctor.model.QuestionsModel;
+import com.tabeeby.doctor.utils.ConnectionDetector;
 import com.tabeeby.doctor.utils.ServerUtils;
 import com.tabeeby.doctor.utils.Utils;
 
@@ -43,12 +46,17 @@ public class QuastionAnswerList extends AppCompatActivity {
     LinearLayoutManager linearLayoutManager;
 
     @Bind(R.id.toolbar)
-    Toolbar toolbar;
+    protected Toolbar toolbar;
+
+    @Bind(R.id.fab)
+    protected FloatingActionButton fab;
 
     API api;
     private Context mContext;
 
     RecyclerView recyclerView;
+
+    Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +66,9 @@ public class QuastionAnswerList extends AppCompatActivity {
         ButterKnife.bind(this);
         api = MyApplication.getInstance().getHttpService();
 
+        bundle=savedInstanceState;
         setUpActionBar();
+
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,9 +79,15 @@ public class QuastionAnswerList extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.lv_question_and_answer_list);
 
+        if(ConnectionDetector.checkInternetConnection(mContext))
+        {
         makeHTTPcall();
+    }else
+    {
+        Utils.ErrorMessage((Activity) mContext,bundle,mContext.getString(R.string.no_internetconnection));
+    }
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,14 +108,22 @@ public class QuastionAnswerList extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        makeHTTPcall();
+        if(ConnectionDetector.checkInternetConnection(mContext)) {
+            makeHTTPcall();
+        }
+        else
+        {
+            Utils.ErrorMessage((Activity) mContext,bundle,mContext.getString(R.string.no_internetconnection));
+        }
     }
 
     private void makeHTTPcall() {
+      //  Utils.ShowProgressDialog(mContext);
         Call<ResponseBody> responseBodyCall = api.QuestionListApi();
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
                 String responseBody = Utils.convertTypedBodyToString(response.body());
                 Log.i("**ReponseBody", responseBody);
                 Log.i("**ResponceCode", response.code() + "");
@@ -129,7 +153,6 @@ public class QuastionAnswerList extends AppCompatActivity {
                         }
 
                     } catch (Exception e) {
-                        e.printStackTrace();
                     }
                 }
             }
@@ -139,6 +162,7 @@ public class QuastionAnswerList extends AppCompatActivity {
                 t.printStackTrace();
             }
         });
+
     }
 
 }

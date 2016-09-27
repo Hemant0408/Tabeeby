@@ -87,6 +87,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 startActivity(new Intent(mContext, MainActivity.class));
                             } else {
                                 Utils.createToastShort("User Not Verified", mContext);
+
+
                             }
                         }
                     } catch (Exception e) {

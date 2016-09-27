@@ -15,23 +15,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
     <android.support.design.widget.TextInputLayout
         android:id="@+id/textInputCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColorHint="@color/edittext_hint_color"
-        app:errorTextAppearance="@style/error_appearance">
+        android:layout_marginTop="5dp"
+        android:theme="@style/AppThemeNew"
+        app:errorTextAppearance="@style/error_appearance_new"
+        >
 
         <EditText
             android:id="@+id/edtCategory"
-            style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:drawableLeft="@drawable/ic_user_white_18dp"
             android:hint="Enter Category"
+            android:textColor="@color/themColor"
             android:inputType="textCapWords"
-            android:textColorHint="@color/white" />
+            />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -41,17 +45,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColorHint="@color/edittext_hint_color"
-        app:errorTextAppearance="@style/error_appearance">
+        android:layout_marginTop="5dp"
+        android:theme="@style/AppThemeNew"
+        app:errorTextAppearance="@style/error_appearance_new"
+        >
 
         <EditText
            android:id="@+id/edtTitle"
-            style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:drawableLeft="@drawable/ic_user_white_18dp"
             android:hint="Enter Title"
             android:inputType="textCapWords"
-            android:textColorHint="@color/white" />
+            android:textColor="@color/themColor"
+            android:textColorHint="@color/colorPrimary" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -61,18 +68,20 @@
         android:id="@+id/textInputQuestionDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColorHint="@color/edittext_hint_color"
-        app:errorTextAppearance="@style/error_appearance">
+        android:layout_marginTop="5dp"
+        android:theme="@style/AppThemeNew"
+        app:errorTextAppearance="@style/error_appearance_new"
+       >
 
         <EditText
           android:id="@+id/edtQuestionDescription"
-            style="@style/EditTextStyle"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:textColor="@color/themColor"
             android:drawableLeft="@drawable/ic_user_white_18dp"
             android:hint="What's your question ?"
             android:inputType="textCapWords"
-            android:textColorHint="@color/white" />
+            android:textColorHint="@color/colorPrimary" />
 
     </android.support.design.widget.TextInputLayout>
 

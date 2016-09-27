@@ -75,4 +75,7 @@ public interface API {
 
     @GET(ServerUtils.ANSWERLIST)
     Call<ResponseBody> AnswerListApi(@Query("question_id") String question_id);
+
+    @GET(ServerUtils.EVENTLIST)
+    Call<ResponseBody> EventListApi();
 }

@@ -131,6 +131,10 @@
         <activity
             android:name=".activities.quastionandanswer.ViewQuestionAndAnswer"
             android:label="@string/title_activity_view_question_and_answer"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.events.EventDetailActivity"
+            android:label="@string/title_activity_event_detail"
             android:theme="@style/AppTheme"></activity>
     </application>
 

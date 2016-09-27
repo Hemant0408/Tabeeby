@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardView"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_event_detail"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
-    android:layout_marginTop="3dp"
-    android:background="@color/white"
-    android:clickable="true"
-    android:foreground="?android:attr/selectableItemBackground"
-    android:orientation="vertical"
-    card_view:cardCornerRadius="2dp">
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.tabeeby.doctor.activities.events.EventDetailActivity"
+    tools:showIn="@layout/activity_event_detail">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,11 +24,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:padding="5dp"
-            android:textSize="18dp"
+            android:textSize="20dp"
             android:text="Event Title"/>
 
-     <!--   <include
+        <include
             layout="@layout/light_horizontal_line"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,6 +37,7 @@
             android:id="@+id/txt_event_data_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:drawableLeft="@drawable/ic_appointment_grey_24dp"
             android:text=" 15 sep 20 sep | 10 am to 2 pm"
             android:textColor="@color/themColor"
@@ -54,9 +54,9 @@
             android:drawablePadding="3dp"
             android:textColor="@color/themColor"
             android:layout_marginBottom="5dp"
-            />-->
+            />
 
-     <!--   <TextView
+        <TextView
             android:id="@+id/txt_event_place"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,16 +65,16 @@
             android:text="Saudi International diabetes center"
             android:textColor="@color/themColor"
             android:layout_marginBottom="5dp"
-            />-->
+            />
 
-       <!-- <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:text="View-06"
+        <!-- <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="5dp"
+             android:layout_marginRight="5dp"
+             android:text="View-06"
 
-            android:textColor="@color/colorPrimary" />-->
+             android:textColor="@color/colorPrimary" />-->
 
 
         <LinearLayout
@@ -94,7 +94,7 @@
                 android:src="@drawable/event"
                 android:adjustViewBounds="true"/>
 
-          <!--  <TextView
+            <TextView
                 android:id="@+id/txt_event_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,8 +102,9 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:text="@string/dummy_text"
-                android:textColor="@color/themColor" />-->
+                android:textColor="@color/themColor" />
 
         </LinearLayout>
     </LinearLayout>
-</android.support.v7.widget.CardView>
+
+</RelativeLayout>
