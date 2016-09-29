@@ -3,7 +3,6 @@
     <string name="shared_preference_file_key">Tabeeby</string>
 
     <!-- Profile Preference Key-->
-    <string name="pref_username">username</string>
     <string name="pref_email">email</string>
     <string name="pref_picture">picture</string>
     <string name="pref_access_token">access_token</string>

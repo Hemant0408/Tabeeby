@@ -22,74 +22,79 @@ public interface API {
     //Signup api for doctor
     @FormUrlEncoded
     @POST(ServerUtils.SIGN_UP)
-    Call<ResponseBody> signupApi(     @Field("email") String email
-                                    , @Field("password") String password
-                                    , @Field("confirm_password") String confirm_password
-                                    , @Field("first_name") String first_name
-                                    , @Field("last_name") String last_name
-                                    , @Field("full_name") String full_name
-                                    , @Field("user_type") String user_type
-                                    , @Field("login_type") String login_type
-                                    , @Field("terms") String terms
-                                    , @Field("mobile_no") String mobile_no
-                                    , @Field("country") String country
-                                    , @Field("title") String title
-                                    , @Field("lang") String lang);
+    Call<ResponseBody> signupApi(@Field("email") String email
+            , @Field("password") String password
+            , @Field("confirm_password") String confirm_password
+            , @Field("first_name") String first_name
+            , @Field("last_name") String last_name
+            , @Field("full_name") String full_name
+            , @Field("user_type") String user_type
+            , @Field("login_type") String login_type
+            , @Field("terms") String terms
+            , @Field("phone") String mobile_no
+            , @Field("country") String country
+            , @Field("title") String title
+            , @Field("lang") String lang);
 
+
+    @POST(ServerUtils.VERIFY_OTP)
+    @FormUrlEncoded
+    Call<ResponseBody> postOTPverify(@Field("uid") String uid, @Field("otp") String otp);
+
+    @POST(ServerUtils.RESEND_OTP)
+    @FormUrlEncoded
+    Call<ResponseBody> postOTPresend(@Header("Authorization") String Authorization, @Field("uid") String token);
 
     // Login api call for doctor/patient/professional
     @POST(ServerUtils.LOGIN)
     @FormUrlEncoded
-    Call<ResponseBody> loginApi(  @Field("username") String email_phone
-                                , @Field("password") String password);
-
+    Call<ResponseBody> loginApi(@Field("username") String email_phone
+            , @Field("password") String password);
 
     @FormUrlEncoded
     @POST(ServerUtils.ADDQUESTION)
-    Call<ResponseBody> addQuestionApi( @Header("Authorization") String Authorization
-                                     , @Field("title") String title
-                                     , @Field("cat_id") String categorydesc
-                                     , @Field("question_text") String question_text
-                                     , @Field("status") String status
-                                     , @Field("user_id") String user_id);
-
+    Call<ResponseBody> addQuestionApi(@Header("Authorization") String Authorization
+            , @Field("title") String title
+            , @Field("cat_id") String categorydesc
+            , @Field("question_text") String question_text
+            , @Field("status") String status
+            , @Field("user_id") String user_id);
 
     @FormUrlEncoded
     @POST(ServerUtils.ADDANSWER)
-    Call<ResponseBody> addAnswerApi(  @Header("Authorization") String Authorization
-                                    , @Field("question_id") String question_id
-                                    , @Field("user_id") String user_id
-                                    , @Field("status") String status
-                                    , @Field("answer_text") String answer_text
-                                    );
+    Call<ResponseBody> addAnswerApi(@Header("Authorization") String Authorization
+            , @Field("question_id") String question_id
+            , @Field("user_id") String user_id
+            , @Field("status") String status
+            , @Field("answer_text") String answer_text
+    );
 
     @FormUrlEncoded
     @POST(ServerUtils.VIEWCOUNT)
-    Call<ResponseBody> addViewCountApi(   @Header("Authorization") String Authorization
-                                        , @Field("question_id") String question_id
-                                        , @Field("user_id") String user_id);
-
+    Call<ResponseBody> addViewCountApi(@Header("Authorization") String Authorization
+            , @Field("question_id") String question_id
+            , @Field("user_id") String user_id);
 
     @GET(ServerUtils.QUESTIONLIST)
     Call<ResponseBody> QuestionListApi();
 
+    @POST(ServerUtils.FORGOT_PASSWORD)
+    @FormUrlEncoded
+    Call<ResponseBody> postForgotPassword(@Field("email") String email);
+
     @GET(ServerUtils.ANSWERLIST)
     Call<ResponseBody> AnswerListApi(@Query("question_id") String question_id);
-
 
     @GET(ServerUtils.EVENTLIST)
     Call<ResponseBody> EventListApi();
 
     @FormUrlEncoded
     @POST(ServerUtils.SAVEEVENTPIC)
-    Call<ResponseBody> imageUpload(  @Field("base64") String base64
-                                        ,@Field("ImageName") String ImageName);
-
+    Call<ResponseBody> imageUpload(@Field("base64") String base64
+            , @Field("ImageName") String ImageName);
 
     @Multipart
     @POST(ServerUtils.TESTPIC)
     Call<ResponseBody> upload(@Part("filename") RequestBody filename,
                               @Part("uploadfile") MultipartBody.Part file);
-
-
 }

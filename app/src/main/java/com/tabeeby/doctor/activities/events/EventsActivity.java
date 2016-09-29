@@ -19,8 +19,7 @@ import com.google.gson.reflect.TypeToken;
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.vedioupload.Main2Activity;
 import com.tabeeby.doctor.adapter.EventAdapter;
-import com.tabeeby.doctor.adapter.QuestionAnswerAdapter;
-import com.tabeeby.doctor.application.application;
+import com.tabeeby.doctor.application.MyApplication;
 import com.tabeeby.doctor.httpclient.API;
 import com.tabeeby.doctor.model.Events;
 import com.tabeeby.doctor.model.QuestionsModel;
@@ -66,7 +65,8 @@ public class EventsActivity extends AppCompatActivity {
         setUpActionBar();
         mContext=this;
         bundle=savedInstanceState;
-        api = application.getInstance().getHttpService();
+
+        api = MyApplication.getInstance().getHttpService();
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

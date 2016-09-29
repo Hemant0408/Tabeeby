@@ -21,10 +21,11 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginTop="10dp"
-            android:hint="@string/what_s_on_your_mind"
-            android:singleLine="false"
             android:background="@null"
+            android:editable="false"
+            android:hint="@string/what_s_on_your_mind"
             android:padding="12dp"
+            android:singleLine="false"
             android:textColor="@color/black_overlay"
             android:textColorHint="@color/colorDivider" />
 
@@ -91,8 +92,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="7dp"
                     android:layout_marginRight="7dp"
-                    android:paddingStart="120dp"
                     android:padding="2dp"
+                    android:paddingStart="120dp"
                     android:src="@drawable/ic_sent_24dp" />
 
             </LinearLayout>

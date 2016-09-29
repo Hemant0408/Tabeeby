@@ -22,7 +22,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
 
     public AppointmentAdapter(Context context, ArrayList<String> arrayList) {
         mContext = context;
-        this.items = arrayList;
+        items = arrayList;
     }
 
     @Override

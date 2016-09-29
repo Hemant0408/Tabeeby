@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
        // applicationId "com.tabeeby.doctor"
-        minSdkVersion 17
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -36,7 +36,6 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-
     compile('com.android.support:appcompat-v7:23.1.1') {
         force = true;
     }
@@ -52,7 +51,6 @@ dependencies {
     compile('com.android.support:support-v4:23.1.1') {
         force = true;
     }
-
     compile 'com.squareup.retrofit2:retrofit:2.0.0-beta4'
     compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta3'
     compile 'com.squareup.picasso:picasso:2.5.2'
@@ -63,9 +61,10 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.0.0'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.google.firebase:firebase-messaging:9.4.0'
+    compile 'com.isseiaoki:simplecropview:1.0.8'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.theartofdev.edmodo:android-image-cropper:2.3.+'
 
     //parse json data
     compile 'com.google.code.gson:gson:2.3.1'
-
 }

@@ -22,7 +22,7 @@ public class FindPatientAdapter extends RecyclerView.Adapter<FindPatientAdapter.
 
     public FindPatientAdapter(Context context, ArrayList<String> arrayList) {
         mContext = context;
-        this.items = arrayList;
+        items = arrayList;
     }
 
     @Override

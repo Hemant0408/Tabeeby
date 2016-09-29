@@ -4,7 +4,6 @@
     <string name="app_id">1713068595610330</string>
 
     <!-- Profile Preference Key-->
-    <string name="pref_username">username</string>
     <string name="pref_email">email</string>
     <string name="pref_picture">picture</string>
     <string name="pref_access_token">access_token</string>
@@ -44,6 +43,7 @@
     <string name="email">Email</string>
     <string name="mobile_no">Mobile No</string>
     <string name="password">Password</string>
+    <string name="username">Username</string>
     <string name="or">or</string>
     <string name="already_a_member">Already a Member? Sign In!</string>
 
@@ -56,6 +56,13 @@
     <string name="enter_the_otp">Enter the otp</string>
     <string name="verify_mobile_no_text">Sit back and relax while we verify your mobile no.</string>
 
+
+    <!--Forgot Password Activity -->
+    <string name="forgot_yout_password">Forgot your password</string>
+    <string name="enter_your_email_id_to_reset">Enter your email below to reset your password</string>
+    <string name="error_enter_email_id">Enter email id</string>
+    <string name="error_enter_valid_email_id">Enter valid email id</string>
+    <string name="please_wait">Please wait.</string>
 
     <!--Upload Pic Activity-->
     <string name="upload_your_profile_picture">Upload Your Profile Picture</string>
@@ -114,6 +121,16 @@
     <string name="services">Services</string>
     <string name="profile">Profile</string>
 
+    <!--
+    ['consultant'=>'Consultant', 'specialist'=>'Specialist', 'registrar'=>'Registrar', 'general_practitioner'=>'General Practitioner',
+    'other' => 'Other']
+    -->
+
+    <!--
+     ['Hospital'=>'Hospital', 'Clinic'=>'Clinic', 'Pharmacy'=>'Pharmacy', 'Lab' => 'Laboratory',
+     'Medical Tourism Home Healthcare' => 'Medical Tourism Home Healthcare', 'Fitness Center' => 'Fitness Center'];
+    -->
+
     <!--Yes I am Activity-->
     <string name="yes_i_am_a">Yes ! I am a</string>
     <string name="doctor">Doctor</string>
@@ -125,12 +142,12 @@
     <string name="other">Other</string>
     <string name="select_health_care_provider">Select Health Care Provider</string>
     <string name="select_type">Select Type</string>
-    <string name="clinics_and_hospital">Clinics and Hospital</string>
+    <string name="clinics">Clinic</string>
+    <string name="hospital">Hospital</string>
     <string name="fitness_center">Fitness Center</string>
-    <string name="pharmacies">Pharmacies</string>
-    <string name="medical_tourism">Medical Tourism</string>
-    <string name="labs">Labs</string>
-    <string name="home_healthcare">Home Healthcare</string>
+    <string name="pharmacies">Pharmacy</string>
+    <string name="medical_tourism_home_health_care">Medical Tourism Home Healthcare</string>
+    <string name="labs">Laboratory</string>
 
 
     <!--Notification Activity-->
@@ -146,6 +163,8 @@
     <string name="dummy_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
     <string name="notification_text">(Enter the OTP below in case if we fail to detect the sms automatically)</string>
 
+    <string name="otp_resend_mssg">Didn\'t receive OTP, Click here to resend.</string>
+    <string name="please_wait_verifying_otp">Please wait while we verify OTP.</string>
 
     <string name="post">Post</string>
 
@@ -159,11 +178,13 @@
     <string name="signup_valid_mobile_number_error_msg">Enter Valid Mobile Number</string>
     <string name="select_country_error_msg">Select Country</string>
     <string name="terms_and_condition_error_msg">Please Check Terms and Condition</string>
+    <string name="select_doctor_provider_error_msg">Select Doctor or provider</string>
 
     <!--Password Activity Errors-->
     <string name="Enter_Password">Enter Password</string>
     <string name="Enter_Confirm_Password">Enter Confirm Password</string>
     <string name="Password_Mismatch">Password Mismatch</string>
+    <string name="minimum_length">Password should be minimum 3 characters.</string>
 
     <!--Country List-->
     <string name="Afghanistan">Afghanistan</string>

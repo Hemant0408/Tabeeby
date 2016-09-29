@@ -15,7 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tabeeby.doctor.R;
-import com.tabeeby.doctor.application.application;
+
+import com.tabeeby.doctor.application.MyApplication;
 import com.tabeeby.doctor.httpclient.API;
 import com.tabeeby.doctor.httpclient.ServiceGenerator;
 
@@ -58,7 +59,7 @@ public class Main2Activity extends AppCompatActivity implements View.OnClickList
         tvFileName = (TextView) findViewById(R.id.tv_file_name);
         ivAttachment.setOnClickListener(this);
         bUpload.setOnClickListener(this);
-        api = application.getInstance().getHttpService();
+        api = MyApplication.getInstance().getHttpService();
     }
 
     @Override

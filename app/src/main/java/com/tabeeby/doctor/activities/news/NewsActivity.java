@@ -38,7 +38,6 @@ public class NewsActivity extends AppCompatActivity {
             }
         });
 
-
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.lv_news_list);
         arrayList = new ArrayList<>();
 

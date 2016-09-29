@@ -18,7 +18,7 @@ import android.widget.EditText;
 
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.signup.OtpPageActivity;
-import com.tabeeby.doctor.application.application;
+import com.tabeeby.doctor.application.MyApplication;
 import com.tabeeby.doctor.httpclient.API;
 import com.tabeeby.doctor.utils.ConnectionDetector;
 import com.tabeeby.doctor.utils.ServerUtils;
@@ -79,7 +79,7 @@ public class AddQuestionActivity extends AppCompatActivity {
                 finish();
             }
         });
-        api = application.getInstance().getHttpService();
+        api = MyApplication.getInstance().getHttpService();
 
         mEditTextCategory.addTextChangedListener(new TextWatcher() {
             @Override

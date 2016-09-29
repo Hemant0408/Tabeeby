@@ -19,7 +19,6 @@ import com.tabeeby.doctor.utils.Utils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import okhttp3.internal.Util;
 
 public class SelectCountryActivity extends AppCompatActivity {
 
@@ -44,15 +43,16 @@ public class SelectCountryActivity extends AppCompatActivity {
         btn_next_step.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!tv_selected_country.getText().toString().trim().equals("")) {
+                if (!tv_selected_country.getText().toString().trim().equals("")) {
                     if (com.tabeeby.doctor.BuildConfig.VERSION) {
-                        startActivity(new Intent(mContext, RegistrationScreen1Activity.class));
+                        startActivity(new Intent(mContext, SelectDoctorProviderActivity.class));
+                        finish();
                     } else {
                         startActivity(new Intent(mContext, SignUpActivity.class));
+                        finish();
                     }
-                }
-                else {
-                    Utils.createToastShort(getString(R.string.select_country_error_msg),mContext);
+                } else {
+                    Utils.createToastShort(getString(R.string.select_country_error_msg), mContext);
                 }
             }
         });
@@ -93,7 +93,7 @@ public class SelectCountryActivity extends AppCompatActivity {
                                             int position, long id) {
 
                         tv_selected_country.setText(adapter.getItem(position));
-                        Utils.storeSharedPreference(mContext,"Country",tv_selected_country.getText().toString().trim());
+                        Utils.storeSharedPreference(mContext, "Country", tv_selected_country.getText().toString().trim());
                         dismissDialog(CUSTOM_DIALOG_ID);
                     }
                 });

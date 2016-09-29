@@ -21,7 +21,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     public NotificationAdapter(Context context, ArrayList<String> arrayList) {
         mContext = context;
-        this.items = arrayList;
+        items = arrayList;
     }
 
     @Override

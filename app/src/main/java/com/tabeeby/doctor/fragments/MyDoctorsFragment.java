@@ -33,6 +33,7 @@ public class MyDoctorsFragment extends Fragment {
 /*    @Bind(R.id.lv_appointment_list)
     protected RecyclerView mRvListView;*/
 
+    @SuppressWarnings("UnnecessaryLocalVariable")
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

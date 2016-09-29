@@ -12,44 +12,35 @@ public class QuastionAndAnswreModel {
 
     private String code;
 
-    public String getMessage ()
-    {
+    public String getMessage() {
         return message;
     }
 
-    public void setMessage (String message)
-    {
+    public void setMessage(String message) {
         this.message = message;
     }
 
-    public String getStatus ()
-    {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus (String status)
-    {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public DataModel getData ()
-    {
+    public DataModel getData() {
         return data;
     }
 
-    public void setData (DataModel data)
-    {
+    public void setData(DataModel data) {
         this.data = data;
     }
 
-    public String getCode ()
-    {
+    public String getCode() {
         return code;
     }
 
-    public void setCode (String code)
-    {
+    public void setCode(String code) {
         this.code = code;
     }
-
 }

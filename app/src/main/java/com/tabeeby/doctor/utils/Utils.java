@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.text.TextUtils;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,9 +29,6 @@ import android.support.v7.widget.Toolbar;
 
 import okhttp3.ResponseBody;
 
-//import static com.facebook.FacebookSdk.getApplicationContext;
-
-
 /**
  * Created by Lenovo R61 on 8/2/2016.
  */
@@ -39,7 +37,7 @@ public class Utils {
     static ProgressDialog progressDialog;
 
     public static String[] getCountryList(Context ctx) {
-         final String[] country_list = {ctx.getString(R.string.Afghanistan), ctx.getString(R.string.Albania), ctx.getString(R.string.Algeria), ctx.getString(R.string.Andorra), ctx.getString(R.string.Angola), ctx.getString(R.string.Antigua_and_Barbuda), ctx.getString(R.string.Argentina), ctx.getString(R.string.Armenia), ctx.getString(R.string.Australia), ctx.getString(R.string.Austria), ctx.getString(R.string.Azerbaijan),
+        final String[] country_list = {ctx.getString(R.string.Afghanistan), ctx.getString(R.string.Albania), ctx.getString(R.string.Algeria), ctx.getString(R.string.Andorra), ctx.getString(R.string.Angola), ctx.getString(R.string.Antigua_and_Barbuda), ctx.getString(R.string.Argentina), ctx.getString(R.string.Armenia), ctx.getString(R.string.Australia), ctx.getString(R.string.Austria), ctx.getString(R.string.Azerbaijan),
                 ctx.getString(R.string.Bahamas), ctx.getString(R.string.Bahrain), ctx.getString(R.string.Bangladesh), ctx.getString(R.string.Barbados), ctx.getString(R.string.Belarus), ctx.getString(R.string.Belgium), ctx.getString(R.string.Belize), ctx.getString(R.string.Benin), ctx.getString(R.string.Bhutan), ctx.getString(R.string.Bolivia), ctx.getString(R.string.Bosnia_and_Herzegovina), ctx.getString(R.string.Botswana),
                 ctx.getString(R.string.Brazil), ctx.getString(R.string.Brunei), ctx.getString(R.string.Bulgaria), ctx.getString(R.string.Burkina_Faso), ctx.getString(R.string.Burundi),
                 ctx.getString(R.string.Cabo_Verde), ctx.getString(R.string.Cambodia), ctx.getString(R.string.Cameroon), ctx.getString(R.string.Canada), ctx.getString(R.string.Central_African_Republic_CAR), ctx.getString(R.string.Chad), ctx.getString(R.string.Chile), ctx.getString(R.string.China), ctx.getString(R.string.Colombia), ctx.getString(R.string.Comoros),
@@ -53,7 +51,7 @@ public class Utils {
                 ctx.getString(R.string.South_Sudan), ctx.getString(R.string.Spain), ctx.getString(R.string.Sri_Lanka), ctx.getString(R.string.Sudan), ctx.getString(R.string.Suriname), ctx.getString(R.string.Swaziland), ctx.getString(R.string.Sweden), ctx.getString(R.string.Switzerland), ctx.getString(R.string.Syria), ctx.getString(R.string.Taiwan), ctx.getString(R.string.Tajikistan), ctx.getString(R.string.Tanzania), ctx.getString(R.string.Thailand), ctx.getString(R.string.Timor_Leste), ctx.getString(R.string.Togo), ctx.getString(R.string.Tonga), ctx.getString(R.string.Trinidad_and_Tobago), ctx.getString(R.string.Tunisia), ctx.getString(R.string.Turkey), ctx.getString(R.string.Turkmenistan), ctx.getString(R.string.Tuvalu), ctx.getString(R.string.Uganda), ctx.getString(R.string.Ukraine), ctx.getString(R.string.United_Arab_Emirates_UAE), ctx.getString(R.string.United_Kingdom_UK), ctx.getString(R.string.United_States_of_America_USA), ctx.getString(R.string.Uruguay), ctx.getString(R.string.Uzbekistan), ctx.getString(R.string.Vanuatu), ctx.getString(R.string.Vatican_City_Holy_See), ctx.getString(R.string.Venezuela), ctx.getString(R.string.Vietnam), ctx.getString(R.string.Yemen), ctx.getString(R.string.Zambia), ctx.getString(R.string.Zimbabwe)
         };
 
-       return country_list;
+        return country_list;
     }
 
     public static void storeSharedPreference(Context ctx, String key, String value) {
@@ -89,7 +87,6 @@ public class Utils {
         return config.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
     }
 
-
     public static String convertTypedBodyToString(ResponseBody responseBody) {
         InputStream is;
         is = responseBody.byteStream();
@@ -109,56 +106,52 @@ public class Utils {
         return null;
     }
 
-
-    public static void removePreference(Context mContext)
-    {
-        Utils.removeSharedPreference(mContext,mContext.getString(R.string.pref_access_token));
-        Utils.removeSharedPreference(mContext,mContext.getString(R.string.pref_email));
-        Utils.removeSharedPreference(mContext,mContext.getString(R.string.pref_picture));
-        Utils.removeSharedPreference(mContext,mContext.getString(R.string.pref_user_type));
-        Utils.removeSharedPreference(mContext,mContext.getString(R.string.pref_user_id));
-
+    public static boolean isValidEmail(String email) {
+        return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
+    public static void removePreference(Context mContext) {
+        Utils.removeSharedPreference(mContext, mContext.getString(R.string.pref_access_token));
+        Utils.removeSharedPreference(mContext, mContext.getString(R.string.pref_email));
+        Utils.removeSharedPreference(mContext, mContext.getString(R.string.pref_picture));
+        Utils.removeSharedPreference(mContext, mContext.getString(R.string.pref_user_type));
+        Utils.removeSharedPreference(mContext, mContext.getString(R.string.pref_user_id));
+    }
 
-    public static void ErrorMessage(final Activity mContext,final Bundle bundle,String Msg) {
+    public static void ErrorMessage(final Activity mContext, final Bundle bundle, String Msg) {
         mContext.setContentView(R.layout.error_page);
         Toolbar toolbar = (Toolbar) mContext.findViewById(R.id.toolbar);
         toolbar.setTitle(mContext.getResources().getString(R.string.app_name));
-        TextView textView=(TextView) mContext.findViewById(R.id.mTextError);
-        Button ButtonTryAgain=(Button) mContext.findViewById(R.id.btn_try_again);
+        TextView textView = (TextView) mContext.findViewById(R.id.mTextError);
+        Button ButtonTryAgain = (Button) mContext.findViewById(R.id.btn_try_again);
         textView.setText(Msg);
 
         ButtonTryAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mContext.finish();
-                mContext.startActivity(new Intent(mContext,mContext.getClass()));
+                mContext.startActivity(new Intent(mContext, mContext.getClass()));
             }
         });
     }
 
-    public static void ShowProgressDialog(Context mContext)
-    {
-        progressDialog=new ProgressDialog(mContext,R.style.MyTheme);
+    public static void ShowProgressDialog(Context mContext) {
+        progressDialog = new ProgressDialog(mContext, R.style.MyTheme);
         progressDialog.setIndeterminateDrawable(mContext.getResources().getDrawable(R.drawable.rotate));
         progressDialog.setCancelable(false);
         progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
         progressDialog.show();
     }
 
-    public static void DismissProgressDialog()
-    {
+    public static void DismissProgressDialog() {
         progressDialog.dismiss();
     }
 
-    public static String ConvertDateUnixtoNormal(String unixdatetime,String format)
-    {
-        Date date = new Date(Long.parseLong(unixdatetime)*1000L); // *1000 is to convert seconds to milliseconds
+    public static String ConvertDateUnixtoNormal(String unixdatetime, String format) {
+        Date date = new Date(Long.parseLong(unixdatetime) * 1000L); // *1000 is to convert seconds to milliseconds
         SimpleDateFormat sdf = new SimpleDateFormat(format); // the format of your date
         sdf.setTimeZone(TimeZone.getTimeZone("GMT-4")); // give a timezone reference for formating (see comment at the bottom
         String formattedDate = sdf.format(date);
         return formattedDate;
     }
-
 }
