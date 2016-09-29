@@ -10,14 +10,14 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-
+/*
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.Profile;
 import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
+import com.facebook.login.widget.LoginButton;*/
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.login.LoginActivity;
 import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
@@ -36,7 +36,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SignUpActivity extends AppCompatActivity {
-    CallbackManager callbackManager;
+   // CallbackManager callbackManager;
     private Context mContext;
 
     @Bind(R.id.edtFirstName)
@@ -67,12 +67,12 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
+      //  FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_sign_up);
         mContext = this;
         ButterKnife.bind(this);
 
-        //Call facebook api
+      /*  //Call facebook api
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
 
@@ -101,7 +101,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Log.i("Info", exception.toString());
                 // App code
             }
-        });
+        });*/
 
 
         //Remove error text from field
@@ -214,7 +214,7 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+       // callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
 }

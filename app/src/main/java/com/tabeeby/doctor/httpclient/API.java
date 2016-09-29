@@ -3,6 +3,8 @@ package com.tabeeby.doctor.httpclient;
 import com.google.android.gms.common.server.converter.StringToIntConverter;
 import com.tabeeby.doctor.utils.ServerUtils;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -10,7 +12,9 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 public interface API {
@@ -75,6 +79,17 @@ public interface API {
 
     @GET(ServerUtils.EVENTLIST)
     Call<ResponseBody> EventListApi();
+
+    @FormUrlEncoded
+    @POST(ServerUtils.SAVEEVENTPIC)
+    Call<ResponseBody> imageUpload(  @Field("base64") String base64
+                                        ,@Field("ImageName") String ImageName);
+
+
+    @Multipart
+    @POST(ServerUtils.TESTPIC)
+    Call<ResponseBody> upload(@Part("filename") RequestBody filename,
+                              @Part("uploadfile") MultipartBody.Part file);
 
 
 }

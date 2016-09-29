@@ -2,7 +2,9 @@ package com.tabeeby.doctor.activities.events;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.tabeeby.doctor.R;
+import com.tabeeby.doctor.activities.vedioupload.Main2Activity;
 import com.tabeeby.doctor.adapter.EventAdapter;
 import com.tabeeby.doctor.adapter.QuestionAnswerAdapter;
 import com.tabeeby.doctor.application.application;
@@ -48,8 +51,12 @@ public class EventsActivity extends AppCompatActivity {
     private Context mContext;
     private Bundle bundle;
 
+
     @Bind(R.id.toolbar)
-    Toolbar toolbar;
+    protected Toolbar toolbar;
+
+    @Bind(R.id.fab)
+    protected FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +84,14 @@ public class EventsActivity extends AppCompatActivity {
         else {
             Utils.ErrorMessage((Activity) mContext,bundle,getResources().getString(R.string.no_internetconnection));
         }
+
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(mContext,Main2Activity.class));
+            }
+        });
 
     }
 

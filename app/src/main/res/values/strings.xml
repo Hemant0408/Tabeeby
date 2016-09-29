@@ -371,6 +371,7 @@
     <string name="no_internetconnection">No Internet Connection</string>
     <string name="title_activity_event_detail">EventDetailActivity</string>
     <string name="title_activity_add_event">AddEventActivity</string>
+    <string name="add_event">Add Event</string>
 
-
+    <string name="internal_storage">Internal storage</string>
 </resources>

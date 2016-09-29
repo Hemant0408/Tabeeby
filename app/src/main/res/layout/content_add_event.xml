@@ -13,4 +13,11 @@
     tools:context="com.tabeeby.doctor.activities.events.AddEventActivity"
     tools:showIn="@layout/activity_add_event">
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:onClick="SelectImage"
+        android:text="SelectImage"/>
+
 </RelativeLayout>
