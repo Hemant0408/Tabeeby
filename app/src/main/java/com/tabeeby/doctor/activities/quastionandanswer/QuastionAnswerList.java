@@ -58,15 +58,16 @@ public class QuastionAnswerList extends AppCompatActivity {
 
     Bundle bundle;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quastion_answer_list);
-        mContext=this;
+        mContext = this;
         ButterKnife.bind(this);
         api = MyApplication.getInstance().getHttpService();
 
-        bundle=savedInstanceState;
+        bundle = savedInstanceState;
         setUpActionBar();
 
 
@@ -79,19 +80,17 @@ public class QuastionAnswerList extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.lv_question_and_answer_list);
 
-        if(ConnectionDetector.checkInternetConnection(mContext))
-        {
-        makeHTTPcall();
-    }else
-    {
-        Utils.ErrorMessage((Activity) mContext,bundle,mContext.getString(R.string.no_internetconnection));
-    }
+        if (ConnectionDetector.checkInternetConnection(mContext)) {
+            makeHTTPcall();
+        } else {
+            Utils.ErrorMessage((Activity) mContext, bundle, mContext.getString(R.string.no_internetconnection));
+        }
 
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(mContext,AddQuestionActivity.class));
+                startActivity(new Intent(mContext, AddQuestionActivity.class));
             }
         });
     }
@@ -108,61 +107,64 @@ public class QuastionAnswerList extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(ConnectionDetector.checkInternetConnection(mContext)) {
-            makeHTTPcall();
-        }
-        else
-        {
-            Utils.ErrorMessage((Activity) mContext,bundle,mContext.getString(R.string.no_internetconnection));
+        if (ConnectionDetector.checkInternetConnection(mContext)) {
+            //  makeHTTPcall();
+        } else {
+            Utils.ErrorMessage((Activity) mContext, bundle, mContext.getString(R.string.no_internetconnection));
         }
     }
 
     private void makeHTTPcall() {
-      //  Utils.ShowProgressDialog(mContext);
+        final ProgressDialog progressDialog = new ProgressDialog(mContext, R.style.MyTheme);
+        progressDialog.setIndeterminateDrawable(mContext.getResources().getDrawable(R.drawable.rotate));
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
+        progressDialog.show();
+
         Call<ResponseBody> responseBodyCall = api.QuestionListApi();
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                     @Override
+                                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 
-                String responseBody = Utils.convertTypedBodyToString(response.body());
-                Log.i("**ReponseBody", responseBody);
-                Log.i("**ResponceCode", response.code() + "");
-                if (response.code() == ServerUtils.STATUS_OK) {
-                    try {
+                                         String responseBody = Utils.convertTypedBodyToString(response.body());
+                                         Log.i("**ReponseBody", responseBody);
+                                         Log.i("**ResponceCode", response.code() + "");
+                                         if (response.code() == ServerUtils.STATUS_OK) {
 
-                        Gson gson = new Gson();
-                        Type type = new TypeToken<List<QuestionsModel>>() {
-                        }.getType();
+                                             progressDialog.dismiss();
+                                             try {
+                                                 Gson gson = new Gson();
+                                                 Type type = new TypeToken<List<QuestionsModel>>() {
+                                                 }.getType();
 
 
-                        JSONObject jsonObject = new JSONObject(responseBody);
-                        String data = jsonObject.getString("data");
-                        JSONObject DataJsonObject = new JSONObject(data);
-                        JSONArray jsonArray = DataJsonObject.getJSONArray("questions");
-                        mArraylistQuestionlist = new ArrayList<>();
-                        mArraylistQuestionlist.clear();
-                        recyclerView.removeAllViews();
-                        mArraylistQuestionlist = gson.fromJson(jsonArray.toString(), type);
+                                                 JSONObject jsonObject = new JSONObject(responseBody);
+                                                 String data = jsonObject.getString("data");
+                                                 JSONObject DataJsonObject = new JSONObject(data);
+                                                 JSONArray jsonArray = DataJsonObject.getJSONArray("questions");
+                                                 mArraylistQuestionlist = new ArrayList<>();
+                                                 mArraylistQuestionlist.clear();
+                                                 recyclerView.removeAllViews();
+                                                 mArraylistQuestionlist = gson.fromJson(jsonArray.toString(), type);
 
-                        if (mArraylistQuestionlist.size() != 0) {
-                            questionAnswerAdapter = new QuestionAnswerAdapter(mContext, mArraylistQuestionlist);
-                            linearLayoutManager = new LinearLayoutManager(mContext);
-                            recyclerView.setLayoutManager(linearLayoutManager);
-                            recyclerView.setHasFixedSize(true);
-                            recyclerView.setAdapter(questionAnswerAdapter);
-                        }
+                                                 if (mArraylistQuestionlist.size() != 0) {
+                                                     questionAnswerAdapter = new QuestionAnswerAdapter(mContext, mArraylistQuestionlist);
+                                                     linearLayoutManager = new LinearLayoutManager(mContext);
+                                                     recyclerView.setLayoutManager(linearLayoutManager);
+                                                     recyclerView.setHasFixedSize(true);
+                                                     recyclerView.setAdapter(questionAnswerAdapter);
 
-                    } catch (Exception e) {
-                    }
-                }
-            }
+                                                 }
+                                             } catch (Exception e) {
+                                             }
+                                         }
+                                     }
 
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                t.printStackTrace();
-            }
-        });
-
+                                     @Override
+                                     public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                         t.printStackTrace();
+                                     }
+                                 }
+        );
     }
-
 }

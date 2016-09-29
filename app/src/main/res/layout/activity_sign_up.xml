@@ -180,12 +180,18 @@
 
             <!-- <Button
                  android:id="@+id/login_button"
+
+       <com.facebook.login.widget.LoginButton
+                 android:id="@+id/usersettings_fragment_login_button"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
                  android:layout_marginBottom="10dp"
                  android:layout_marginLeft="50dp"
                  android:layout_marginRight="50dp"
+
                  android:layout_marginTop="10dp"
+                 android:visibility="visible" />
+
                  android:visibility="visible" />
 
 

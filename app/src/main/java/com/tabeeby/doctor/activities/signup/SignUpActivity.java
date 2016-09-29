@@ -12,7 +12,6 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
 
-
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.login.LoginActivity;
 import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
@@ -22,7 +21,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class SignUpActivity extends AppCompatActivity {
-    //CallbackManager callbackManager;
+
+   // CallbackManager callbackManager;
+
     private Context mContext;
 
     @Bind(R.id.edtFirstName)
@@ -56,12 +57,19 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         // FacebookSdk.sdkInitialize(getApplicationContext());
+
         setContentView(R.layout.activity_sign_up);
         mContext = this;
         ButterKnife.bind(this);
 
-        //Call facebook api
+
+
+      /*  //Call facebook api
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        callbackManager = CallbackManager.Factory.create();
+
 
         //callbackManager = CallbackManager.Factory.create();
 

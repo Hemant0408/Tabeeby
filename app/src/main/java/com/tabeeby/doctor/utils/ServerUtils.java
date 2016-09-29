@@ -21,6 +21,9 @@ public final class ServerUtils {
     public static final String ADDANSWER="question/post-answer";
     public static final String VIEWCOUNT="question/register-view";
     public static final String EVENTLIST="event/get-events";
+    public static final String SAVEEVENTPIC="image-test/test.php";
+
+    public static final String TESTPIC="image-test/chunk.php";
 
     public static final String VERIFY_OTP = "verify-otp";
     public static final String RESEND_OTP = "resend-otp";

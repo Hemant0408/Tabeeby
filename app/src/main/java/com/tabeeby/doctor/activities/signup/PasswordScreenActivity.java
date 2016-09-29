@@ -139,6 +139,7 @@ public class PasswordScreenActivity extends AppCompatActivity {
 
     private void makeHTTPcall() {
         Call<ResponseBody> responseBodyCall = api.signupApi(mEmail, mUserPassword.getText().toString(), mConfirmUserPassword.getText().toString().trim(), mFirstName, mLastName, null, mUserType, mLoginType, mTerms, mMobileNumber, "India", title/*Utils.retrieveSharedPreference(mContext, "doctor_sub_type").toLowerCase()*/, Utils.retrieveSharedPreference(mContext, "Language"));
+
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

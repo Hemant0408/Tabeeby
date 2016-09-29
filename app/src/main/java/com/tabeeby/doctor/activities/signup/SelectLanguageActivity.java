@@ -107,6 +107,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
                     Utils.storeSharedPreference(mContext, "Language", "en");
                     // MyApplication.updateLanguage(mContext, "en");
                 }
+
                 MyApplication.updateLanguage(mContext, app_local);
                 startActivity(new Intent(mContext, SelectCountryActivity.class));
                 finish();

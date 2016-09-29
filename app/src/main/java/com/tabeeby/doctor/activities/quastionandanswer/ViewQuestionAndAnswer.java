@@ -1,6 +1,7 @@
 package com.tabeeby.doctor.activities.quastionandanswer;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -61,6 +62,7 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
     private ArrayList<AnswerModel> mArrayListAnswerList;
     private AnswerModel mAnswermodel;
     private Bundle bundle;
+    private ProgressDialog progressDialog;
 
     @Override
 
@@ -134,6 +136,7 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
 
     public void getAnswers() {
         if (mQuestionId != null) {
+            Utils.ShowProgressDialog(mContext);
             Call<ResponseBody> responseBodyCall = api.AnswerListApi(mQuestionId);
             responseBodyCall.enqueue(new Callback<ResponseBody>() {
                 @Override
@@ -169,7 +172,7 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
                                 recyclerView.setAdapter(findDoctorAdapter);
                             }
                         } catch (Exception e) {
-
+                            e.printStackTrace();
                         }
                     }
                 }
@@ -249,5 +252,18 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
                 t.printStackTrace();
             }
         });
+    }
+
+
+    public void showLoader() {
+        progressDialog = new ProgressDialog(mContext, R.style.MyTheme);
+        progressDialog.setIndeterminateDrawable(mContext.getResources().getDrawable(R.drawable.rotate));
+        progressDialog.setCancelable(false);
+        progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
+        progressDialog.show();
+    }
+
+    public void dismissLoader() {
+        progressDialog.dismiss();
     }
 }

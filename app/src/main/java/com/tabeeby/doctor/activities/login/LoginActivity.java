@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 import com.tabeeby.doctor.activities.signup.SelectLanguageActivity;

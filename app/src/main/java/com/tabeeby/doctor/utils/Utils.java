@@ -29,8 +29,6 @@ import android.support.v7.widget.Toolbar;
 
 import okhttp3.ResponseBody;
 
-
-
 /**
  * Created by Lenovo R61 on 8/2/2016.
  */

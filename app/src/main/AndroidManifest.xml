@@ -137,6 +137,13 @@
             android:name=".activities.events.EventDetailActivity"
             android:label="@string/title_activity_event_detail"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.events.AddEventActivity"
+            android:label="@string/title_activity_add_event"
+            android:theme="@style/AppTheme" />
+
+        <activity android:name=".activities.vedioupload.Main2Activity" />
+
     </application>
 
 </manifest>

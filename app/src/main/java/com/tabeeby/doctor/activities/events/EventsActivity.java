@@ -2,7 +2,9 @@ package com.tabeeby.doctor.activities.events;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.tabeeby.doctor.R;
+import com.tabeeby.doctor.activities.vedioupload.Main2Activity;
 import com.tabeeby.doctor.adapter.EventAdapter;
 import com.tabeeby.doctor.application.MyApplication;
 import com.tabeeby.doctor.httpclient.API;
@@ -39,19 +42,20 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EventsActivity extends AppCompatActivity {
-    EventAdapter findDoctorAdapter;
-    LinearLayoutManager linearLayoutManager;
-
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
-
-    API api;
-
-    ArrayList<Events> mArraylistEventslist;
-    RecyclerView recyclerView;
+    private EventAdapter findDoctorAdapter;
+    private LinearLayoutManager linearLayoutManager;
+    private API api;
+    private ArrayList<Events> mArraylistEventslist;
+    private RecyclerView recyclerView;
     private Context mContext;
     private Bundle bundle;
 
+
+    @Bind(R.id.toolbar)
+    protected Toolbar toolbar;
+
+    @Bind(R.id.fab)
+    protected FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,17 +85,27 @@ public class EventsActivity extends AppCompatActivity {
             Utils.ErrorMessage((Activity) mContext,bundle,getResources().getString(R.string.no_internetconnection));
         }
 
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(mContext,Main2Activity.class));
+            }
+        });
+
     }
 
 
     private void getDisplayList()
     {
+        Utils.ShowProgressDialog(mContext);
         Call<ResponseBody> responseBodyCall = api.EventListApi();
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.code() == ServerUtils.STATUS_OK) {
                     try {
+                        Utils.DismissProgressDialog();
                         if(response!=null) {
                             String responseBody = Utils.convertTypedBodyToString(response.body());
                             Gson gson = new Gson();
@@ -145,6 +159,5 @@ public class EventsActivity extends AppCompatActivity {
         super.onDestroy();
         ButterKnife.unbind(this);
     }
-
 
 }
