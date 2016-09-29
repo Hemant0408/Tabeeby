@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -45,8 +46,8 @@ public class SelectLanguageActivity extends AppCompatActivity {
 
         if (Utils.retrieveSharedPreference(mContext, "Language") != null) {
             if (Utils.retrieveSharedPreference(mContext, "Language").equals("en")) {
-                mTextViewEnglish.setCompoundDrawables(getResources().getDrawable(R.drawable.ic_gallery_white_48dp),null,null,null);
-                mTextViewArebic.setCompoundDrawables(null,null,null,null);
+                mTextViewEnglish.setCompoundDrawables(getResources().getDrawable(R.drawable.ic_gallery_white_48dp), null, null, null);
+                mTextViewArebic.setCompoundDrawables(null, null, null, null);
             } else {
                 if (Utils.retrieveSharedPreference(mContext, "Language").equals("ar")) {
                     mTextViewArebic.setCompoundDrawables(getResources().getDrawable(R.drawable.ic_gallery_white_48dp), null, null, null);
@@ -59,6 +60,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
     @OnClick({R.id.btn_next_step})
     public void onClickNextButton() {
         startActivity(new Intent(mContext, SelectCountryActivity.class));
+        finish();
     }
 
     @Override
@@ -74,7 +76,6 @@ public class SelectLanguageActivity extends AppCompatActivity {
     public void SelectArebic(View view) {
         changeLanguage("ar", "R");
     }
-
 
     /**
      * Method that Update UI for Arabic locale.
@@ -108,7 +109,7 @@ public class SelectLanguageActivity extends AppCompatActivity {
                 }
                 MyApplication.updateLanguage(mContext, app_local);
                 startActivity(new Intent(mContext, SelectCountryActivity.class));
-
+                finish();
                 return null;
             }
 

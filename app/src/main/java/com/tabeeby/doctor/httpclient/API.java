@@ -27,11 +27,19 @@ public interface API {
             , @Field("user_type") String user_type
             , @Field("login_type") String login_type
             , @Field("terms") String terms
-            , @Field("mobile_no") String mobile_no
+            , @Field("phone") String mobile_no
             , @Field("country") String country
             , @Field("title") String title
             , @Field("lang") String lang);
 
+
+    @POST(ServerUtils.VERIFY_OTP)
+    @FormUrlEncoded
+    Call<ResponseBody> postOTPverify(@Field("uid") String uid, @Field("otp") String otp);
+
+    @POST(ServerUtils.RESEND_OTP)
+    @FormUrlEncoded
+    Call<ResponseBody> postOTPresend(@Header("Authorization") String Authorization, @Field("uid") String token);
 
     // Login api call for doctor/patient/professional
     @POST(ServerUtils.LOGIN)

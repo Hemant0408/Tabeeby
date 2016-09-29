@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.facebook.FacebookSdk;
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 import com.tabeeby.doctor.activities.signup.SelectLanguageActivity;
@@ -43,7 +42,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
+        //FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         mContext = this;

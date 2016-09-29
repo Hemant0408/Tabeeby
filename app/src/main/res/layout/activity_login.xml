@@ -98,7 +98,7 @@
                 android:layout_marginTop="5dp"
                 android:text="@string/or" />
 
-            <com.facebook.login.widget.LoginButton
+            <!--<com.facebook.login.widget.LoginButton
                 android:id="@+id/login_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -108,9 +108,9 @@
                 android:layout_marginTop="10dp"
                 android:paddingBottom="14dp"
                 android:paddingTop="14dp"
-                android:visibility="visible" />
+                android:visibility="visible" />-->
 
-            <!-- <Button
+             <!--<Button
                  android:id="@+id/login_button"
                  android:layout_width="match_parent"
                  android:layout_height="48dp"

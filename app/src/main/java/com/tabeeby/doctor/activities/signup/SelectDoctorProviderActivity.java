@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
@@ -19,8 +20,9 @@ import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-public class RegistrationScreen1Activity extends AppCompatActivity {
+public class SelectDoctorProviderActivity extends AppCompatActivity {
 
     ListView dialog_ListView;
     ImageView mDoctor, mOrganisation;
@@ -31,6 +33,8 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
     private Context mContext;
     private ArrayList<String> doctorType = new ArrayList<>();
     private ArrayList<String> healthCare = new ArrayList<>();
+    private int selected = -1;
+    private String user_type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +50,15 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
     }
 
     public void nextStep(View view) {
-        startActivity(new Intent(mContext, SignUpActivity.class));
+        if (selected == -1) {
+            Utils.createToastShort(getString(R.string.select_doctor_provider_error_msg), mContext);
+        } else {
+            Intent intent = new Intent(SelectDoctorProviderActivity.this, SignUpActivity.class);
+            intent.putExtra("user_type", user_type);
+            intent.putExtra("title", getKeyFromValue(selectedValue));
+            startActivity(intent);
+            finish();
+        }
     }
 
     public void showDoctorDialog(View view) {
@@ -102,10 +114,13 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
                                     int position, long id) {
 
                 selectedValue = adapter.getItem(position);
+                user_type = "doctor";
                 if (dialog != null)
                     dialog.dismiss();
                 tv_doctor.setText(selectedValue);
                 tv_health_care.setText(getString(R.string.health_care_provider));
+
+                selected = 0;
 
                 Utils.storeSharedPreference(mContext, "doctor_type", "health care provider");
                 Utils.storeSharedPreference(mContext, "doctor_sub_type", selectedValue);
@@ -136,12 +151,12 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
         window.setLayout(screenWidth, LinearLayout.LayoutParams.WRAP_CONTENT);
 
         healthCare.clear();
-        healthCare.add(getString(R.string.clinics_and_hospital));
+        healthCare.add(getString(R.string.clinics));
+        healthCare.add(getString(R.string.hospital));
         healthCare.add(getString(R.string.fitness_center));
         healthCare.add(getString(R.string.pharmacies));
-        healthCare.add(getString(R.string.medical_tourism));
+        healthCare.add(getString(R.string.medical_tourism_home_health_care));
         healthCare.add(getString(R.string.labs));
-        healthCare.add(getString(R.string.home_healthcare));
 
 
         final ArrayAdapter<String> adapter
@@ -155,15 +170,57 @@ public class RegistrationScreen1Activity extends AppCompatActivity {
                                     int position, long id) {
 
                 selectedValue = adapter.getItem(position);
+                user_type = "provider";
                 if (dialog != null)
                     dialog.dismiss();
                 tv_health_care.setText(selectedValue);
                 tv_doctor.setText("Doctor");
+
+                selected = 0;
                 Utils.storeSharedPreference(mContext, "doctor_type", "doctor");
                 Utils.storeSharedPreference(mContext, "doctor_sub_type", selectedValue);
             }
         });
 
         dialog.show();
+    }
+
+    private String getKeyFromValue(String doctorValue) {
+
+        switch (doctorValue) {
+// ['consultant'=>'Consultant', 'specialist'=>'Specialist', 'registrar'=>'Registrar', 'general_practitioner'=>'General Practitioner',
+// 'other' => 'Other'];
+            case "Consultant":
+                return "consultant";
+
+            case "Specialist":
+                return "specialist";
+
+            case "Registrar":
+                return "registrar";
+
+            case "General Practitioner":
+                return "general_practitioner";
+
+            case "Other":
+                return "other";
+
+            case "Clinic":
+                return "Clinic";
+
+            case "Hospital":
+                return "Hospital";
+
+            case "Laboratory":
+                return "Lab";
+
+            case "Medical Tourism Home Healthcare":
+                return "Medical Tourism Home Healthcare";
+
+            case "Fitness Center":
+                return "Fitness Center";
+        }
+
+        return "";
     }
 }

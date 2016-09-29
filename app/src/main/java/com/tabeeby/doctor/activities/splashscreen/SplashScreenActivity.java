@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.ProgressBar;
 
 import com.tabeeby.doctor.R;
+import com.tabeeby.doctor.activities.signup.OtpPageActivity;
 import com.tabeeby.doctor.activities.upoladpicture.UploadProfilePicture;
 import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 import com.tabeeby.doctor.activities.viewpager.ViewPagerActivity;
@@ -31,15 +32,13 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-               if(!Utils.retrieveSharedPreference(mContext,getString(R.string.pref_access_token)).equals("false")) {
-                   startActivity(new Intent(mContext, MainActivity.class));
-                   finish();
-               }
-                else
-               {
-                   startActivity(new Intent(mContext, ViewPagerActivity.class));
-                   finish();
-               }
+                if (!Utils.retrieveSharedPreference(mContext, getString(R.string.pref_access_token)).equals("false")) {
+                    startActivity(new Intent(mContext, MainActivity.class));
+                    finish();
+                } else {
+                    startActivity(new Intent(mContext, ViewPagerActivity.class));
+                    finish();
+                }
             }
         }, SPLASH_TIME_OUT);
     }

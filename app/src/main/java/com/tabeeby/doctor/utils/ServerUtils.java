@@ -22,8 +22,8 @@ public final class ServerUtils {
     public static final String VIEWCOUNT="question/register-view";
     public static final String EVENTLIST="event/get-events";
 
-    public static final String VERIFY_OTP = "verifyotp";
-    public static final String RESEND_OTP = "resendotp";
+    public static final String VERIFY_OTP = "verify-otp";
+    public static final String RESEND_OTP = "resend-otp";
     public static final String FORGOT_PASSWORD = "auth/request-password-reset";
     public static final String UPDATE_PATIENT = "updatepetient";
 

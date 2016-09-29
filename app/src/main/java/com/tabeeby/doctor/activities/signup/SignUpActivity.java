@@ -12,13 +12,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.Profile;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
+
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.login.LoginActivity;
 import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
@@ -28,7 +22,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class SignUpActivity extends AppCompatActivity {
-    CallbackManager callbackManager;
+    //CallbackManager callbackManager;
     private Context mContext;
 
     @Bind(R.id.edtFirstName)
@@ -37,8 +31,8 @@ public class SignUpActivity extends AppCompatActivity {
     @Bind(R.id.edtLastName)
     protected EditText mLastName;
 
-    @Bind(R.id.edtUserEmail)
-    protected EditText mUserEmail;
+    //@Bind(R.id.edtUserEmail)
+    //protected EditText mUserEmail;
 
     @Bind(R.id.edtMobileNumber)
     protected EditText mMobileNumber;
@@ -49,29 +43,39 @@ public class SignUpActivity extends AppCompatActivity {
     @Bind(R.id.textInputLastName)
     protected TextInputLayout mTextInputLastName;
 
-    @Bind(R.id.textInputUserEmail)
-    protected TextInputLayout mTextInputUserEmail;
+    //@Bind(R.id.textInputUserEmail)
+    //protected TextInputLayout mTextInputUserEmail;
 
     @Bind(R.id.textInputMobileNumber)
     protected TextInputLayout mTextInputMobileNumber;
 
+    Bundle bundle;
+
+    String user_type, title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_sign_up);
         mContext = this;
         ButterKnife.bind(this);
 
         //Call facebook api
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        callbackManager = CallbackManager.Factory.create();
 
-        LoginButton loginButton = (LoginButton) findViewById(R.id.usersettings_fragment_login_button);
+        //callbackManager = CallbackManager.Factory.create();
+
+        /*LoginButton loginButton = (LoginButton) findViewById(R.id.usersettings_fragment_login_button);
         loginButton.setReadPermissions("user_friends");
+*/
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            user_type = bundle.getString("user_type");
+            title = bundle.getString("title");
+        }
 
         // Callback registration
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+        /*loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Profile profile = Profile.getCurrentProfile();
@@ -91,7 +95,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Log.i("Info", exception.toString());
                 // App code
             }
-        });
+        });*/
 
         //Remove error text from field
         mFirstName.addTextChangedListener(new TextWatcher() {
@@ -123,7 +127,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
             }
         });
-        mUserEmail.addTextChangedListener(new TextWatcher() {
+        /*mUserEmail.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
@@ -136,7 +140,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
             }
-        });
+        });*/
         mMobileNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -156,10 +160,12 @@ public class SignUpActivity extends AppCompatActivity {
     public void nextStep(View view) {
         if (validate()) {
             Intent i = new Intent(mContext, PasswordScreenActivity.class);
-            i.putExtra("UserEmail", mUserEmail.getText().toString().trim());
+            i.putExtra("UserEmail", ""/*mUserEmail.getText().toString().trim()*/);
             i.putExtra("FirstName", mFirstName.getText().toString().trim());
             i.putExtra("LastName", mLastName.getText().toString().trim());
             i.putExtra("MobileNumber", mMobileNumber.getText().toString().trim());
+            i.putExtra("user_type", user_type);
+            i.putExtra("title", title);
             startActivity(i);
         }
     }
@@ -174,20 +180,20 @@ public class SignUpActivity extends AppCompatActivity {
             mTextInputLastName.setError(getString(R.string.signup_last_name_error_msg));
             return false;
         }
-        if (mUserEmail.getText().toString().trim().equals("")) {
+        /*if (mUserEmail.getText().toString().trim().equals("")) {
             mTextInputUserEmail.setError(getString(R.string.signup_email_address_error_msg));
             return false;
         }
         if (!android.util.Patterns.EMAIL_ADDRESS.matcher(mUserEmail.getText().toString().trim()).matches()) {
             mTextInputUserEmail.setError(getString(R.string.signup_valid_email_address_msg));
             return false;
-        }
+        }*/
         if (mMobileNumber.getText().toString().trim().equals("")) {
             mTextInputMobileNumber.setError(getString(R.string.signup_mobile_number_error_msg));
             return false;
         }
 
-        if (mMobileNumber.getText().toString().trim().length() < 10 || mMobileNumber.getText().toString().trim().length() > 10) {
+        if (mMobileNumber.getText().toString().trim().length() < 10) {
             mTextInputMobileNumber.setError(getString(R.string.signup_valid_mobile_number_error_msg));
             return false;
         }
@@ -202,6 +208,6 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+        //callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 }

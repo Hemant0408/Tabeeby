@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/themColor"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.tabeeby.doctor.activities.signup.OtpPageActivity">
-
+    android:paddingTop="@dimen/activity_vertical_margin">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:background="@color/themColor"
         android:orientation="vertical"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
@@ -53,21 +51,52 @@
             android:text="@string/notification_text"
             android:textSize="14sp" />
 
-        <EditText
-            android:id="@+id/edtType"
-            android:layout_width="170dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:background="@color/white"
-            android:drawablePadding="7dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="-20dp"
+            android:layout_weight="1"
             android:gravity="center"
-            android:hint="@string/enter_the_otp"
-            android:singleLine="true" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/timer_textView"
+                style="@style/TextViewMin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0:00"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/forgot_password_Edittext"
+                android:layout_width="170dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:drawablePadding="7dp"
+                android:gravity="center"
+                android:hint="@string/enter_the_otp"
+                android:singleLine="true" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/otp_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:text=""
+            android:textColor="@android:color/holo_red_dark" />
 
     </LinearLayout>
 
     <Button
+        android:id="@+id/submit_button"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="match_parent"
         android:layout_height="48dp"

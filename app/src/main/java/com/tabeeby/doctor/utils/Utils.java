@@ -29,7 +29,6 @@ import android.support.v7.widget.Toolbar;
 
 import okhttp3.ResponseBody;
 
-import static com.facebook.FacebookSdk.getApplicationContext;
 
 
 /**

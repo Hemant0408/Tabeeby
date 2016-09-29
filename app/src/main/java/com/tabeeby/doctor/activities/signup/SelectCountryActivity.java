@@ -19,7 +19,6 @@ import com.tabeeby.doctor.utils.Utils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import okhttp3.internal.Util;
 
 public class SelectCountryActivity extends AppCompatActivity {
 
@@ -46,9 +45,11 @@ public class SelectCountryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (!tv_selected_country.getText().toString().trim().equals("")) {
                     if (com.tabeeby.doctor.BuildConfig.VERSION) {
-                        startActivity(new Intent(mContext, RegistrationScreen1Activity.class));
+                        startActivity(new Intent(mContext, SelectDoctorProviderActivity.class));
+                        finish();
                     } else {
                         startActivity(new Intent(mContext, SignUpActivity.class));
+                        finish();
                     }
                 } else {
                     Utils.createToastShort(getString(R.string.select_country_error_msg), mContext);
