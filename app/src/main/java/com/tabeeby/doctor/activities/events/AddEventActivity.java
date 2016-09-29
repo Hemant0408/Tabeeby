@@ -1,5 +1,6 @@
 package com.tabeeby.doctor.activities.events;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -78,12 +79,7 @@ public class AddEventActivity extends AppCompatActivity {
             public void onClick(View v) {finish();}
         });
 
-
-
-
-
     }
-
 
 
 
@@ -105,7 +101,7 @@ public class AddEventActivity extends AppCompatActivity {
     private void selectImage(View view) {
 
 
-        final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
+        final CharSequence[] options = {"Choose from Gallery","Cancel" };
 
         final String path = (String) view.getTag();
 
@@ -119,39 +115,7 @@ public class AddEventActivity extends AppCompatActivity {
 
             public void onClick(DialogInterface dialog, int item) {
 
-
-                if (options[item].equals("Take Photo"))
-
-                {
-
-                    root = Environment.getExternalStorageDirectory().toString()
-                            + "/Your_Folder";
-
-                    // Creating folders for Image
-                    imageFolderPath = root + "/saved_images";
-                    File imagesFolder = new File(imageFolderPath);
-                    imagesFolder.mkdirs();
-
-                    // Generating file name
-                    imageName = "test.png";
-
-                    // Creating image here
-
-                    image = new File(imageFolderPath, imageName);
-
-                    fileUri = Uri.fromFile(image);
-
-
-                    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
-
-                    startActivityForResult(takePictureIntent,
-                            CAMERA_IMAGE_REQUEST);
-
-
-                }
-                else if (options[item].equals("Choose from Gallery"))
+         if (options[item].equals("Choose from Gallery"))
                 {
 
                     Intent intent = new   Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -176,116 +140,23 @@ public class AddEventActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 2 && resultCode == Activity.RESULT_OK) {
 
-        if (resultCode == RESULT_OK) {
+            android.net.Uri selectedImage = data.getData();
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+            android.database.Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+            if (cursor == null)
+                return;
 
-            if (requestCode == 1) {
+            cursor.moveToFirst();
 
-                super.onActivityResult(requestCode, resultCode, data);
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String filePath = cursor.getString(columnIndex);
+            cursor.close();
 
-                if (resultCode == RESULT_OK) {
-
-                    switch (requestCode) {
-                        case CAMERA_IMAGE_REQUEST:
-
-                            Bitmap bitmap = null;
-                            try {
-                                GetImageThumbnail getImageThumbnail = new GetImageThumbnail();
-                                bitmap = getImageThumbnail.getThumbnail(fileUri, this);
-                                ExifInterface exif = new ExifInterface(image.getAbsolutePath());     //Since API Level 5
-                                String orientation = exif.getAttribute(ExifInterface.TAG_ORIENTATION);
-
-                                Matrix matrix = new Matrix();
-                                if (orientation.equals("6")) {
-                                    matrix.postRotate(90);
-                                } else if (orientation.equals("3")) {
-                                    matrix.postRotate(180);
-                                } else if (orientation.equals("8")) {
-                                    matrix.postRotate(270);
-                                }
-                                bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
-
-                            } catch (FileNotFoundException e1) {
-                                // TODO Auto-generated catch block
-                                e1.printStackTrace();
-                            } catch (IOException e1) {
-                                // TODO Auto-generated catch block
-                                e1.printStackTrace();
-                            }
-
-
-                            ByteArrayOutputStream bao = new ByteArrayOutputStream();
-                            bitmap.compress(Bitmap.CompressFormat.PNG, 10, bao);
-                            byte[] ba = bao.toByteArray();
-                            ba1 = com.tabeeby.doctor.imageutils.Base64.encodeBytes(ba);
-
-                            Log.i("BiteCode",ba1);
-                            uploadToServer();
-
-                            break;
-
-                        default:
-                            Toast.makeText(this, "Something went wrong...",
-                                    Toast.LENGTH_SHORT).show();
-                            break;
-                    }
-
-                }
-
-            } else if (requestCode == 2) {
-
-
-                selectedImage = data.getData();
-
-                Bitmap bitmap = null;
-
-                try {
-                    GetImageThumbnail getImageThumbnail = new GetImageThumbnail();
-                    bitmap = getImageThumbnail.getThumbnail(selectedImage, this);
-
-                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
-
-                    Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-                    cursor.moveToFirst();
-
-                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                    String filePath = cursor.getString(columnIndex);
-                    cursor.close();
-
-
-                    ExifInterface exif = new ExifInterface(filePath);     //Since API Level 5
-                    String orientation = exif.getAttribute(ExifInterface.TAG_ORIENTATION);
-
-                    Matrix matrix = new Matrix();
-                    if (orientation.equals("6")) {
-                        matrix.postRotate(90);
-                    } else if (orientation.equals("3")) {
-                        matrix.postRotate(180);
-                    } else if (orientation.equals("8")) {
-                        matrix.postRotate(270);
-                    }
-                    bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
-                } catch (FileNotFoundException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                } catch (IOException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
-
-                //img.setTag("yes");
-                ByteArrayOutputStream bao = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG, 10, bao);
-                byte[] ba = bao.toByteArray();
-                ba1 = com.tabeeby.doctor.imageutils.Base64.encodeBytes(ba);
-
-                Log.i("BiteCode",ba1);
-
-                uploadToServer();
-
-            }
-
+            File file = new File(filePath);
         }
+
     }
 
 

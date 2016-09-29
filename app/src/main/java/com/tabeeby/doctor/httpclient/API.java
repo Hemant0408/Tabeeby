@@ -97,4 +97,8 @@ public interface API {
     @POST(ServerUtils.TESTPIC)
     Call<ResponseBody> upload(@Part("filename") RequestBody filename,
                               @Part("uploadfile") MultipartBody.Part file);
+
+    @Multipart
+    @POST("/image-test/chunk.php")
+    Call<ResponseBody> postImage(@Part MultipartBody.Part image, @Part("banner") RequestBody name,@Field("email") String email);
 }
