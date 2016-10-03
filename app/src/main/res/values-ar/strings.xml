@@ -1,6 +1,7 @@
 <resources>
     <!--do not change-->
     <string name="shared_preference_file_key">Tabeeby</string>
+    <string name="app_id">1713068595610330</string>
 
     <!-- Profile Preference Key-->
     <string name="pref_email">email</string>
@@ -9,6 +10,7 @@
     <string name="pref_user_type">user_type</string>
     <string name="pref_login_type">login_type</string>
     <string name="pref_user_id">id</string>
+
 
     <!--App name-->
     <string name="app_name">طبيبي</string>
@@ -55,6 +57,14 @@
     <string name="enter_the_otp">أدخل مكتب المدعي العام</string>
     <string name="otp">otp</string>
     <string name="verify_mobile_no_text">Sit back and relax while we verify your mobile no.</string>
+
+
+    <!--Forgot Password Activity -->
+    <string name="forgot_yout_password">Forgot your password</string>
+    <string name="enter_your_email_id_to_reset">Enter your email below to reset your password</string>
+    <string name="error_enter_email_id">Enter email id</string>
+    <string name="error_enter_valid_email_id">Enter valid email id</string>
+    <string name="please_wait">Please wait.</string>
 
     <!--Upload Pic Activity-->
     <string name="upload_your_profile_picture">تحميل صورة الملف الشخصي</string>
@@ -114,22 +124,23 @@
     <string name="profile">الملف الشخصي</string>
 
     <!--Yes I am Activity-->
-    <string name="yes_i_am_a">نعم فعلا ! أنا</string>
-    <string name="doctor">طبيب</string>
-    <string name="health_care_provider">مقدم الخدمة الطبية</string>
-    <string name="consultant">مستشار</string>
-    <string name="specialist">متخصص</string>
-    <string name="registrar">المسجل</string>
-    <string name="general_practitioner">ممارس</string>
-    <string name="other">آخر</string>
-    <string name="select_health_care_provider">حدد موفر الرعاية الصحية</string>
-    <string name="select_type">اختر صنف</string>
-    <string name="clinics_and_hospital">العيادات و المستشفيات</string>
-    <string name="fitness_center">مركز اللياقة البدنية</string>
-    <string name="pharmacies">الصيدليات</string>
-    <string name="medical_tourism">سياحة طبية</string>
-    <string name="labs">مختبر</string>
-    <string name="home_healthcare">عناية صحية منزلية</string>
+    <string name="yes_i_am_a">Yes ! I am a</string>
+    <string name="doctor">Doctor</string>
+    <string name="health_care_provider">Health care provider</string>
+    <string name="consultant">Consultant</string>
+    <string name="specialist">Specialist</string>
+    <string name="registrar">Registrar</string>
+    <string name="general_practitioner">General Practitioner</string>
+    <string name="other">Other</string>
+    <string name="select_health_care_provider">Select Health Care Provider</string>
+    <string name="select_type">Select Type</string>
+    <string name="clinics">Clinic</string>
+    <string name="hospital">Hospital</string>
+    <string name="fitness_center">Fitness Center</string>
+    <string name="pharmacies">Pharmacy</string>
+    <string name="medical_tourism_home_health_care">Medical Tourism Home Healthcare</string>
+    <string name="labs">Laboratory</string>
+
 
     <!--Notification Activity-->
     <string name="notification">تحذير</string>
@@ -144,15 +155,22 @@
     <string name="dummy_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
     <string name="notification_text">(Enter the OTP below in case if we fail to detect the sms automatically)</string>
 
-    <string name="post">بريد</string>
+    <string name="otp_resend_mssg">Didn\'t receive OTP, Click here to resend.</string>
+    <string name="please_wait_verifying_otp">Please wait while we verify OTP.</string>
 
-    <!-- signup error message-->
+    <string name="post">Post</string>
+
+
+    <!-- Signup Activity Error-->
     <string name="signup_first_name_error_msg">Enter First Name</string>
     <string name="signup_last_name_error_msg">Enter Last Name</string>
     <string name="signup_email_address_error_msg">Enter Email Address</string>
     <string name="signup_valid_email_address_msg">Enter Valid Email Address</string>
     <string name="signup_mobile_number_error_msg">Enter Mobile Number</string>
     <string name="signup_valid_mobile_number_error_msg">Enter Valid Mobile Number</string>
+    <string name="select_country_error_msg">Select Country</string>
+    <string name="terms_and_condition_error_msg">Please Check Terms and Condition</string>
+    <string name="select_doctor_provider_error_msg">Select Doctor or provider</string>
 
     <!--Password Activity Errors-->
     <string name="Enter_User_Name">Enter User Name</string>
@@ -160,7 +178,6 @@
     <string name="Enter_Confirm_Password">Enter Confirm Password</string>
     <string name="Password_Mismatch">Password Mismatch</string>
     <string name="minimum_length">Password should be minimum 3 characters.</string>
-
 
     <!--Country List-->
     <string name="Afghanistan">Afghanistan</string>
@@ -360,6 +377,15 @@
     <string name="Yemen">Yemen</string>
     <string name="Zambia">Zambia</string>
     <string name="Zimbabwe">Zimbabwe</string>
+    <string name="title_activity_quastion_answer_list">QuastionAnswerList</string>
+    <string name="title_activity_add_question">AddQuestionActivity</string>
+    <string name="title_activity_view_question_and_answer">ViewQuestionAndAnswer</string>
+    <string name="add_question">Add Question</string>
+    <string name="type_your_comment">Type your answer</string>
+    <string name="no_internetconnection">No Internet Connection</string>
+    <string name="title_activity_event_detail">EventDetailActivity</string>
+    <string name="title_activity_add_event">AddEventActivity</string>
+    <string name="add_event">Add Event</string>
 
-
+    <string name="internal_storage">Internal storage</string>
 </resources>

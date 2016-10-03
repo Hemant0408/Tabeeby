@@ -142,8 +142,7 @@ public class ViewQuestionAndAnswer extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                     String responseBody = Utils.convertTypedBodyToString(response.body());
-                    Log.i("**ReponseBody", responseBody);
-                    Log.i("**ResponceCode", response.code() + "");
+                    Utils.DismissProgressDialog();
                     if (response.code() == ServerUtils.STATUS_OK) {
                         try {
 

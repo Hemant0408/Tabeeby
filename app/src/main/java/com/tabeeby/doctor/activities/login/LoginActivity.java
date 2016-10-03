@@ -56,32 +56,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void nextStep(View view) {
-       /* startActivity(new Intent(mContext, MainActivity.class));
-        finishAffinity();*/
         makeHTTPcall();
     }
 
     private void makeHTTPcall() {
+        Utils.ShowProgressDialog(mContext);
         Call<ResponseBody> responseBodyCall = api.loginApi(edtUserName.getText().toString().trim(), edtPassword.getText().toString().trim());
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                Utils.DismissProgressDialog();
                 String responseBody = Utils.convertTypedBodyToString(response.body());
-                Log.i("**ReponseBody", responseBody);
-                Log.i("**ResponceCode", response.code() + "");
                 if (response.code() == ServerUtils.STATUS_OK) {
                     try {
                         JSONObject jsonObject = new JSONObject(responseBody);
                         String data = jsonObject.getString("data");
                         if (data != null) {
                             JSONObject DataJsonObject = new JSONObject(data);
-                            if (DataJsonObject.getString("status").equals("10")) {
-                                Utils.storeSharedPreference(mContext, getString(R.string.pref_access_token), DataJsonObject.getString(getString(R.string.pref_access_token)).trim());
-                                Utils.storeSharedPreference(mContext, getString(R.string.pref_email), DataJsonObject.getString(getString(R.string.pref_email)).trim());
-                                Utils.storeSharedPreference(mContext, getString(R.string.pref_picture), DataJsonObject.getString(getString(R.string.pref_picture)).trim());
-                                Utils.storeSharedPreference(mContext, getString(R.string.pref_user_type), DataJsonObject.getString(getString(R.string.pref_user_type)).trim());
-                                Utils.storeSharedPreference(mContext, getString(R.string.pref_login_type), DataJsonObject.getString(getString(R.string.pref_login_type)).trim());
-                                Utils.storeSharedPreference(mContext, getString(R.string.pref_user_id), DataJsonObject.getString(getString(R.string.pref_user_id)).trim());
+                            JSONObject UserJsonObjct=DataJsonObject.getJSONObject("user");
+
+                            if (UserJsonObjct.getString("status").equals("10")) {
+                                Utils.storeSharedPreference(mContext, getString(R.string.pref_access_token), UserJsonObjct.getString(getString(R.string.pref_access_token)).trim());
+                                Utils.storeSharedPreference(mContext, getString(R.string.pref_email), UserJsonObjct.getString(getString(R.string.pref_email)).trim());
+                                Utils.storeSharedPreference(mContext, getString(R.string.pref_picture), UserJsonObjct.getString(getString(R.string.pref_picture)).trim());
+                                Utils.storeSharedPreference(mContext, getString(R.string.pref_user_type), UserJsonObjct.getString(getString(R.string.pref_user_type)).trim());
+                                Utils.storeSharedPreference(mContext, getString(R.string.pref_login_type), UserJsonObjct.getString(getString(R.string.pref_login_type)).trim());
+                                Utils.storeSharedPreference(mContext, getString(R.string.pref_user_id), UserJsonObjct.getString(getString(R.string.pref_user_id)).trim());
                                 Utils.createToastLong("Welcome to Tabeeby", mContext);
                                 startActivity(new Intent(mContext, MainActivity.class));
                             } else {

@@ -58,6 +58,8 @@ public class QuastionAnswerList extends AppCompatActivity {
 
     Bundle bundle;
 
+    private String strUserId=null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +81,16 @@ public class QuastionAnswerList extends AppCompatActivity {
         });
 
         recyclerView = (RecyclerView) findViewById(R.id.lv_question_and_answer_list);
+
+
+        if(getIntent()!=null)
+        {
+            strUserId=getIntent().getStringExtra("user_id");
+        }
+        else
+        {
+            strUserId="0";
+        }
 
         if (ConnectionDetector.checkInternetConnection(mContext)) {
             makeHTTPcall();
@@ -121,7 +133,7 @@ public class QuastionAnswerList extends AppCompatActivity {
         progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
         progressDialog.show();
 
-        Call<ResponseBody> responseBodyCall = api.QuestionListApi();
+        Call<ResponseBody> responseBodyCall = api.QuestionListApi(strUserId);
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
                                      @Override
                                      public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

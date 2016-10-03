@@ -79,7 +79,7 @@ public interface API {
             , @Field("user_id") String user_id);
 
     @GET(ServerUtils.QUESTIONLIST)
-    Call<ResponseBody> QuestionListApi();
+    Call<ResponseBody> QuestionListApi(@Query("userId") String user_id);
 
     @POST(ServerUtils.FORGOT_PASSWORD)
     @FormUrlEncoded
@@ -89,12 +89,20 @@ public interface API {
     Call<ResponseBody> AnswerListApi(@Query("question_id") String question_id);
 
     @GET(ServerUtils.EVENTLIST)
-    Call<ResponseBody> EventListApi();
+    Call<ResponseBody> EventListApi(@Query("userId") String user_id);
+
+    @FormUrlEncoded
+    @POST(ServerUtils.EVENTATTND)
+    Call<ResponseBody> attendEventApi(@Header("Authorization") String Authorization,@Field("user_id") String user_id,@Field("event_id") String event_id,@Field("status") String status);
+
 
     @FormUrlEncoded
     @POST(ServerUtils.SAVEEVENTPIC)
-    Call<ResponseBody> imageUpload(@Field("base64") String base64
-            , @Field("ImageName") String ImageName);
+    Call<ResponseBody> imageUpload(@Field("base64") String base64, @Field("ImageName") String ImageName);
+
+    @FormUrlEncoded
+    @POST(ServerUtils.DELETEEVENT)
+    Call<ResponseBody> deleteEventApi(@Header("Authorization") String Authorization,@Field("id") String id);
 
     @Multipart
     @POST(ServerUtils.TESTPIC)
@@ -106,4 +114,8 @@ public interface API {
 
     @GET(ServerUtils.USER_NAME)
     Call<ResponseBody> getUserName(@Query("username") String username);
+
+    @Multipart
+    @POST(ServerUtils.ADDEVENT)
+    Call<ResponseBody> addEvent(@Part MultipartBody.Part image, @Part("banner") RequestBody name,@Part("user_id") String user_id,@Part("title") String title,@Part("start_time") String start_time,@Part("end_time") String end_time,@Part("location") String location,@Part("lat") String lat,@Part("lng") String lng,@Part("status") String status,@Part("description") String description);
 }
