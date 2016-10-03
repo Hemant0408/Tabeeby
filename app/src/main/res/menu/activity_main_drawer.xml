@@ -31,6 +31,11 @@
             android:title="@string/nav_my_q_and_a" />
 
         <item
+            android:id="@+id/dav_myevents"
+            android:icon="@drawable/ic_qna_grey_24dp"
+            android:title="My Events" />
+
+        <item
             android:id="@+id/account"
             android:checked="true"
             android:icon="@drawable/ic_account_bag"

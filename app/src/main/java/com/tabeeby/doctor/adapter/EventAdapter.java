@@ -76,6 +76,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ListHolder> 
                 intent.putExtra("EventLocation",items.get(i).getEvent_location());
                 intent.putExtra("EventUserName",items.get(i).getUsername());
                 intent.putExtra("EventBannerPath",items.get(i).getEvent_banner_path());
+                intent.putExtra("EventId",items.get(i).getEvent_id());
                 mContext.startActivity(intent);
             }
         });

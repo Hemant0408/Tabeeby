@@ -21,6 +21,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.tabeeby.doctor.R;
+import com.tabeeby.doctor.activities.events.EventsActivity;
 import com.tabeeby.doctor.activities.login.LoginActivity;
 import com.tabeeby.doctor.activities.myappointment.MyAppointmentActivity;
 import com.tabeeby.doctor.activities.mypatient.MyPatientActivity;
@@ -108,8 +109,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
         } else if (id == R.id.q_and_a) {
             Intent intent = new Intent(this, QuastionAnswerList.class);
+            intent.putExtra("user_id",Utils.retrieveSharedPreference(mContext,getString(R.string.pref_user_id)));
             startActivity(intent);
-        } else if (id == R.id.logout) {
+        }
+        else if(id==R.id.dav_myevents)
+        {
+            Intent intent = new Intent(this, EventsActivity.class);
+            intent.putExtra("user_id",Utils.retrieveSharedPreference(mContext,getString(R.string.pref_user_id)));
+            startActivity(intent);
+        }
+        else if (id == R.id.logout) {
             Utils.removePreference(mContext);
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);

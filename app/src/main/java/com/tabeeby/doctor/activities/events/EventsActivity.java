@@ -57,6 +57,8 @@ public class EventsActivity extends AppCompatActivity {
     @Bind(R.id.fab)
     protected FloatingActionButton fab;
 
+    private String strUserId=null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,8 +80,17 @@ public class EventsActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.lv_events_list);
 
 
+        if(getIntent()!=null)
+        {
+            strUserId=getIntent().getStringExtra("user_id");
+        }
+        else
+        {
+            strUserId="0";
+        }
+
         if(ConnectionDetector.checkInternetConnection(mContext)) {
-            getDisplayList();
+            getDisplayList(strUserId);
         }
         else {
             Utils.ErrorMessage((Activity) mContext,bundle,getResources().getString(R.string.no_internetconnection));
@@ -93,13 +104,15 @@ public class EventsActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
 
 
-    private void getDisplayList()
+    private void getDisplayList(String user_id)
     {
         Utils.ShowProgressDialog(mContext);
-        Call<ResponseBody> responseBodyCall = api.EventListApi();
+        Call<ResponseBody> responseBodyCall = api.EventListApi(user_id);
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

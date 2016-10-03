@@ -23,5 +23,8 @@
 
     <include layout="@layout/content_event_detail" />
 
-
+    <include
+        layout="@layout/attending_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </android.support.design.widget.CoordinatorLayout>

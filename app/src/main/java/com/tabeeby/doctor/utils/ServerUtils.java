@@ -14,7 +14,6 @@ public final class ServerUtils {
     //Api
     public static final String SIGN_UP = "auth/sign-up";
     public static final String LOGIN = "auth/login";
-
     public static final String QUESTIONLIST = "question/get-questions";
     public static final String ADDQUESTION ="question/ask-question";
     public static final String ANSWERLIST="question/get-answers";
@@ -22,6 +21,10 @@ public final class ServerUtils {
     public static final String VIEWCOUNT="question/register-view";
     public static final String EVENTLIST="event/get-events";
     public static final String SAVEEVENTPIC="image-test/test.php";
+    public static final String ADDEVENT="event/post-event";
+    public static final String EVENTATTND="event/attend-event";
+    public static final String DELETEEVENT="event/delete-event";
+
 
     public static final String TESTPIC="image-test/chunk.php";
 

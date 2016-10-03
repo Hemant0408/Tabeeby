@@ -40,6 +40,9 @@ import java.io.IOException;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -118,10 +121,10 @@ public class AddEventActivity extends AppCompatActivity {
          if (options[item].equals("Choose from Gallery"))
                 {
 
-                    Intent intent = new   Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
-                    startActivityForResult(intent, 2);
-
+                    Intent intent = new   Intent();
+                    intent.setType("image/*");
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    startActivityForResult(Intent.createChooser(intent, "Select Image"), 2);
                 }
 
                 else if (options[item].equals("Cancel")) {
@@ -155,6 +158,25 @@ public class AddEventActivity extends AppCompatActivity {
             cursor.close();
 
             File file = new File(filePath);
+
+            RequestBody reqFile = RequestBody.create(MediaType.parse("image/*"), file);
+            MultipartBody.Part body = MultipartBody.Part.createFormData("banner", file.getName(), reqFile);
+            RequestBody name = RequestBody.create(MediaType.parse("text/plain"), "upload_test");
+
+//            Log.d("THIS", data.getData().getPath());
+
+            retrofit2.Call<okhttp3.ResponseBody> req = api.addEvent(body,name,"48","Autumn Event","2016-29-09 11:18","2016-30-09 11:19","thane, india","19.218331","72.978090","1","I'm tired of being what you want me ");
+            req.enqueue(new Callback<ResponseBody>() {
+                @Override
+                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                }
+
+                @Override
+                public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                    t.printStackTrace();
+                }
+            });
         }
 
     }
