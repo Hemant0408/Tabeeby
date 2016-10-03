@@ -4,5 +4,5 @@
     style="@style/TextViewDialog"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="15dp"
+    android:padding="15sp"
     android:textColor="@color/black" />

@@ -100,7 +100,7 @@ public class SelectDoctorProviderActivity extends AppCompatActivity {
         doctorType.add(getString(R.string.specialist));
         doctorType.add(getString(R.string.registrar));
         doctorType.add(getString(R.string.general_practitioner));
-        doctorType.add(getString(R.string.other));
+        //doctorType.add(getString(R.string.other));
 
         final ArrayAdapter<String> adapter
                 = new ArrayAdapter<String>(this, R.layout.country_list_item, doctorType);
@@ -122,7 +122,7 @@ public class SelectDoctorProviderActivity extends AppCompatActivity {
 
                 selected = 0;
 
-                Utils.storeSharedPreference(mContext, "doctor_type", "health care provider");
+                Utils.storeSharedPreference(mContext, "doctor_type", "doctor");
                 Utils.storeSharedPreference(mContext, "doctor_sub_type", selectedValue);
             }
         });
@@ -177,7 +177,7 @@ public class SelectDoctorProviderActivity extends AppCompatActivity {
                 tv_doctor.setText("Doctor");
 
                 selected = 0;
-                Utils.storeSharedPreference(mContext, "doctor_type", "doctor");
+                Utils.storeSharedPreference(mContext, "doctor_type", "health_care_provider");
                 Utils.storeSharedPreference(mContext, "doctor_sub_type", selectedValue);
             }
         });

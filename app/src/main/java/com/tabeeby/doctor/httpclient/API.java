@@ -1,6 +1,7 @@
 package com.tabeeby.doctor.httpclient;
 
 import com.google.android.gms.common.server.converter.StringToIntConverter;
+import com.tabeeby.doctor.GsonModels.CountryModel;
 import com.tabeeby.doctor.utils.ServerUtils;
 
 import okhttp3.MultipartBody;
@@ -34,16 +35,18 @@ public interface API {
             , @Field("phone") String mobile_no
             , @Field("country") String country
             , @Field("title") String title
-            , @Field("lang") String lang);
+            , @Field("lang") String lang
+            , @Field("username") String username
+            , @Field("type") String type);
 
 
     @POST(ServerUtils.VERIFY_OTP)
     @FormUrlEncoded
-    Call<ResponseBody> postOTPverify(@Field("uid") String uid, @Field("otp") String otp);
+    Call<ResponseBody> postOTPverify(@Header("Authorization") String Authorization, @Field("otp") String otp, @Field("uid") String uid);
 
     @POST(ServerUtils.RESEND_OTP)
     @FormUrlEncoded
-    Call<ResponseBody> postOTPresend(@Header("Authorization") String Authorization, @Field("uid") String token);
+    Call<ResponseBody> postOTPresend(@Field("uid") String token);
 
     // Login api call for doctor/patient/professional
     @POST(ServerUtils.LOGIN)
@@ -97,4 +100,10 @@ public interface API {
     @POST(ServerUtils.TESTPIC)
     Call<ResponseBody> upload(@Part("filename") RequestBody filename,
                               @Part("uploadfile") MultipartBody.Part file);
+
+    @GET(ServerUtils.COUNTRY)
+    Call<CountryModel> getCountryDetails();
+
+    @GET(ServerUtils.USER_NAME)
+    Call<ResponseBody> getUserName(@Query("username") String username);
 }

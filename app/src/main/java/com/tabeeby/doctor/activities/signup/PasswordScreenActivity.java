@@ -6,13 +6,18 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.tabeeby.doctor.R;
+import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 import com.tabeeby.doctor.application.MyApplication;
 import com.tabeeby.doctor.httpclient.API;
 import com.tabeeby.doctor.utils.ServerUtils;
@@ -46,7 +51,13 @@ public class PasswordScreenActivity extends AppCompatActivity {
     @Bind(R.id.textInputConfirmPassword)
     protected TextInputLayout mTextInputComfirmPassword;
 
-    private String mEmail, mFirstName, mLastName, mUserType, mLoginType, mTerms, mMobileNumber, title;
+    @Bind(R.id.textInputUserName)
+    protected TextInputLayout mTextInputUserName;
+
+    @Bind(R.id.edtUserName)
+    protected TextView mUserName;
+
+    private String mEmail, mFirstName, mLastName, mUserType, mLoginType, mTerms, mMobileNumber, title, mFullName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +95,87 @@ public class PasswordScreenActivity extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
             }
         });
+        mUserName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                mTextInputUserName.setError(null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        mUserName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                if (actionId == EditorInfo.IME_ACTION_NEXT) {
+                    if (!TextUtils.isEmpty(mUserName.getText().toString()))
+                        makeHttpCallToCheckUserName();
+                }
+
+                return false;
+            }
+        });
+    }
+
+    private void makeHttpCallToCheckUserName() {
+        Call<ResponseBody> responseBodyCall = api.getUserName(mUserName.getText().toString().trim());
+
+        responseBodyCall.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                String responseBody = Utils.convertTypedBodyToString(response.body());
+                if (response.code() == ServerUtils.STATUS_OK) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(responseBody);
+                        if (jsonObject != null) {
+
+                            // Error
+                            /* {
+  "error": {
+    "username": [
+      "Username not available"
+    ]
+  },
+  "status": false,
+  "message": "Username invalid/unavailable.",
+  "code": 395
+} */
+
+// Success
+                            /* {
+  "data": [],
+  "status": true,
+  "message": "Username available!",
+  "code": 397
+} */
+
+                            if (!jsonObject.getBoolean("status")) {
+                                JSONObject errorJSONObject = jsonObject.getJSONObject("error");
+                                if (errorJSONObject.has("username")) {
+                                    mTextInputUserName.setError(errorJSONObject.getString("username").substring(1, errorJSONObject.getString("username").length() - 1));
+                                }
+                            }
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.i("***Call", call.toString());
+                t.printStackTrace();
+            }
+        });
     }
 
     public void nextStep(View view) {
@@ -92,6 +184,7 @@ public class PasswordScreenActivity extends AppCompatActivity {
             mFirstName = getIntent().getStringExtra("FirstName");
             mLastName = getIntent().getStringExtra("LastName");
             mMobileNumber = getIntent().getStringExtra("MobileNumber");
+            mFullName = getIntent().getStringExtra("FullName");
             title = getIntent().getStringExtra("title");
             mLoginType = "phone";
 
@@ -118,6 +211,10 @@ public class PasswordScreenActivity extends AppCompatActivity {
     }
 
     public boolean validate() {
+        if (mUserName.getText().toString().trim().equals("")) {
+            mTextInputUserName.setError(getString(R.string.Enter_User_Name));
+            return false;
+        }
         if (mUserPassword.getText().toString().trim().equals("")) {
             mTextInputPassword.setError(getString(R.string.Enter_Password));
             return false;
@@ -138,7 +235,7 @@ public class PasswordScreenActivity extends AppCompatActivity {
     }
 
     private void makeHTTPcall() {
-        Call<ResponseBody> responseBodyCall = api.signupApi(mEmail, mUserPassword.getText().toString(), mConfirmUserPassword.getText().toString().trim(), mFirstName, mLastName, null, mUserType, mLoginType, mTerms, mMobileNumber, "India", title/*Utils.retrieveSharedPreference(mContext, "doctor_sub_type").toLowerCase()*/, Utils.retrieveSharedPreference(mContext, "Language"));
+        Call<ResponseBody> responseBodyCall = api.signupApi(mEmail, mUserPassword.getText().toString(), mConfirmUserPassword.getText().toString().trim(), mFirstName, mLastName, mFullName, mUserType, mLoginType, mTerms, mMobileNumber, Utils.retrieveSharedPreference(mContext, "Country"), title/*Utils.retrieveSharedPreference(mContext, "doctor_sub_type").toLowerCase()*/, Utils.retrieveSharedPreference(mContext, "Language"), mUserName.getText().toString().trim(),"");
 
         responseBodyCall.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -147,18 +244,26 @@ public class PasswordScreenActivity extends AppCompatActivity {
                 if (response.code() == ServerUtils.STATUS_OK) {
                     try {
                         JSONObject jsonObject = new JSONObject(responseBody);
-                        Log.i("****StatusCode", jsonObject.getString("code"));
-// {"data":{"extra_message":"Please verify your email address to activate your account.",
-// "user":{"id":74,"username":"YZWbv","email":null,"phone":"9854242348","user_type":"doctor","login_type":"phone","profile_level":1,"picture":null,"access_token":null,
-// "expires_in":null,"lang":"en","status":0,"is_user_delete":null,"is_admin_delete":null,"created_at":"2016-09-28 04:52:36","updated_at":{"expression":"NOW()","params":[]},
-// "otp":52886}},"status":true,"message":"Successfully registered","code":200}
-                        JSONObject dataObject = jsonObject.getJSONObject("data");
-                        JSONObject userObject = dataObject.getJSONObject("user");
-
-                        Intent intent = new Intent(mContext, OtpPageActivity.class);
-                        intent.putExtra("otp", userObject.getString("otp"));
-                        startActivity(intent);
-                        finish();
+                        //String data = jsonObject.getString("data");
+                        if (jsonObject != null) {
+                            JSONObject DataJsonObject = jsonObject.getJSONObject("data");
+                            JSONObject userJsonObject = DataJsonObject.getJSONObject("user");
+                            if (userJsonObject.getString("status").equals("0")) {
+                                Utils.storeSharedPreference(mContext, getString(R.string.pref_access_token), userJsonObject.getString(getString(R.string.pref_access_token)).trim());
+                                Utils.storeSharedPreference(mContext, getString(R.string.pref_email), userJsonObject.getString(getString(R.string.pref_email)).trim());
+                                Utils.storeSharedPreference(mContext, getString(R.string.pref_picture), userJsonObject.getString(getString(R.string.pref_picture)).trim());
+                                Utils.storeSharedPreference(mContext, getString(R.string.pref_user_type), userJsonObject.getString(getString(R.string.pref_user_type)).trim());
+                                Utils.storeSharedPreference(mContext, getString(R.string.pref_login_type), userJsonObject.getString(getString(R.string.pref_login_type)).trim());
+                                Utils.storeSharedPreference(mContext, getString(R.string.pref_user_id), userJsonObject.getString(getString(R.string.pref_user_id)).trim());
+                                Intent intent = new Intent(mContext, OtpPageActivity.class);
+                                intent.putExtra("uid", userJsonObject.getString(getString(R.string.pref_user_id)));
+                                intent.putExtra("otpToken", userJsonObject.getString(getString(R.string.otp)));
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                Utils.createToastShort("User Not Verified", mContext);
+                            }
+                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -171,5 +276,11 @@ public class PasswordScreenActivity extends AppCompatActivity {
                 t.printStackTrace();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Log.e("onBackPressed", "onBackPressed");
     }
 }

@@ -9,20 +9,30 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.tabeeby.doctor.GsonModels.CountryModel;
+import com.tabeeby.doctor.Models.Country;
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.application.MyApplication;
+import com.tabeeby.doctor.database.DbClass;
+import com.tabeeby.doctor.utils.ServerUtils;
 import com.tabeeby.doctor.utils.Utils;
 
 import java.text.Bidi;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SelectLanguageActivity extends AppCompatActivity {
 
@@ -116,5 +126,4 @@ public class SelectLanguageActivity extends AppCompatActivity {
 
         }.execute();
     }
-
 }

@@ -55,7 +55,7 @@ public class OtpPageActivity extends AppCompatActivity implements View.OnClickLi
     private long systemTimeOnPaused = 0;
     private boolean isPaused = false, isTimerEnded = false;
     private Intent intent;
-    private String otpToken;//="rnoYmFKrQITNt2nVk-fQ7pLYdpl5ZMHQ_1461921708";
+    private String otpToken, uid;//="rnoYmFKrQITNt2nVk-fQ7pLYdpl5ZMHQ_1461921708";
     private ProgressDialog progressDialog;
 
     @Override
@@ -71,7 +71,9 @@ public class OtpPageActivity extends AppCompatActivity implements View.OnClickLi
         intent = getIntent();
         if (intent != null) {
             otpToken = intent.getStringExtra("otpToken");
+            uid = intent.getStringExtra("uid");
             Log.i("TAG", "otpToken :" + otpToken);
+            forgot_password_Edittext.setText(otpToken);
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             progressDialog = new ProgressDialog(new ContextThemeWrapper(this, android.R.style.Theme_Holo_Light_Dialog));
@@ -132,14 +134,13 @@ public class OtpPageActivity extends AppCompatActivity implements View.OnClickLi
             timer_textView.setTextColor(getResources().getColor(R.color.red));
             isTimerEnded = true;
         }
-
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.submit_button:
-                if (forgot_password_Edittext.getText().toString().trim().length() == 4) {
+                if (forgot_password_Edittext.getText().toString().trim().length() > 3) {
                     checkAndValidateOnServer(true);
                 } else {
                     Utils.createToastLong("Enter valid OTP password", OtpPageActivity.this);
@@ -206,12 +207,12 @@ public class OtpPageActivity extends AppCompatActivity implements View.OnClickLi
         if (OTPverify) {
             progressDialog.setMessage(getResources().getString(R.string.please_wait_verifying_otp));
             progressDialog.show();
-            response = MyApplication.getInstance().getHttpService().postOTPverify(forgot_password_Edittext.getText().toString().trim(), otpToken);
+            response = MyApplication.getInstance().getHttpService().postOTPverify("Bearer " + Utils.retrieveSharedPreference(mContext, getString(R.string.pref_access_token)), forgot_password_Edittext.getText().toString().trim(), uid);
 
         } else {
             progressDialog.setMessage(getResources().getString(R.string.please_wait));
             progressDialog.show();
-            response = MyApplication.getInstance().getHttpService().postOTPresend("", otpToken);
+            response = MyApplication.getInstance().getHttpService().postOTPresend(uid);
         }
         response.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -222,7 +223,7 @@ public class OtpPageActivity extends AppCompatActivity implements View.OnClickLi
                     if (OTPverify) {
 
                         try {
-                            JSONArray jsonArray = new JSONArray(responseJson);
+                            /*JSONArray jsonArray = new JSONArray(responseJson);
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 if (progressDialog.isShowing()) {
                                     progressDialog.cancel();
@@ -243,8 +244,24 @@ public class OtpPageActivity extends AppCompatActivity implements View.OnClickLi
                                         progressDialog.cancel();
                                     }
                                 }
-                            }
+                            }*/
 
+                            JSONObject jsonObject = new JSONObject(responseJson);
+
+                            if (jsonObject.getBoolean("status")) {
+                                if (progressDialog.isShowing()) {
+                                    progressDialog.cancel();
+                                }
+                                Utils.createToastLong(jsonObject.getString("message"), OtpPageActivity.this);
+                                Intent intent = new Intent(OtpPageActivity.this, UploadProfilePicture.class);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                otp_error.setText(jsonObject.getString("message"));
+                                if (progressDialog.isShowing()) {
+                                    progressDialog.cancel();
+                                }
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -257,9 +274,7 @@ public class OtpPageActivity extends AppCompatActivity implements View.OnClickLi
                         countDownTimer.setMillisInFuture(180000); // start timer with 3 minutes timer
                         countDownTimer.start();
                         timer_textView.setTextColor(getResources().getColor(R.color.colorAccent));
-
                     }
-
                 } else {
                     if (progressDialog.isShowing()) {
                         progressDialog.cancel();

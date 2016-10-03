@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import com.tabeeby.doctor.R;
 import com.tabeeby.doctor.activities.maintabactivity.MainActivity;
 import com.tabeeby.doctor.activities.signup.SelectLanguageActivity;
@@ -85,8 +86,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 startActivity(new Intent(mContext, MainActivity.class));
                             } else {
                                 Utils.createToastShort("User Not Verified", mContext);
-
-
                             }
                         }
                     } catch (Exception e) {

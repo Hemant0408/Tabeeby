@@ -38,6 +38,7 @@
     <string name="service_name">اسم الخدمة</string>
     <string name="name">اسم</string>
     <string name="first_name">الاسم الاول</string>
+    <string name="full_name">Full Name</string>
     <string name="last_name">الكنية</string>
     <string name="email">البريد الالكتروني</string>
     <string name="mobile_no">رقم المحمول</string>
@@ -52,6 +53,7 @@
 
     <!--OTP Activity-->
     <string name="enter_the_otp">أدخل مكتب المدعي العام</string>
+    <string name="otp">otp</string>
     <string name="verify_mobile_no_text">Sit back and relax while we verify your mobile no.</string>
 
     <!--Upload Pic Activity-->
@@ -153,9 +155,11 @@
     <string name="signup_valid_mobile_number_error_msg">Enter Valid Mobile Number</string>
 
     <!--Password Activity Errors-->
+    <string name="Enter_User_Name">Enter User Name</string>
     <string name="Enter_Password">Enter Password</string>
     <string name="Enter_Confirm_Password">Enter Confirm Password</string>
     <string name="Password_Mismatch">Password Mismatch</string>
+    <string name="minimum_length">Password should be minimum 3 characters.</string>
 
 
     <!--Country List-->
